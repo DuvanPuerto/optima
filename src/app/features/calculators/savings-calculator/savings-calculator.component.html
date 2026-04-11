@@ -1,0 +1,81 @@
+<div class="grid lg:grid-cols-2 gap-8">
+    <!-- Form -->
+    <div class="card p-7">
+        <h3 class="font-semibold text-lg mb-6" style="color: var(--text);">Parámetros de ahorro</h3>
+        <form [formGroup]="form" (ngSubmit)="calculate()" class="space-y-5" novalidate>
+            <div>
+                <label class="form-label">Capital inicial (COP)</label>
+                <input appCurrencyInput formControlName="initial" class="form-input" placeholder="Ej: 1.000.000">
+            </div>
+            <div>
+                <label class="form-label">Aporte mensual (COP)</label>
+                <input appCurrencyInput formControlName="monthly" class="form-input" placeholder="Ej: 200.000">
+            </div>
+            <div>
+                <label class="form-label">Tasa de interés anual (%)</label>
+                <input type="number" formControlName="rate" class="form-input" placeholder="Ej: 7" step="0.1" min="0.01"
+                    max="100">
+                @if (form.get('rate')?.invalid && form.get('rate')?.touched) {
+                <p class="form-error">Ingresa una tasa entre 0.01% y 100%</p>
+                }
+            </div>
+            <div>
+                <label class="form-label">Plazo (años)</label>
+                <input type="number" formControlName="years" class="form-input" placeholder="Ej: 5" min="1" max="50">
+                @if (form.get('years')?.invalid && form.get('years')?.touched) {
+                <p class="form-error">Ingresa entre 1 y 50 años</p>
+                }
+            </div>
+            <button type="submit" class="btn-primary w-full justify-center py-3">Proyectar ahorro</button>
+        </form>
+    </div>
+
+    <!-- Results -->
+    <div class="flex flex-col gap-4">
+        @if (result(); as r) {
+        <div class="card p-7">
+            <h3 class="font-semibold text-lg mb-5" style="color: var(--text);">Proyección de ahorro</h3>
+            <div class="rounded-xl p-5 text-center mb-5"
+                style="background: var(--secondary); color: var(--primary-dark);">
+                <p class="text-sm opacity-80 mb-1">Balance final proyectado</p>
+                <p class="font-heading font-bold" style="font-size: 2.25rem;">{{ fmt(r.finalBalance) }}</p>
+            </div>
+            <div class="grid grid-cols-2 gap-3 mb-6">
+                <div class="rounded-xl p-4 text-center" style="background: var(--bg);">
+                    <p class="text-xs mb-1" style="color: var(--text-muted);">Total aportado</p>
+                    <p class="font-bold" style="color: var(--text);">{{ fmt(r.totalContributed) }}</p>
+                </div>
+                <div class="rounded-xl p-4 text-center" style="background: var(--bg);">
+                    <p class="text-xs mb-1" style="color: var(--text-muted);">Intereses ganados</p>
+                    <p class="font-bold" style="color: var(--success);">{{ fmt(r.totalInterest) }}</p>
+                </div>
+            </div>
+
+            <!-- Bar chart -->
+            <h4 class="text-sm font-semibold mb-3" style="color: var(--text-muted);">Evolución anual</h4>
+            <div class="space-y-2">
+                @for (y of r.yearlyProjection; track y.year) {
+                <div class="flex items-center gap-3">
+                    <span class="text-xs w-12 flex-shrink-0 text-right font-medium"
+                        style="color: var(--text-muted);">Año {{ y.year }}</span>
+                    <div class="flex-1 h-5 rounded-full overflow-hidden" style="background: var(--border);">
+                        <div class="h-full rounded-full transition-all duration-700"
+                            style="background: linear-gradient(90deg, var(--secondary-dark), var(--secondary-light));"
+                            [style.width]="barWidth(y.balance, r.finalBalance)"></div>
+                    </div>
+                    <span class="text-xs w-28 flex-shrink-0 font-medium" style="color: var(--text);">{{ fmt(y.balance)
+                        }}</span>
+                </div>
+                }
+            </div>
+        </div>
+        } @else {
+        <div class="card p-7 flex-1 flex flex-col items-center justify-center text-center gap-4">
+            <div style="font-size: 4rem; color: var(--secondary);"><i class="fa-solid fa-piggy-bank"></i></div>
+            <p class="font-medium" style="color: var(--text-muted);">Configura tus parámetros y haz clic en
+                <strong>Proyectar ahorro</strong>
+            </p>
+        </div>
+        }
+    </div>
+</div>

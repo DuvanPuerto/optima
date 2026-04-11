@@ -1,3 +1,481 @@
-/* You can add global styles to this file, and also import other style files */
+/* ============================================================
+   Optima by Angie Céspedes — Global Styles
+   Para cambiar la paleta, editar los valores en @theme.
+   ============================================================ */
 
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
+
+/* ================================================================
+   PALETA LOW-LIGHT ELEGANCE — editar aquí + en theme.config.ts
+   ================================================================
+
+   Fondo primario (Deep Dark)
+      primary-dark  #0D1412  fondo general, hero backdrop
+      primary       #1A2622  navbar, superficies principales
+
+   Superficie de contraste
+      primary-light #243330  hover states, secciones alternas
+      accent        #6B8880  iconos, chips, texto de apoyo
+
+   Dorado metalico (acento / CTA)
+      secondary     #C5A059  botones CTA, logo highlights
+      secondary-dark#A8853F  hover de CTAs
+      secondary-light#D8B875 gradiente claro
+
+   Texto
+      text          #C4C4C4  texto principal (gris suave)
+      text-muted    #8A8A8A  texto secundario
+
+   Bordes sutiles dorados
+      border        rgba(197,160,89,0.2)   estandar
+      border-light  rgba(197,160,89,0.12)  divisores
+   ================================================================ */
+@theme {
+    /* Superficies oscuras */
+    --color-primary: #1A2622;
+    --color-primary-light: #243330;
+    --color-primary-dark: #0D1412;
+
+    /* Acento verde-gris */
+    --color-accent: #6B8880;
+    --color-accent-light: #8FA8A2;
+
+    /* Dorado metalico — CTA y highlights */
+    --color-secondary: #C5A059;
+    --color-secondary-light: #D8B875;
+    --color-secondary-dark: #A8853F;
+
+    /* Fondos y superficies */
+    --color-bg: #0D1412;
+    --color-surface: #1A2622;
+    --color-surface-2: #243330;
+
+    /* Tipografia */
+    --color-text: #C4C4C4;
+    --color-text-muted: #8A8A8A;
+    --color-border: #2E4840;
+    --color-border-light: #1E3530;
+
+    /* Estado */
+    --color-success: #10B981;
+    --color-error: #EF4444;
+    --color-warning: #F59E0B;
+
+    /* Fuentes */
+    --font-heading: 'Cinzel', Georgia, serif;
+    --font-body: 'Inter', system-ui, sans-serif;
+}
+
+/* ── Variables CSS nativas (disponibles en toda la app) ──── */
+:root {
+    /* Superficies oscuras */
+    --primary: #1A2622;
+    --primary-light: #243330;
+    --primary-dark: #0D1412;
+
+    /* Acento verde-gris */
+    --accent: #6B8880;
+    --accent-light: #8FA8A2;
+
+    /* Dorado metalico */
+    --secondary: #C5A059;
+    --secondary-light: #D8B875;
+    --secondary-dark: #A8853F;
+
+    /* Fondos */
+    --bg: #0D1412;
+    --surface: #1A2622;
+    --surface-2: #243330;
+
+    /* Texto */
+    --text: #C4C4C4;
+    --text-muted: #8A8A8A;
+
+    /* Bordes sutiles dorados */
+    --border: rgba(197, 160, 89, 0.2);
+    --border-light: rgba(197, 160, 89, 0.12);
+
+    /* Estado */
+    --success: #10B981;
+    --error: #EF4444;
+    --warning: #F59E0B;
+
+    --navbar-height: 72px;
+}
+
+/* ── Base ────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-family: 'Inter', system-ui, sans-serif;
+    color: var(--text);
+    background-color: var(--bg);
+}
+
+body {
+    margin: 0;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ── Grain noise — efecto institucional al 3% de opacidad ── */
+html::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    pointer-events: none;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 200px 200px;
+    background-repeat: repeat;
+}
+
+/* ── Tipografía ──────────────────────────────────────────── */
+.font-heading {
+    font-family: 'Cinzel', Georgia, serif;
+    letter-spacing: 0.04em;
+}
+
+h1,
+h2,
+h3 {
+    font-family: 'Cinzel', Georgia, serif;
+    line-height: 1.2;
+    letter-spacing: 0.04em;
+}
+
+h4,
+h5,
+h6 {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-weight: 400;
+}
+
+/* ── Animaciones de scroll (IntersectionObserver) ────────── */
+.scroll-hidden {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.scroll-hidden.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.scroll-hidden-left {
+    opacity: 0;
+    transform: translateX(-40px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.scroll-hidden-left.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.scroll-hidden-right {
+    opacity: 0;
+    transform: translateX(40px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.scroll-hidden-right.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.scroll-hidden-scale {
+    opacity: 0;
+    transform: scale(0.92);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.scroll-hidden-scale.visible {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Delays para animaciones escalonadas */
+.delay-100 {
+    transition-delay: 0.1s;
+}
+
+.delay-200 {
+    transition-delay: 0.2s;
+}
+
+.delay-300 {
+    transition-delay: 0.3s;
+}
+
+.delay-400 {
+    transition-delay: 0.4s;
+}
+
+.delay-500 {
+    transition-delay: 0.5s;
+}
+
+.delay-600 {
+    transition-delay: 0.6s;
+}
+
+/* ── Utilidades de gradiente ─────────────────────────────── */
+.gradient-primary {
+    background: radial-gradient(circle, var(--surface) 0%, var(--primary-dark) 100%);
+}
+
+.gradient-gold {
+    background: linear-gradient(135deg, var(--secondary-dark) 0%, var(--secondary) 50%, var(--secondary-light) 100%);
+}
+
+.gradient-hero {
+    background: radial-gradient(circle at 30% 50%, var(--primary) 0%, var(--primary-dark) 100%);
+}
+
+/* ── Texto gradiente dorado ──────────────────────────────── */
+.text-gradient-gold {
+    background: linear-gradient(135deg, var(--secondary-dark), var(--secondary-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.text-gradient-primary {
+    background: linear-gradient(135deg, var(--primary), var(--primary-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* ── Botones ─────────────────────────────────────────────── */
+.btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.75rem;
+    background: var(--secondary);
+    color: var(--primary-dark);
+    font-weight: 600;
+    border-radius: 0.5rem;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    text-decoration: none;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    white-space: nowrap;
+}
+
+.btn-primary:hover {
+    background: var(--secondary-light);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(197, 160, 89, 0.4);
+}
+
+.btn-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.75rem;
+    background: transparent;
+    color: #fff;
+    font-weight: 600;
+    border-radius: 0.5rem;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    white-space: nowrap;
+}
+
+.btn-outline:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #fff;
+    transform: translateY(-2px);
+}
+
+.btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.625rem 1.25rem;
+    background: transparent;
+    color: var(--secondary);
+    font-weight: 600;
+    border-radius: 0.5rem;
+    border: 1px solid rgba(197, 160, 89, 0.4);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+}
+
+.btn-ghost:hover {
+    background: rgba(197, 160, 89, 0.1);
+    border-color: var(--secondary);
+    color: var(--secondary-light);
+}
+
+/* ── Tarjetas ────────────────────────────────────────────── */
+.card {
+    background: var(--surface);
+    border-radius: 1rem;
+    border: 0.5px solid rgba(197, 160, 89, 0.2);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 0 0 0.5px rgba(197, 160, 89, 0.3);
+    transform: translateY(-4px);
+}
+
+/* ── Sección base ────────────────────────────────────────── */
+.section-padding {
+    padding: 5rem 1.5rem;
+}
+
+@media (min-width: 1024px) {
+    .section-padding {
+        padding: 6rem 2rem;
+    }
+}
+
+.section-title {
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: clamp(1.875rem, 4vw, 2.75rem);
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.2;
+    letter-spacing: 0.05em;
+}
+
+.section-subtitle {
+    font-size: 1rem;
+    color: var(--text-muted);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.7;
+}
+
+/* ── Badge / etiqueta ────────────────────────────────────── */
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.25rem 0.875rem;
+    border-radius: 9999px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.badge-gold {
+    background: rgba(197, 160, 89, 0.12);
+    color: var(--secondary-light);
+    border: 0.5px solid rgba(197, 160, 89, 0.35);
+}
+
+.badge-primary {
+    background: rgba(197, 160, 89, 0.06);
+    color: var(--text);
+    border: 0.5px solid rgba(197, 160, 89, 0.2);
+}
+
+/* ── Divider decorativo ──────────────────────────────────── */
+.divider-gold {
+    width: 60px;
+    height: 3px;
+    background: var(--secondary);
+    border-radius: 2px;
+}
+
+/* ── Scroll suave para anclas con navbar fija ────────────── */
+[id] {
+    scroll-margin-top: var(--navbar-height);
+}
+
+/* ── Pulse animation (WhatsApp badge) ───────────────────── */
+@keyframes pulse-ring {
+    0% {
+        transform: scale(0.8);
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: scale(1.6);
+        opacity: 0;
+    }
+}
+
+.pulse-ring::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: #25D366;
+    animation: pulse-ring 1.8s ease-out infinite;
+}
+
+/* ── Counter animation ───────────────────────────────────── */
+@keyframes countUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ── Input base ──────────────────────────────────────────── */
+.form-input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1.5px solid var(--border);
+    border-radius: 0.5rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9375rem;
+    color: var(--text);
+    background: var(--surface);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    outline: none;
+}
+
+.form-input:focus {
+    border-color: var(--secondary);
+    box-shadow: 0 0 0 3px rgba(197, 160, 89, 0.15);
+}
+
+.form-input.error {
+    border-color: var(--error);
+}
+
+.form-label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 0.375rem;
+}
+
+.form-error {
+    font-size: 0.8125rem;
+    color: var(--error);
+    margin-top: 0.25rem;
+}

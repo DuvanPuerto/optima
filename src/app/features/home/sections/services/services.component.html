@@ -1,0 +1,55 @@
+<section id="servicios" class="section-padding" style="background: var(--bg);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <!-- Header -->
+        <div class="text-center mb-14" appScrollAnimate>
+            <span class="badge badge-gold mb-4">Servicios Profesionales</span>
+            <h2 class="section-title mb-4">Todo lo que necesitas<br>en un solo lugar</h2>
+            <p class="section-subtitle mx-auto">
+                Soluciones contables y financieras integrales adaptadas a las necesidades de cada cliente.
+            </p>
+        </div>
+
+        <!-- Grid de servicios -->
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            @for (service of services; track service.title; let i = $index) {
+            <div appScrollAnimate [class]="'delay-' + (i % 3 * 100 + 100)" class="card p-7 flex flex-col gap-4 group">
+                <!-- Icon -->
+                <div class="w-14 h-14 rounded-2xl flex items-center justify-center text-2xl flex-shrink-0"
+                    style="background: rgba(197,160,89,0.1); color: var(--secondary);">
+                    <i [class]="service.icon"></i>
+                </div>
+
+                <!-- Content -->
+                <div>
+                    <h3 class="font-semibold text-lg mb-2"
+                        style="color: var(--text); font-family: 'Inter', sans-serif;">
+                        {{ service.title }}
+                    </h3>
+                    <p class="text-sm leading-relaxed mb-4" style="color: var(--text-muted);">
+                        {{ service.description }}
+                    </p>
+                    <ul class="space-y-1.5">
+                        @for (h of service.highlights; track h) {
+                        <li class="flex items-center gap-2 text-sm" style="color: var(--text-muted);">
+                            <span
+                                class="w-4 h-4 rounded-full flex items-center justify-center flex-shrink-0 text-xs font-bold"
+                                style="background: rgba(197,160,89,0.15); color: var(--secondary-dark);"><i
+                                    class="fa-solid fa-check"></i></span>
+                            {{ h }}
+                        </li>
+                        }
+                    </ul>
+                </div>
+
+                <!-- CTA hover -->
+                <div class="mt-auto pt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div class="h-0.5 w-full rounded"
+                        style="background: linear-gradient(90deg, var(--secondary), transparent);"></div>
+                </div>
+            </div>
+            }
+        </div>
+
+    </div>
+</section>

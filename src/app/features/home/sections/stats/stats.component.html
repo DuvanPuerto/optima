@@ -1,0 +1,17 @@
+<section class="py-16" style="background: var(--primary);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+            @for (stat of stats; track stat.label; let i = $index) {
+            <div #statCard class="text-center group" [class]="'scroll-hidden delay-' + (i * 100 + 100)">
+                <div class="mb-2" style="font-size: 1.75rem; color: rgba(255,255,255,0.85);"><i [class]="stat.icon"></i>
+                </div>
+                <div class="font-heading text-white mb-1"
+                    style="font-size: clamp(2rem, 5vw, 2.75rem); font-weight: 700;">
+                    {{ displayValues[i] }}{{ stat.suffix }}
+                </div>
+                <p class="text-sm font-medium" style="color: rgba(255,255,255,0.65);">{{ stat.label }}</p>
+            </div>
+            }
+        </div>
+    </div>
+</section>

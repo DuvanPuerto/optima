@@ -1,0 +1,42 @@
+<section id="testimonios" class="section-padding" style="background: var(--surface-2);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <div class="text-center mb-12" appScrollAnimate>
+            <span class="badge badge-gold mb-4">Testimonios</span>
+            <h2 class="section-title mb-4">Lo que dicen mis clientes</h2>
+            <p class="section-subtitle mx-auto">Experiencias reales de personas y empresas que han confiado en Optima.
+            </p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            @for (t of testimonials; track t.name; let i = $index) {
+            <div appScrollAnimate [class]="'delay-' + (i * 100 + 100)" class="card p-6 flex flex-col gap-4">
+                <!-- Stars -->
+                <div class="flex gap-0.5">
+                    @for (s of stars; track s) {
+                    <span style="color: var(--secondary); font-size: 1rem;">★</span>
+                    }
+                </div>
+
+                <!-- Quote -->
+                <p class="text-sm leading-relaxed flex-1" style="color: var(--text-muted);">
+                    "{{ t.text }}"
+                </p>
+
+                <!-- Author -->
+                <div class="flex items-center gap-3 pt-2" style="border-top: 1px solid var(--border);">
+                    <div class="w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold text-white flex-shrink-0"
+                        style="background: var(--primary);">
+                        {{ t.initials }}
+                    </div>
+                    <div>
+                        <p class="font-semibold text-sm" style="color: var(--text);">{{ t.name }}</p>
+                        <p class="text-xs" style="color: var(--text-muted);">{{ t.role }}</p>
+                    </div>
+                </div>
+            </div>
+            }
+        </div>
+
+    </div>
+</section>

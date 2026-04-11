@@ -1,0 +1,156 @@
+<!-- Hero -->
+<section class="pt-28 pb-12 gradient-primary">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <span class="badge mb-4"
+            style="background: rgba(197,160,89,0.2); color: var(--secondary-light); border-color: rgba(197,160,89,0.3);">
+            Atención al Cliente
+        </span>
+        <h1 class="font-heading text-white mb-4" style="font-size: clamp(2rem, 5vw, 3rem); font-weight: 700;">
+            PQRS
+        </h1>
+        <p style="color: rgba(255,255,255,0.75); font-size: 1rem; max-width: 500px; margin: 0 auto;">
+            <strong style="color: white;">P</strong>etición · <strong style="color: white;">Q</strong>ueja · <strong
+                style="color: white;">R</strong>eclamo · <strong style="color: white;">S</strong>ugerencia<br>
+            Tu opinión es muy importante para mejorar nuestros servicios. Respondemos en 24 horas hábiles.
+        </p>
+    </div>
+</section>
+
+<!-- Formulario -->
+<section class="section-padding" style="background: var(--bg);">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        @if (status() === 'success') {
+        <!-- Success state -->
+        <div class="card p-12 text-center">
+            <div class="mb-6" style="font-size: 4rem; color: var(--success);"><i class="fa-solid fa-circle-check"></i>
+            </div>
+            <h2 class="font-heading text-2xl mb-3" style="color: var(--text);">¡PQRS enviada con éxito!</h2>
+            <p class="mb-2" style="color: var(--text-muted);">Hemos recibido tu solicitud de tipo <strong>{{
+                    form.value.pqrsType }}</strong>.</p>
+            <p class="text-sm mb-8" style="color: var(--text-muted);">Recibirás una respuesta en tu correo <strong>{{
+                    form.value.email }}</strong> dentro de 24 horas hábiles.</p>
+            <div class="flex flex-wrap justify-center gap-3">
+                <button (click)="status.set('idle')" class="btn-ghost">Enviar otra PQRS</button>
+                <a href="/" class="btn-primary">Volver al inicio</a>
+            </div>
+        </div>
+        } @else {
+        <div class="card p-8">
+
+            <!-- Selección de tipo -->
+            <div class="mb-8">
+                <h2 class="font-semibold text-lg mb-1" style="color: var(--text);">1. Selecciona el tipo de PQRS
+                </h2>
+                <p class="text-sm mb-4" style="color: var(--text-muted);">¿Qué tipo de comunicación deseas enviar?</p>
+                <div class="grid sm:grid-cols-2 gap-3">
+                    @for (t of pqrsTypes; track t.type) {
+                    <button type="button" (click)="selectType(t.type)"
+                        class="flex items-start gap-3 p-4 rounded-xl border-2 text-left transition-all duration-200 cursor-pointer"
+                        [style.border-color]="selectedType() === t.type ? t.color : 'var(--border)'"
+                        [style.background]="selectedType() === t.type ? t.color + '0D' : 'var(--surface)'">
+                        <span class="text-2xl"><i [class]="t.icon"></i></span>
+                        <div>
+                            <p class="font-semibold text-sm"
+                                [style.color]="selectedType() === t.type ? t.color : 'var(--text)'">
+                                {{ t.type }}
+                            </p>
+                            <p class="text-xs" style="color: var(--text-muted);">{{ t.description }}</p>
+                        </div>
+                    </button>
+                    }
+                </div>
+                @if (hasError('pqrsType')) {
+                <p class="form-error mt-2">Por favor selecciona el tipo de PQRS</p>
+                }
+            </div>
+
+            <!-- Datos del solicitante -->
+            <form [formGroup]="form" (ngSubmit)="submit()" novalidate class="space-y-6">
+                <div>
+                    <h2 class="font-semibold text-lg mb-4" style="color: var(--text);">2. Datos del solicitante
+                    </h2>
+                    <div class="grid sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="form-label">Nombre completo *</label>
+                            <input type="text" formControlName="name" class="form-input"
+                                [class.error]="hasError('name')" placeholder="Tu nombre completo">
+                            @if (hasError('name')) { <p class="form-error">Ingresa tu nombre</p> }
+                        </div>
+                        <div>
+                            <label class="form-label">Correo electrónico *</label>
+                            <input type="email" formControlName="email" class="form-input"
+                                [class.error]="hasError('email')" placeholder="tu@correo.com">
+                            @if (hasError('email')) { <p class="form-error">Ingresa un correo válido</p> }
+                        </div>
+                        <div class="sm:col-span-2">
+                            <label class="form-label">Teléfono (opcional)</label>
+                            <input type="tel" formControlName="phone" class="form-input"
+                                [class.error]="hasError('phone')" placeholder="+57 300 123 4567">
+                            @if (hasError('phone')) { <p class="form-error">Formato de teléfono inválido</p> }
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Detalle -->
+                <div>
+                    <h2 class="font-semibold text-lg mb-4" style="color: var(--text);">3. Detalle de la
+                        solicitud</h2>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="form-label">Asunto *</label>
+                            <input type="text" formControlName="subject" class="form-input"
+                                [class.error]="hasError('subject')" placeholder="Describe brevemente el motivo">
+                            @if (hasError('subject')) { <p class="form-error">Ingresa el asunto (mín. 5 caracteres)</p>
+                            }
+                        </div>
+                        <div>
+                            <label class="form-label">Descripción detallada *</label>
+                            <textarea formControlName="message" rows="6" class="form-input"
+                                [class.error]="hasError('message')"
+                                placeholder="Describe con detalle tu petición, queja, reclamo o sugerencia. Incluye fechas, nombres de servicios o cualquier información relevante."></textarea>
+                            @if (hasError('message')) { <p class="form-error">La descripción debe tener al menos 20
+                                caracteres</p> }
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Términos -->
+                <div class="flex items-start gap-3">
+                    <input type="checkbox" id="terms" formControlName="terms" class="mt-1 w-4 h-4 cursor-pointer"
+                        style="accent-color: var(--secondary);">
+                    <label for="terms" class="text-sm cursor-pointer" style="color: var(--text-muted);">
+                        Acepto que mis datos sean usados para dar respuesta a esta PQRS y tratados conforme a la
+                        política de privacidad. *
+                    </label>
+                </div>
+                @if (hasError('terms')) {
+                <p class="form-error -mt-3">Debes aceptar los términos para continuar</p>
+                }
+
+                @if (status() === 'error') {
+                <div class="rounded-xl p-4"
+                    style="background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.2);">
+                    <p class="text-sm" style="color: var(--error);">❌ Error al enviar. Por favor intenta nuevamente o
+                        escríbenos por WhatsApp.</p>
+                </div>
+                }
+
+                <button type="submit" class="btn-primary w-full justify-center py-3.5 text-base"
+                    [disabled]="status() === 'sending'">
+                    @if (status() === 'sending') {
+                    <svg class="w-5 h-5 animate-spin" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" />
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+                    </svg>
+                    Enviando solicitud...
+                    } @else {
+                    📤 Enviar PQRS
+                    }
+                </button>
+            </form>
+        </div>
+        }
+
+    </div>
+</section>

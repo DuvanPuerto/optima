@@ -1,0 +1,97 @@
+<section id="sobre-mi" class="section-padding" style="background: var(--surface);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+
+            <!-- Left: visual -->
+            <div appScrollAnimate="left" class="relative flex justify-center lg:justify-start">
+                <div class="relative">
+                    <!-- Avatar container -->
+                    <div class="w-72 h-72 md:w-80 md:h-80 rounded-3xl overflow-hidden shadow-2xl"
+                        style="background: linear-gradient(135deg, var(--primary), var(--primary-light));">
+                        <img src="/foto-web.jpg" alt="Angie Céspedes" class="w-full h-full object-cover"
+                            style="object-position: center 15%;" />
+                    </div>
+
+                    <!-- Floating credential badge -->
+                    <div class="absolute -bottom-5 -right-5 card p-4 shadow-xl">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl flex items-center justify-center text-xl"
+                                style="background: rgba(197,160,89,0.15); color: var(--secondary);"><i
+                                    class="fa-solid fa-award"></i></div>
+                            <div>
+                                <p class="text-xs font-semibold" style="color: var(--text-muted);">Certificación</p>
+                                <p class="text-xs" style="color: var(--text-muted);">NIIF Vigente</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Floating exp badge -->
+                    <div class="absolute -top-5 -left-5 card p-4 shadow-xl">
+                        <div class="text-center">
+                            <p class="text-2xl font-bold font-heading" style="color: var(--secondary);">8+</p>
+                            <p class="text-xs" style="color: var(--text-muted);">Años de exp.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: content -->
+            <div>
+                <div appScrollAnimate class="mb-6">
+                    <span class="badge badge-primary mb-3">Sobre mí</span>
+                    <h2 class="section-title mb-2">{{ about.name }}</h2>
+                    <p class="font-medium" style="color: var(--secondary);">{{ about.title }}</p>
+                </div>
+
+                @for (p of about.bio; track p) {
+                <p appScrollAnimate class="delay-200 leading-relaxed mb-4" style="color: var(--text-muted);">{{ p }}</p>
+                }
+
+                <!-- Credenciales -->
+                <div appScrollAnimate class="delay-300 mt-6 mb-8">
+                    <h3 class="font-semibold text-sm uppercase tracking-wider mb-3" style="color: var(--text-muted);">
+                        Formación y Certificaciones</h3>
+                    <ul class="space-y-2">
+                        @for (c of about.credentials; track c) {
+                        <li class="flex items-start gap-2 text-sm" style="color: var(--text);">
+                            <span style="color: var(--secondary); margin-top: 2px;"><i
+                                    class="fa-solid fa-check"></i></span>
+                            {{ c }}
+                        </li>
+                        }
+                    </ul>
+                </div>
+
+                <!-- Valores -->
+                <div appScrollAnimate class="delay-400">
+                    <h3 class="font-semibold text-sm uppercase tracking-wider mb-4" style="color: var(--text-muted);">
+                        Mis valores</h3>
+                    <div class="grid grid-cols-2 gap-3">
+                        @for (v of about.values; track v.title) {
+                        <div class="flex items-center gap-3 rounded-xl p-3" style="background: var(--bg);">
+                            <span style="font-size: 1.35rem; color: var(--secondary);"><i [class]="v.icon"></i></span>
+                            <div>
+                                <p class="font-semibold text-sm" style="color: var(--text);">{{ v.title }}</p>
+                                <p class="text-xs" style="color: var(--text-muted);">{{ v.desc }}</p>
+                            </div>
+                        </div>
+                        }
+                    </div>
+                </div>
+
+                <!-- Herramientas -->
+                <div appScrollAnimate class="delay-500 mt-6">
+                    <h3 class="font-semibold text-sm uppercase tracking-wider mb-3" style="color: var(--text-muted);">
+                        Software &amp; Plataformas</h3>
+                    <div class="flex flex-wrap gap-2">
+                        @for (t of about.tools; track t.label) {
+                        <span class="text-xs font-medium px-3 py-1 rounded-full"
+                            style="background: rgba(197,160,89,0.1); color: var(--text); border: 1px solid rgba(197,160,89,0.2);">{{
+                            t.label }}</span>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

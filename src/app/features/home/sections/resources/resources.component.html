@@ -1,0 +1,45 @@
+<section id="recursos" class="section-padding" style="background: var(--bg);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <div class="text-center mb-12" appScrollAnimate>
+            <span class="badge badge-primary mb-4">Recursos Gratuitos</span>
+            <h2 class="section-title mb-4">Descarga herramientas útiles</h2>
+            <p class="section-subtitle mx-auto">Materiales gratuitos para ayudarte a entender y gestionar mejor tus
+                obligaciones financieras.</p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            @for (r of resources; track r.title; let i = $index) {
+            <div appScrollAnimate [class]="'delay-' + (i * 100 + 100)"
+                class="card p-6 flex flex-col gap-4 group cursor-pointer">
+                <div class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl"
+                    style="background: var(--surface-2);">
+                    <i [class]="r.icon"></i>
+                </div>
+
+                <div class="flex-1">
+                    <div class="flex items-center gap-2 mb-2">
+                        <span class="badge badge-gold text-xs py-0.5 px-2">{{ r.tag }}</span>
+                    </div>
+                    <h3 class="font-semibold text-sm mb-2"
+                        style="color: var(--text); font-family: 'Inter', sans-serif;">
+                        {{ r.title }}
+                    </h3>
+                    <p class="text-xs leading-relaxed" style="color: var(--text-muted);">{{ r.description }}</p>
+                </div>
+
+                <button
+                    class="flex items-center gap-2 text-sm font-medium transition-all duration-200 border-none bg-transparent p-0 cursor-pointer group-hover:gap-3"
+                    style="color: var(--secondary);">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                    </svg>
+                    Descargar gratis
+                </button>
+            </div>
+            }
+        </div>
+
+    </div>
+</section>

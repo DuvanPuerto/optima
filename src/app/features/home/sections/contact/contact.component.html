@@ -1,0 +1,149 @@
+<section id="contacto" class="section-padding" style="background: var(--bg);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <div class="text-center mb-12" appScrollAnimate>
+            <span class="badge badge-gold mb-4">Contacto</span>
+            <h2 class="section-title mb-4">¿Hablamos?</h2>
+            <p class="section-subtitle mx-auto">
+                Primera consulta gratuita. Escríbeme y cuéntame tu situación para ayudarte con la solución adecuada.
+            </p>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-12">
+
+            <!-- Left: info de contacto -->
+            <div appScrollAnimate="left">
+                <div class="space-y-6 mb-8">
+                    @for (item of [
+                    {icon:'fa-solid fa-phone', label:'WhatsApp / Teléfono', value: contact.phone, href: whatsappUrl},
+                    {icon:'fa-solid fa-envelope', label:'Correo electrónico', value: contact.email, href: 'mailto:' +
+                    contact.email},
+                    {icon:'fa-solid fa-location-dot', label:'Ciudad', value: contact.address, href: null}
+                    ]; track item.label) {
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 rounded-xl flex items-center justify-center text-xl flex-shrink-0"
+                            style="background: rgba(197,160,89,0.1); color: var(--secondary);"><i
+                                [class]="item.icon"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm font-medium mb-0.5" style="color: var(--text-muted);">{{ item.label }}</p>
+                            @if (item.href) {
+                            <a [href]="item.href" class="font-semibold transition-colors hover:opacity-70"
+                                style="color: var(--secondary);">
+                                {{ item.value }}
+                            </a>
+                            } @else {
+                            <p class="font-semibold" style="color: var(--text);">{{ item.value }}</p>
+                            }
+                        </div>
+                    </div>
+                    }
+                </div>
+
+                <!-- CTA WhatsApp grande -->
+                <a [href]="whatsappUrl" target="_blank" rel="noopener noreferrer"
+                    class="flex items-center gap-4 p-5 rounded-2xl transition-all duration-200 hover:opacity-90"
+                    style="background: #25D366; color: white; text-decoration: none;">
+                    <svg class="w-10 h-10 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path
+                            d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+                        <path
+                            d="M12 0C5.373 0 0 5.373 0 12c0 2.123.555 4.113 1.524 5.836L0 24l6.336-1.502A11.94 11.94 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 0 1-5.007-1.373l-.36-.213-3.727.883.916-3.618-.234-.372A9.818 9.818 0 0 1 2.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z" />
+                    </svg>
+                    <div>
+                        <p class="font-bold text-base">Chatear ahora por WhatsApp</p>
+                        <p class="text-sm opacity-80">Respondo en menos de 1 hora</p>
+                    </div>
+                </a>
+
+                <!-- Mapa embed -->
+                <div class="mt-6 rounded-2xl overflow-hidden" style="height: 200px; border: 1px solid var(--border);">
+                    <iframe [src]="mapUrl" width="100%" height="100%" style="border:0;" loading="lazy" allowfullscreen
+                        title="Ubicación en Paipa, Boyacá" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+
+            <!-- Right: mini form -->
+            <div appScrollAnimate="right">
+                <div class="card p-8">
+                    <h3 class="font-semibold text-lg mb-6" style="color: var(--text);">
+                        Envíanos un mensaje rápido
+                    </h3>
+
+                    @if (status() === 'success') {
+                    <div class="text-center py-8">
+                        <div class="text-5xl mb-4" style="color: var(--success);"><i
+                                class="fa-solid fa-circle-check"></i></div>
+                        <h4 class="font-semibold text-lg mb-2" style="color: var(--success);">¡Mensaje enviado!</h4>
+                        <p class="text-sm" style="color: var(--text-muted);">Te responderemos pronto. También puedes
+                            escribirnos directo por WhatsApp.</p>
+                    </div>
+                    } @else {
+                    <form [formGroup]="form" (ngSubmit)="submit()" class="space-y-4" novalidate>
+                        <div>
+                            <label for="c-name" class="form-label">Nombre completo *</label>
+                            <input id="c-name" type="text" formControlName="name" class="form-input"
+                                [class.error]="hasError('name')" placeholder="Tu nombre">
+                            @if (hasError('name')) {
+                            <p class="form-error">Ingresa tu nombre completo</p>
+                            }
+                        </div>
+
+                        <div>
+                            <label for="c-email" class="form-label">Correo electrónico *</label>
+                            <input id="c-email" type="email" formControlName="email" class="form-input"
+                                [class.error]="hasError('email')" placeholder="tu@correo.com">
+                            @if (hasError('email')) {
+                            <p class="form-error">Ingresa un correo válido</p>
+                            }
+                        </div>
+
+                        <div>
+                            <label for="c-subject" class="form-label">Asunto *</label>
+                            <input id="c-subject" type="text" formControlName="subject" class="form-input"
+                                [class.error]="hasError('subject')" placeholder="Ej: Consulta declaración de renta">
+                            @if (hasError('subject')) {
+                            <p class="form-error">Indica el asunto</p>
+                            }
+                        </div>
+
+                        <div>
+                            <label for="c-msg" class="form-label">Mensaje *</label>
+                            <textarea id="c-msg" formControlName="message" rows="4" class="form-input"
+                                [class.error]="hasError('message')"
+                                placeholder="Cuéntanos cómo podemos ayudarte..."></textarea>
+                            @if (hasError('message')) {
+                            <p class="form-error">El mensaje debe tener al menos 10 caracteres</p>
+                            }
+                        </div>
+
+                        @if (status() === 'error') {
+                        <p class="form-error text-center">Error al enviar. Intenta por WhatsApp.</p>
+                        }
+
+                        <button type="submit" class="btn-primary w-full justify-center py-3"
+                            [disabled]="status() === 'sending'">
+                            @if (status() === 'sending') {
+                            <svg class="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
+                                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor"
+                                    stroke-width="4" />
+                                <path class="opacity-75" fill="currentColor"
+                                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+                            </svg>
+                            Enviando...
+                            } @else {
+                            Enviar mensaje
+                            }
+                        </button>
+
+                        <p class="text-xs text-center" style="color: var(--text-muted);">
+                            O si prefieres, usa el formulario PQRS completo →&nbsp;<a href="/pqrs"
+                                style="color: var(--secondary);">Ir a PQRS</a>
+                        </p>
+                    </form>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

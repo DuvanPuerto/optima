@@ -1,0 +1,102 @@
+<section id="hoja-de-vida" class="section-padding" style="background: var(--background);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <!-- Header -->
+        <div appScrollAnimate class="text-center mb-16">
+            <span class="badge badge-gold mb-4">Trayectoria</span>
+            <h2 class="section-title mb-4">Hoja de Vida</h2>
+            <p class="text-lg max-w-2xl mx-auto" style="color: var(--text-muted);">
+                Formación académica de alto nivel y una sólida trayectoria profesional al servicio de tus finanzas.
+            </p>
+        </div>
+
+        <!-- Two-column grid -->
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-16">
+
+            <!-- ── Educación ── -->
+            <div appScrollAnimate="left">
+                <div class="flex items-center gap-3 mb-8">
+                    <div class="w-10 h-10 rounded-xl flex items-center justify-center text-xl shadow-md"
+                        style="background: linear-gradient(135deg, var(--primary), var(--primary-light));">
+                        <i class="fa-solid fa-graduation-cap" style="color: white; font-size: 1.1rem;"></i>
+                    </div>
+                    <h3 class="text-xl font-bold font-heading" style="color: var(--text);">Formación Académica</h3>
+                </div>
+
+                <div class="relative">
+                    <!-- Vertical line -->
+                    <div class="absolute left-4 top-2 bottom-2 w-px" style="background: var(--border);"></div>
+
+                    <ul class="space-y-8">
+                        @for (item of resume.education; track item.degree) {
+                        <li class="relative pl-12">
+                            <!-- Dot -->
+                            <div class="absolute left-0 top-1 w-8 h-8 rounded-full flex items-center justify-center shadow-sm border-2"
+                                style="background: var(--surface); border-color: var(--secondary);">
+                                <div class="w-2.5 h-2.5 rounded-full" style="background: var(--secondary);"></div>
+                            </div>
+
+                            <!-- Card -->
+                            <div class="card p-5 hover:shadow-lg transition-shadow duration-300">
+                                <!-- Period badge -->
+                                <span class="inline-block text-xs font-semibold px-3 py-1 rounded-full mb-3"
+                                    style="background: rgba(197,160,89,0.12); color: var(--secondary-light);">
+                                    {{ item.period }}
+                                </span>
+                                <p class="text-xs font-medium mb-1" style="color: var(--secondary);">{{ item.institution
+                                    }}</p>
+                                <h4 class="font-bold text-sm mb-2" style="color: var(--text);">{{ item.degree }}</h4>
+                                <p class="text-xs leading-relaxed" style="color: var(--text-muted);">{{ item.detail }}
+                                </p>
+                            </div>
+                        </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+
+            <!-- ── Experiencia ── -->
+            <div appScrollAnimate="right">
+                <div class="flex items-center gap-3 mb-8">
+                    <div class="w-10 h-10 rounded-xl flex items-center justify-center text-xl shadow-md"
+                        style="background: linear-gradient(135deg, var(--accent), var(--accent-dark));">
+                        <i class="fa-solid fa-briefcase" style="color: white; font-size: 1.1rem;"></i>
+                    </div>
+                    <h3 class="text-xl font-bold font-heading" style="color: var(--text);">Experiencia Profesional</h3>
+                </div>
+
+                <div class="relative">
+                    <!-- Vertical line -->
+                    <div class="absolute left-4 top-2 bottom-2 w-px" style="background: var(--border);"></div>
+
+                    <ul class="space-y-8">
+                        @for (item of resume.experience; track item.role) {
+                        <li class="relative pl-12">
+                            <!-- Dot -->
+                            <div class="absolute left-0 top-1 w-8 h-8 rounded-full flex items-center justify-center shadow-sm border-2"
+                                style="background: var(--surface); border-color: var(--secondary);">
+                                <div class="w-2.5 h-2.5 rounded-full" style="background: var(--secondary);"></div>
+                            </div>
+
+                            <!-- Card -->
+                            <div class="card p-5 hover:shadow-lg transition-shadow duration-300">
+                                <!-- Period badge -->
+                                <span class="inline-block text-xs font-semibold px-3 py-1 rounded-full mb-3"
+                                    style="background: rgba(197,160,89,0.12); color: var(--secondary-light);">
+                                    {{ item.period }}
+                                </span>
+                                <p class="text-xs font-medium mb-1" style="color: var(--secondary);">{{ item.company }}
+                                </p>
+                                <h4 class="font-bold text-sm mb-2" style="color: var(--text);">{{ item.role }}</h4>
+                                <p class="text-xs leading-relaxed" style="color: var(--text-muted);">{{ item.detail }}
+                                </p>
+                            </div>
+                        </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>

@@ -1,0 +1,64 @@
+<!-- Hero de la página -->
+<section class="pt-28 pb-12 gradient-primary">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <span class="badge mb-4"
+            style="background: rgba(197,160,89,0.2); color: var(--secondary-light); border-color: rgba(197,160,89,0.3);">
+            Herramientas Financieras Gratuitas
+        </span>
+        <h1 class="font-heading text-white mb-4" style="font-size: clamp(2rem, 5vw, 3rem); font-weight: 700;">
+            Calculadoras Financieras
+        </h1>
+        <p class="text-base" style="color: rgba(255,255,255,0.7); max-width: 540px; margin: 0 auto;">
+            Herramientas para planificar préstamos, proyectar ahorros y estimar tu impuesto de renta en Colombia.
+        </p>
+    </div>
+</section>
+
+<!-- Tabs + content -->
+<section class="section-padding" style="background: var(--bg);">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <!-- Tab switcher -->
+        <div class="flex flex-wrap gap-3 mb-10 justify-center">
+            @for (tab of tabs; track tab.id) {
+            <button (click)="activeTab.set(tab.id)"
+                class="flex items-center gap-3 px-5 py-3 rounded-xl border transition-all duration-200 cursor-pointer font-medium text-sm"
+                [style.background]="activeTab() === tab.id ? 'var(--primary-light)' : 'var(--surface)'"
+                [style.color]="activeTab() === tab.id ? 'white' : 'var(--text-muted)'"
+                [style.border-color]="activeTab() === tab.id ? 'var(--secondary)' : 'var(--border)'"
+                [style.box-shadow]="activeTab() === tab.id ? '0 4px 16px rgba(197,160,89,0.2)' : 'none'">
+                <span class="text-xl"><i [class]="tab.icon"></i></span>
+                <div class="text-left">
+                    <p class="font-semibold leading-tight">{{ tab.label }}</p>
+                    <p class="text-xs opacity-70 leading-tight">{{ tab.desc }}</p>
+                </div>
+            </button>
+            }
+        </div>
+
+        <!-- Calculator panels -->
+        @if (activeTab() === 'loan') {
+        <app-loan-calculator />
+        }
+        @if (activeTab() === 'savings') {
+        <app-savings-calculator />
+        }
+        @if (activeTab() === 'tax') {
+        <app-tax-estimator />
+        }
+
+        <!-- CTA asesoría -->
+        <div class="mt-12 rounded-2xl p-8 text-center" style="background: var(--primary);">
+            <h3 class="font-heading text-white text-xl mb-2">¿Necesitas un análisis más detallado?</h3>
+            <p class="mb-5" style="color: rgba(255,255,255,0.7); font-size: 0.9375rem;">
+                Estas calculadoras son orientativas. Para decisiones financieras importantes, agenda una asesoría
+                personalizada.
+            </p>
+            <a href="https://wa.me/573001234567?text=Hola%20Angie%2C%20quisiera%20una%20asesor%C3%ADa%20personalizada."
+                target="_blank" rel="noopener noreferrer" class="btn-primary">
+                Agendar asesoría con Angie →
+            </a>
+        </div>
+
+    </div>
+</section>

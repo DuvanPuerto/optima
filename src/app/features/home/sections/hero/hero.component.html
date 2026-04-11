@@ -1,0 +1,137 @@
+<section id="hero" class="relative min-h-screen flex items-center gradient-hero overflow-hidden">
+    <!-- Decorative background elements -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
+        <div class="absolute -top-40 -right-40 w-96 h-96 rounded-full opacity-10"
+            style="background: var(--secondary); filter: blur(80px);"></div>
+        <div class="absolute bottom-0 -left-20 w-80 h-80 rounded-full opacity-10"
+            style="background: var(--accent); filter: blur(80px);"></div>
+        <!-- Grid pattern -->
+        <div class="absolute inset-0 opacity-5"
+            style="background-image: radial-gradient(circle, rgba(255,255,255,0.4) 1px, transparent 1px); background-size: 40px 40px;">
+        </div>
+    </div>
+
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 w-full">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+
+            <!-- Left: copy -->
+            <div>
+                <!-- Badge animado -->
+                <div class="scroll-hidden visible mb-6">
+                    <span class="badge badge-gold">
+                        <span>✨</span>
+                        {{ hero.badge }}
+                    </span>
+                </div>
+
+                <!-- Headline -->
+                <h1 class="scroll-hidden visible font-heading text-white mb-4"
+                    style="font-size: clamp(2.5rem, 6vw, 4rem); line-height: 1.1;">
+                    {{ hero.headline }}<br>
+                    <span class="text-gradient-gold">{{ hero.headlineAccent }}</span>
+                </h1>
+
+                <p class="scroll-hidden visible delay-200 text-lg leading-relaxed mb-8"
+                    style="color: rgba(255,255,255,0.75); max-width: 520px;">
+                    {{ hero.subtitle }}
+                </p>
+
+                <!-- CTAs -->
+                <div class="scroll-hidden visible delay-300 flex flex-wrap gap-4">
+                    <a [href]="whatsappUrl" target="_blank" rel="noopener noreferrer"
+                        class="btn-primary text-base py-3 px-6">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path
+                                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+                            <path
+                                d="M12 0C5.373 0 0 5.373 0 12c0 2.123.555 4.113 1.524 5.836L0 24l6.336-1.502A11.94 11.94 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 0 1-5.007-1.373l-.36-.213-3.727.883.916-3.618-.234-.372A9.818 9.818 0 0 1 2.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z" />
+                        </svg>
+                        {{ hero.ctaPrimary }}
+                    </a>
+                    <button (click)="scrollTo('servicios')" class="btn-outline text-base py-3 px-6">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                        {{ hero.ctaSecondary }}
+                    </button>
+                </div>
+
+                <!-- Social proof mini -->
+                <div class="scroll-hidden visible delay-500 mt-10 flex items-center gap-4">
+                    <div class="flex -space-x-2">
+                        @for (i of [1,2,3,4]; track i) {
+                        <div class="w-9 h-9 rounded-full border-2 flex items-center justify-center text-sm font-bold"
+                            style="border-color: var(--primary-dark); background: var(--primary-light); color: white;">
+                            {{ ['CM','LG','DR','MF'][i-1] }}
+                        </div>
+                        }
+                    </div>
+                    <div>
+                        <div class="flex gap-0.5 mb-0.5">
+                            @for (s of [1,2,3,4,5]; track s) {
+                            <span style="color: var(--secondary);">★</span>
+                            }
+                        </div>
+                        <p class="text-xs" style="color: rgba(255,255,255,0.6);">+150 clientes satisfechos</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: decorative card -->
+            <div class="hidden lg:flex justify-center">
+                <div class="scroll-hidden-right visible relative">
+                    <!-- Main card -->
+                    <div class="rounded-2xl p-8 shadow-2xl"
+                        style="background: rgba(255,255,255,0.07); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.15); width: 340px;">
+                        <div class="text-center mb-6">
+                            <div class="w-24 h-24 rounded-full mx-auto mb-4 overflow-hidden"
+                                style="border: 2px solid rgba(197,160,89,0.3);">
+                                <img src="/foto-web.jpg" alt="Angie Céspedes" class="w-full h-full object-cover"
+                                    style="object-position: center 15%;" />
+                            </div>
+                            <h2 class="font-heading text-white text-xl font-semibold">Angie Céspedes</h2>
+                            <p class="text-sm mt-1" style="color: var(--secondary);">Contadora Pública &amp; Asesora
+                                Financiera</p>
+                        </div>
+                        <div class="space-y-3">
+                            @for (item of [
+                            {icon:'fa-solid fa-graduation-cap', label:'Magíster U. Externado'},
+                            {icon:'fa-solid fa-circle-check', label:'6+ años de experiencia'},
+                            {icon:'fa-solid fa-certificate', label:'NIIF certificada'},
+                            {icon:'fa-solid fa-landmark', label:'Experta DIAN & SECOP'}
+                            ]; track item.label) {
+                            <div class="flex items-center gap-3 rounded-lg px-3 py-2"
+                                style="background: rgba(255,255,255,0.05);">
+                                <span class="text-lg"><i [class]="item.icon"></i></span>
+                                <span class="text-sm" style="color: rgba(255,255,255,0.8);">{{ item.label }}</span>
+                            </div>
+                            }
+                        </div>
+                    </div>
+
+                    <!-- Floating badge: disponible -->
+                    <div class="absolute -top-4 -right-4 rounded-xl px-3 py-2 flex items-center gap-2 shadow-xl"
+                        style="background: var(--surface);">
+                        <span class="w-2.5 h-2.5 rounded-full animate-pulse" style="background: var(--success);"></span>
+                        <span class="text-xs font-semibold" style="color: var(--text);">Disponible ahora</span>
+                    </div>
+
+                    <!-- Floating badge: declaración de renta -->
+                    <div class="absolute -bottom-4 -left-4 rounded-xl px-3 py-2 shadow-xl"
+                        style="background: var(--secondary);">
+                        <p class="text-xs font-bold" style="color: var(--primary-dark);">🗓️ ¡Temporada de renta!</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-50">
+            <span class="text-xs text-white tracking-widest uppercase">Scroll</span>
+            <div class="w-5 h-8 rounded-full border border-white/40 flex items-start justify-center p-1">
+                <div class="w-1 h-2 rounded-full bg-white animate-bounce"></div>
+            </div>
+        </div>
+    </div>
+</section>

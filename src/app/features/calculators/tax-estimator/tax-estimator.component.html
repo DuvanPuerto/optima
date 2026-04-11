@@ -1,0 +1,84 @@
+<div class="grid lg:grid-cols-2 gap-8">
+    <!-- Form -->
+    <div class="card p-7">
+        <h3 class="font-semibold text-lg mb-2" style="color: var(--text);">Estimación de Impuesto de Renta</h3>
+        <p class="text-xs mb-6" style="color: var(--text-muted);">
+            Cálculo orientativo basado en la tabla del Art. 241 ET. UVT vigente: {{ fmt(uvt) }}. Para una declaración
+            precisa, consulta con Angie.
+        </p>
+
+        <form [formGroup]="form" (ngSubmit)="calculate()" class="space-y-5" novalidate>
+            <div>
+                <label class="form-label">Tipo de persona *</label>
+                <select formControlName="personType" class="form-input">
+                    <option value="natural">Persona Natural</option>
+                    <option value="juridica">Persona Jurídica</option>
+                </select>
+            </div>
+            <div>
+                <label class="form-label">Ingresos brutos anuales (COP) *</label>
+                <input appCurrencyInput formControlName="income" class="form-input" placeholder="Ej: 50.000.000">
+                @if (form.get('income')?.invalid && form.get('income')?.touched) {
+                <p class="form-error">Ingresa un valor positivo</p>
+                }
+            </div>
+            <div>
+                <label class="form-label">Deducciones / Costos (COP)</label>
+                <input appCurrencyInput formControlName="deductions" class="form-input" placeholder="Ej: 10.000.000">
+                <p class="text-xs mt-1" style="color: var(--text-muted);">Ingresos no constitutivos, costos deducibles,
+                    renta exenta, etc.</p>
+            </div>
+            <button type="submit" class="btn-primary w-full justify-center py-3">Estimar impuesto</button>
+        </form>
+    </div>
+
+    <!-- Results -->
+    <div class="flex flex-col gap-4">
+        @if (result(); as r) {
+        <div class="card p-7">
+            <h3 class="font-semibold text-lg mb-5" style="color: var(--text);">Estimación para {{ r.personType
+                === 'natural' ? 'Persona Natural' : 'Persona Jurídica' }}</h3>
+
+            <div class="space-y-3 mb-6">
+                @for (item of [
+                {label: 'Ingresos brutos', value: fmt(r.grossIncome), color: 'var(--text)'},
+                {label: 'Deducciones/Costos', value: '− ' + fmt(r.deductions), color: 'var(--text-muted)'},
+                {label: 'Renta líquida gravable', value: fmt(r.taxableIncome), color: 'var(--text)'},
+                {label: 'En UVT', value: fmtUvt(r.taxableUvt), color: 'var(--text-muted)'}
+                ]; track item.label) {
+                <div class="flex justify-between items-center py-2" style="border-bottom: 1px solid var(--border);">
+                    <span class="text-sm" style="color: var(--text-muted);">{{ item.label }}</span>
+                    <span class="font-semibold text-sm" [style.color]="item.color">{{ item.value }}</span>
+                </div>
+                }
+            </div>
+
+            <div class="rounded-xl p-5 text-center mb-4"
+                style="background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.2);">
+                <p class="text-sm mb-1" style="color: var(--text-muted);">Impuesto de renta estimado</p>
+                <p class="font-heading font-bold" style="font-size: 2rem; color: var(--error);">{{ fmt(r.estimatedTax)
+                    }}</p>
+                <p class="text-xs mt-1" style="color: var(--text-muted);">Tasa efectiva: {{ fmtPct(r.effectiveRate) }}
+                </p>
+            </div>
+
+            <div class="rounded-xl p-4"
+                style="background: rgba(197,160,89,0.08); border: 1px solid rgba(197,160,89,0.2);">
+                <p class="text-xs leading-relaxed" style="color: var(--secondary-dark);">
+                    <i class="fa-solid fa-triangle-exclamation"></i> <strong>Nota importante:</strong> Este resultado es
+                    una estimación orientativa. La declaración
+                    oficial requiere análisis detallado de tu situación fiscal. Agenda una asesoría con Angie para una
+                    declaración precisa.
+                </p>
+            </div>
+        </div>
+        } @else {
+        <div class="card p-7 flex-1 flex flex-col items-center justify-center text-center gap-4">
+            <div style="font-size: 4rem; color: var(--secondary);"><i class="fa-solid fa-file-invoice-dollar"></i></div>
+            <p class="font-medium" style="color: var(--text-muted);">
+                Completa el formulario y haz clic en <strong>Estimar impuesto</strong>
+            </p>
+        </div>
+        }
+    </div>
+</div>
