@@ -28,8 +28,11 @@ export class NavbarComponent {
     { label: 'Servicios', anchor: 'servicios' },
     { label: 'Sobre mí', anchor: 'sobre-mi' },
     { label: 'Calculadoras', route: '/calculadoras' },
+    { label: 'Testimonios', anchor: 'testimonios' },
+    { label: 'Recursos', anchor: 'recursos' },
     { label: 'Preguntas', anchor: 'faq' },
     { label: 'Contacto', anchor: 'contacto' },
+    { label: 'PQRS', route: '/pqrs' },
   ];
 
   @HostListener('window:scroll')

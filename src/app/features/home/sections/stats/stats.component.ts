@@ -19,6 +19,7 @@ export class StatsComponent implements OnInit, OnDestroy {
       (entries) => {
         if (entries.some((e) => e.isIntersecting) && !this.animated) {
           this.animated = true;
+          this.statCards.forEach((card) => card.nativeElement.classList.add('visible'));
           this.stats.forEach((stat, i) => this.animateCount(i, stat.value));
         }
       },
