@@ -1,4 +1,4 @@
-<section id="contacto" class="section-padding" style="background: var(--bg);">
+<section id="contacto" class="section-padding overflow-x-hidden" style="background: var(--bg);">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         <div class="text-center mb-12" appScrollAnimate>
@@ -28,7 +28,7 @@
                         <div>
                             <p class="text-sm font-medium mb-0.5" style="color: var(--text-muted);">{{ item.label }}</p>
                             @if (item.href) {
-                            <a [href]="item.href" class="font-semibold transition-colors hover:opacity-70"
+                            <a [href]="item.href" class="font-semibold transition-colors hover:opacity-70 break-all"
                                 style="color: var(--secondary);">
                                 {{ item.value }}
                             </a>
@@ -65,7 +65,7 @@
 
             <!-- Right: mini form -->
             <div appScrollAnimate="right">
-                <div class="card p-8">
+                <div class="card p-5 sm:p-8">
                     <h3 class="font-semibold text-lg mb-6" style="color: var(--text);">
                         Envíanos un mensaje rápido
                     </h3>

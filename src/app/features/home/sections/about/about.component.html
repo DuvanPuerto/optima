@@ -69,9 +69,11 @@
                     <div class="grid grid-cols-2 gap-3">
                         @for (v of about.values; track v.title) {
                         <div class="flex items-center gap-3 rounded-xl p-3" style="background: var(--bg);">
-                            <span style="font-size: 1.35rem; color: var(--secondary);"><i [class]="v.icon"></i></span>
-                            <div>
-                                <p class="font-semibold text-sm" style="color: var(--text);">{{ v.title }}</p>
+                            <span class="flex-shrink-0" style="font-size: 1.35rem; color: var(--secondary);"><i
+                                    [class]="v.icon"></i></span>
+                            <div class="min-w-0">
+                                <p class="font-semibold text-sm break-words" style="color: var(--text);">{{ v.title }}
+                                </p>
                                 <p class="text-xs" style="color: var(--text-muted);">{{ v.desc }}</p>
                             </div>
                         </div>
