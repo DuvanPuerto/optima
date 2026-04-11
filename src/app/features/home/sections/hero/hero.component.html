@@ -16,6 +16,23 @@
 
             <!-- Left: copy -->
             <div>
+
+                <!-- Mobile photo (hidden on lg+) -->
+                <div class="flex lg:hidden justify-center mb-8">
+                    <div class="relative">
+                        <div class="w-36 h-36 rounded-full overflow-hidden shadow-2xl"
+                            style="border: 3px solid rgba(197,160,89,0.5);">
+                            <img src="/foto-web.jpg" alt="Angie Céspedes" class="w-full h-full object-cover"
+                                style="object-position: center 15%;" />
+                        </div>
+                        <div class="absolute -bottom-2 -right-2 rounded-xl px-2 py-1 flex items-center gap-1 shadow-lg"
+                            style="background: var(--surface);">
+                            <span class="w-2 h-2 rounded-full animate-pulse" style="background: var(--success);"></span>
+                            <span class="text-xs font-semibold" style="color: var(--text);">Disponible</span>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Badge animado -->
                 <div class="scroll-hidden visible mb-6">
                     <span class="badge badge-gold">
