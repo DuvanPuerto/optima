@@ -1,0 +1,57 @@
+name: Deploy Angular App to Google Cloud Run
+
+on:
+  push:
+    branches:
+      - main # Asegúrate de que esta sea la rama principal de despliegue
+
+env:
+  PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
+  REGION: us-central1
+  SERVICE_NAME: optima-app
+  AR_REPO: optima-repo
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: 'read'
+      id-token: 'write'
+
+    steps:
+      - name: 📦 Checkout del código
+        uses: actions/checkout@v4
+
+      - name: 🔐 Autenticación en Google Cloud
+        id: auth
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.GCP_CREDENTIALS }}
+
+      - name: 🛠️ Setup de Google Cloud SDK
+        uses: google-github-actions/setup-gcloud@v2
+
+      - name: 🐳 Autenticar Docker para GCP
+        run: |
+          gcloud auth configure-docker ${{ env.REGION }}-docker.pkg.dev --quiet
+
+      - name: 🏗️ Construir imagen Docker
+        run: |
+          docker build -t ${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.AR_REPO }}/${{ env.SERVICE_NAME }}:${{ github.sha }} .
+
+      - name: 🚀 Subir imagen a Google Artifact Registry
+        run: |
+          docker push ${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.AR_REPO }}/${{ env.SERVICE_NAME }}:${{ github.sha }}
+
+      - name: ☁️ Desplegar en Google Cloud Run
+        id: deploy
+        uses: google-github-actions/deploy-cloudrun@v2
+        with:
+          service: ${{ env.SERVICE_NAME }}
+          region: ${{ env.REGION }}
+          image: ${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.AR_REPO }}/${{ env.SERVICE_NAME }}:${{ github.sha }}
+          flags: '--allow-unauthenticated --port=8080'
+
+      - name: ✅ Mostrar URL de Cloud Run
+        run: echo "La aplicación se desplegó en ${{ steps.deploy.outputs.url }}"
