@@ -4,6 +4,7 @@ import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
 import { WhatsappFabComponent } from './shared/components/whatsapp-fab/whatsapp-fab.component';
 import { ScrollTopFabComponent } from './shared/components/scroll-top-fab/scroll-top-fab.component';
+import { TickerComponent } from './shared/components/ticker/ticker.component';
 
 @Component({
   selector: 'app-root',
@@ -14,6 +15,7 @@ import { ScrollTopFabComponent } from './shared/components/scroll-top-fab/scroll
     FooterComponent,
     WhatsappFabComponent,
     ScrollTopFabComponent,
+    TickerComponent,
   ],
   templateUrl: './app.html',
 })

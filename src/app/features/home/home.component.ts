@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { HeroComponent } from './sections/hero/hero.component';
 import { StatsComponent } from './sections/stats/stats.component';
+import { EntidadesComponent } from './sections/entidades/entidades.component';
 import { ServicesComponent } from './sections/services/services.component';
 import { AboutComponent } from './sections/about/about.component';
 import { ResumeComponent } from './sections/resume/resume.component';
@@ -16,6 +17,7 @@ import { ContactComponent } from './sections/contact/contact.component';
   imports: [
     HeroComponent,
     StatsComponent,
+    EntidadesComponent,
     ServicesComponent,
     AboutComponent,
     ResumeComponent,
@@ -28,6 +30,7 @@ import { ContactComponent } from './sections/contact/contact.component';
   template: `
     <app-hero />
     <app-stats />
+    <app-entidades />
     <app-services />
     <app-about />
     <app-resume />

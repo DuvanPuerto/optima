@@ -3,13 +3,53 @@
  * Editar aquí para actualizar textos, servicios, testimonios, etc.
  */
 
+// ── Entidades gubernamentales ─────────────────────────────────────────────────
+export const ENTITIES = [
+  { icon: '🏛', name: 'DIAN', desc: 'Declaraciones, RUT, MUISCA, facturación electrónica, devoluciones' },
+  { icon: '👁', name: 'UGPP', desc: 'Fiscalización aportes, IBC independientes, nómina electrónica' },
+  { icon: '🏢', name: 'Cámara de Comercio', desc: 'Constitución, renovación matrícula, certificados, RUES' },
+  { icon: '📋', name: 'SECOP I y II', desc: 'Contratación estatal, licitaciones, propuestas técnicas' },
+  { icon: '🔍', name: 'Supersociedades', desc: 'Estados financieros, SAGRILAFT, informes de gestión' },
+  { icon: '📑', name: 'RUP', desc: 'Registro Único de Proponentes · Clasificación UNSPSC' },
+  { icon: '🏙', name: 'Alcaldías', desc: 'Impuesto industria y comercio, predial, vehículos' },
+  { icon: '⚡', name: 'UPME', desc: 'Certificación FNCE · requisito para beneficios Ley 1715/2099' },
+  { icon: '🧓', name: 'Colpensiones', desc: 'RPM, bono pensional, BEPS, historia laboral, traslado' },
+  { icon: '🏦', name: 'Fondos Privados', desc: 'RAIS: Porvenir, Protección, Colfondos, Old Mutual' },
+  { icon: '🦺', name: 'ARL', desc: 'Positiva, SURA, Colmena · riesgos laborales, cotización' },
+  { icon: '💳', name: 'PILA', desc: 'Planilla Integrada Liquidación Aportes · independientes y dependientes' },
+  { icon: '🌿', name: 'CAR', desc: 'Certificación inversiones ambientales · descuento Art. 255 ET' },
+  { icon: '🔬', name: 'Minciencias', desc: 'Certificación I+D+i · descuento tributario Art. 256 ET' },
+  { icon: '🏭', name: 'MinComercio', desc: 'Zonas francas, licencias importación, registro exportadores' },
+  { icon: '🎓', name: 'SENA · Fondo Emprender', desc: 'Formulación proyectos, financiación, aval emprendimiento' },
+  { icon: '📊', name: 'DANE', desc: 'IPC, PIB, estadísticas económicas, encuestas sectoriales' },
+  { icon: '🏛', name: 'Banco de la República', desc: 'TRM, tasas interés, DTF, IBR, política monetaria' },
+  { icon: '⚖', name: 'SIC', desc: 'Protección datos, marcas, habeas data, propiedad industrial' },
+  { icon: '🌱', name: 'XM / CREG / IPSE', desc: 'Mercado energía eléctrica, tarifas, autogeneración solar' },
+];
+
+// ── Herramientas tecnológicas ─────────────────────────────────────────────────
+export const TOOLS = [
+  { name: 'Power BI', cat: 'Análisis datos' },
+  { name: 'Siigo', cat: 'Sistema contable' },
+  { name: 'World Office', cat: 'Sistema contable' },
+  { name: 'Helisa', cat: 'Sistema contable' },
+  { name: 'CONTPAQi', cat: 'Sistema contable' },
+  { name: 'Excel Avanzado', cat: 'Macros · Tablas dinámicas' },
+  { name: 'Google Sheets', cat: 'Informes en línea' },
+  { name: 'ClickUp', cat: 'Gestión proyectos' },
+  { name: 'MUISCA · DIAN', cat: 'Plataforma fiscal' },
+  { name: 'Nómina electrónica', cat: 'UGPP · DIAN' },
+  { name: 'Facturación electrónica', cat: 'DIAN · Operadores' },
+  { name: 'IA aplicada a finanzas', cat: 'Automatización' },
+];
+
 // ── Información de contacto ──────────────────────────────────────────────────
 export const CONTACT_INFO = {
   whatsapp: {
     number: '573205575139', // Número sin + ni espacios
-    message: 'Hola Angie, me gustaría recibir asesoría contable y financiera.',
+    message: 'Hola Angie, me interesa una asesoría con Óptima. ¿Podrías ayudarme?',
   },
-  email: 'angie.cespedes@est.uexternado.edu.co',
+  email: 'optimabyangie@gmail.com',
   phone: '+57 320 557 5139',
   address: 'Paipa, Boyacá',
   instagram: 'https://instagram.com/optimabyangie',
@@ -24,12 +64,12 @@ export const FORMSPREE_ENDPOINT = 'https://formspree.io/f/meepynno';
 
 // ── Hero ─────────────────────────────────────────────────────────────────────
 export const HERO_CONTENT = {
-  badge: 'Contadora Pública Certificada',
-  headline: 'Tu futuro financiero,',
-  headlineAccent: 'bien construido.',
+  badge: 'Contadora Pública · Asesora Tributaria · Pensional · Energía Solar',
+  headline: 'Tu empresa,',
+  headlineAccent: 'gestionada con precisión.',
   subtitle:
-    'Asesoría contable y financiera personalizada para personas naturales, emprendedores y empresas. Resultados claros, estrategia sólida.',
-  ctaPrimary: 'Chatear por WhatsApp',
+    'Asesoría contable, financiera, tributaria, pensional y evaluación de proyectos de energía solar. Magíster en Contabilidad y Tributación — Universidad Externado de Colombia. Presencial en Boyacá o virtual para todo Colombia.',
+  ctaPrimary: 'Agenda tu asesoría',
   ctaSecondary: 'Ver mis servicios',
 };
 
@@ -37,58 +77,88 @@ export const HERO_CONTENT = {
 export const STATS = [
   { value: 6, suffix: '+ años', label: 'De experiencia', icon: 'fa-solid fa-award' },
   {
-    value: 3,
-    suffix: ' sectores',
-    label: 'Comercial, industrial y servicios',
-    icon: 'fa-solid fa-industry',
+    value: 150,
+    suffix: '+',
+    label: 'Clientes asesorados',
+    icon: 'fa-solid fa-users',
   },
-  { value: 100, suffix: '+', label: 'Clientes asesorados', icon: 'fa-solid fa-users' },
-  { value: 5, suffix: ' software', label: 'Contables dominados', icon: 'fa-solid fa-laptop-code' },
+  { value: 9, suffix: ' servicios', label: 'Especializados disponibles', icon: 'fa-solid fa-briefcase' },
+  { value: 100, suffix: '%', label: 'Presencial Boyacá · Virtual Colombia', icon: 'fa-solid fa-location-dot' },
 ];
 
 // ── Servicios ────────────────────────────────────────────────────────────────
 export const SERVICES = [
   {
     icon: 'fa-solid fa-chart-bar',
-    title: 'Contabilidad Integral',
+    title: 'Asesoría Contable · NIIF',
     description:
-      'Registro, clasificación y análisis de toda la información financiera de tu empresa. Estados financieros claros y oportunos.',
-    highlights: ['Registros contables', 'Estados financieros', 'Conciliaciones bancarias'],
-  },
-  {
-    icon: 'fa-solid fa-file-invoice',
-    title: 'Declaración de Renta',
-    description:
-      'Preparación y presentación de declaraciones de renta para personas naturales y jurídicas ante la DIAN.',
-    highlights: ['Personas naturales', 'Personas jurídicas', 'Grandes patrimonioss'],
+      'Estados financieros bajo NIIF Pymes y Estándar Pleno. Registro contable, análisis de costos. Siigo, World Office, Helisa. Todos los sectores.',
+    highlights: ['Estados financieros NIIF', 'Análisis de costos', 'Conciliaciones bancarias'],
+    featured: false,
   },
   {
     icon: 'fa-solid fa-scale-balanced',
-    title: 'Asesoría Tributaria',
+    title: 'Planeación Tributaria',
     description:
-      'Planificación fiscal estratégica para reducir tu carga tributaria de manera legal y optimizar el pago de impuestos.',
-    highlights: ['Planeación fiscal', 'Obligaciones tributarias', 'Régimen simple'],
+      'Optimización fiscal legal. Estrategias para PN y PJ usando todos los beneficios del ET. Deducciones, rentas exentas, descuentos, Ley 1715/2099.',
+    highlights: ['Optimización fiscal legal', 'Beneficios ET vigentes', 'Ley 1715/2099'],
+    featured: false,
   },
   {
-    icon: 'fa-solid fa-chart-line',
-    title: 'Planeación Financiera',
+    icon: 'fa-solid fa-solar-panel',
+    title: 'Energía Solar · Ley 1715/2099',
     description:
-      'Evaluación de tu situación financiera y diseño de estrategias de inversión, ahorro y crecimiento patrimonial.',
-    highlights: ['Presupuestos', 'Análisis financiero', 'Proyecciones'],
+      'Evaluación financiera de proyectos solares. Deducción renta 50%, IVA excluido, exención aranceles, depreciación acelerada. Certificación UPME.',
+    highlights: ['Deducción renta 50%', 'IVA excluido · Sin aranceles', 'Certificación UPME'],
+    featured: true,
   },
   {
-    icon: 'fa-solid fa-users-gear',
-    title: 'Nómina y RRHH',
+    icon: 'fa-solid fa-umbrella',
+    title: 'Asesoría Pensional',
     description:
-      'Gestión completa de nómina, liquidación de seguridad social, parafiscales y prestaciones sociales.',
-    highlights: ['Liquidación de nómina', 'Seguridad social', 'Retiro y liquidaciones'],
+      'Cálculo de semanas cotizadas y proyección de pensión. Comparativo RPM vs. RAIS. Traslado de régimen. Pensión anticipada. Ley 2381/2024.',
+    highlights: ['¿Cuándo me pensiono?', 'Colpensiones vs. fondo privado', 'BEPS · traslado de régimen'],
+    featured: false,
   },
   {
     icon: 'fa-solid fa-landmark',
-    title: 'Constitución de Empresas',
+    title: 'Creación de Empresas',
     description:
-      'Acompañamiento completo para la creación y formalización de empresas: SAS, LTDA, SA y más.',
-    highlights: ['Registro cámara', 'RUT y NIT', 'Permisos y licencias'],
+      'Constitución SAS, LTDA, SA, EU. Cámara de Comercio, RUT, estructura financiera inicial. Clasificación Mipyme Decreto 957/2019.',
+    highlights: ['Registro cámara y RUT', 'Estructura financiera', 'Clasificación Mipyme'],
+    featured: false,
+  },
+  {
+    icon: 'fa-solid fa-users-gear',
+    title: 'Nómina · Seguridad Social',
+    description:
+      'Liquidación de nómina, PILA, seguridad social y parafiscales. SG-SST. Jornada reducida 2026 Ley 2101/2021. Dependientes e independientes.',
+    highlights: ['Liquidación nómina', 'PILA · parafiscales', 'Independientes y dependientes'],
+    featured: false,
+  },
+  {
+    icon: 'fa-solid fa-chart-line',
+    title: 'Gestión Financiera',
+    description:
+      'Presupuestos, flujo de caja, tesorería, Power BI. Evaluación de inversiones: CDT, negocios, proyectos solares. TIR, VPN, payback.',
+    highlights: ['Presupuestos y flujo de caja', 'Power BI y análisis', 'TIR · VPN · Payback'],
+    featured: false,
+  },
+  {
+    icon: 'fa-solid fa-file-contract',
+    title: 'Licitaciones · SECOP',
+    description:
+      'Acompañamiento en contratación estatal, RUP, propuestas técnicas. Fondo Emprender, formulación y legalización de proyectos.',
+    highlights: ['SECOP I y II', 'RUP · Propuestas técnicas', 'Fondo Emprender'],
+    featured: false,
+  },
+  {
+    icon: 'fa-solid fa-shield-halved',
+    title: 'Reportes · Control Interno',
+    description:
+      'Supersociedades, revisoría fiscal, auditoría, SAGRILAFT, informes de gestión, control interno, cumplimiento normativo DIAN/UGPP.',
+    highlights: ['Supersociedades · SAGRILAFT', 'Revisoría fiscal', 'Cumplimiento DIAN/UGPP'],
+    featured: false,
   },
 ];
 

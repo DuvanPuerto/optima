@@ -1,2 +1,0 @@
-[     134ms] [WARNING] NG0955: The provided track expression resulted in duplicated keys for a given collection. Adjust the tracking expression such that it uniquely identifies all the items in the collection. Duplicated keys were: 
-key "Power BI" at index "4" and "9". Find more at https://v21.angular.dev/errors/NG0955 @ http://localhost:4200/@fs/D:/Optima%20-%20Marca%20Angie/optima/.angular/cache/21.2.7/optima/vite/deps/chunk-J4L7LP2O.js?v=da363575:17652

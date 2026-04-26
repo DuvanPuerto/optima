@@ -1,0 +1,110 @@
+<div class="grid lg:grid-cols-2 gap-8">
+
+  <!-- Estimador de costos -->
+  <div class="space-y-4">
+    <div class="card p-7 space-y-5">
+      <div class="flex items-center gap-3 mb-1">
+        <div class="w-9 h-9 rounded-xl flex items-center justify-center"
+          style="background: var(--primary);">
+          <i class="fa-solid fa-building text-sm text-white"></i>
+        </div>
+        <div>
+          <h3 class="font-semibold text-lg" style="color: var(--text);">Crear empresa SAS</h3>
+          <p class="text-xs" style="color: var(--text-muted);">Estimador de costos de constitución 2026</p>
+        </div>
+      </div>
+
+      <div>
+        <label class="form-label">Capital social inicial (COP)</label>
+        <input type="text" class="form-input" inputmode="numeric" autocomplete="off"
+          [value]="capitalDisplay()" (input)="onCapitalInput($event)"
+          placeholder="Ej: 5.000.000">
+        <p class="text-xs mt-1.5" style="color: var(--text-muted);">
+          El capital mínimo para SAS es $1 (un peso). Define un capital acorde al giro del negocio.
+        </p>
+      </div>
+    </div>
+
+    <!-- Costos estimados -->
+    <div class="rounded-2xl p-7" style="background: var(--primary);">
+      <p class="text-xs uppercase tracking-widest mb-2" style="color: rgba(255,255,255,0.4);">
+        COSTOS ESTIMADOS
+      </p>
+      <p class="font-heading font-bold mb-5" style="font-size: 2rem; color: var(--secondary);">
+        {{ fmt(fees().total) }}
+      </p>
+
+      <div class="divide-y space-y-0" style="border-color: rgba(255,255,255,0.1);">
+        <div class="flex justify-between py-3 text-sm">
+          <span style="color: rgba(255,255,255,0.65);">Matrícula Cámara de Comercio</span>
+          <span class="font-semibold text-white">{{ fmt(fees().matricula) }}</span>
+        </div>
+        <div class="flex justify-between py-3 text-sm">
+          <span style="color: rgba(255,255,255,0.65);">Formulario RUES</span>
+          <span class="font-semibold text-white">{{ fmt(fees().rues) }}</span>
+        </div>
+        <div class="flex justify-between py-3 text-sm">
+          <span style="color: rgba(255,255,255,0.65);">Certificado de existencia</span>
+          <span class="font-semibold text-white">{{ fmt(fees().certificado) }}</span>
+        </div>
+        <div class="flex justify-between py-3 text-sm">
+          <span style="color: rgba(255,255,255,0.65);">RUT (DIAN)</span>
+          <span class="font-semibold" style="color: var(--success);">Gratuito</span>
+        </div>
+        <div class="flex justify-between py-3 text-sm">
+          <span style="color: rgba(255,255,255,0.65);">Factura electrónica</span>
+          <span class="font-semibold" style="color: var(--success);">Gratuito (DIAN)</span>
+        </div>
+        <div class="flex justify-between pt-4 font-bold text-base">
+          <span style="color: var(--secondary);">Total estimado</span>
+          <span style="color: var(--secondary);">{{ fmt(fees().total) }}</span>
+        </div>
+      </div>
+
+      <p class="text-xs mt-4" style="color: rgba(255,255,255,0.4);">
+        * Tarifas Cámara de Comercio 2026 aproximadas. Varían por ciudad y capital suscrito.
+        No incluye honorarios de asesoría ni costos notariales si aplican.
+      </p>
+    </div>
+  </div>
+
+  <!-- Pasos -->
+  <div>
+    <h3 class="font-semibold text-base mb-5" style="color: var(--text);">
+      <i class="fa-solid fa-list-check mr-2" style="color: var(--secondary);"></i>
+      Pasos para constituir tu SAS
+    </h3>
+
+    <ol class="relative space-y-0">
+      <!-- Vertical line -->
+      <div class="absolute left-4 top-4 bottom-4 w-px" style="background: var(--border);"></div>
+
+      @for (paso of pasos; track paso.title; let i = $index) {
+        <li class="relative pl-12 pb-5">
+          <!-- Step number -->
+          <div class="absolute left-0 top-0.5 w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold border-2"
+            style="background: var(--surface); border-color: var(--secondary); color: var(--secondary);">
+            {{ i + 1 }}
+          </div>
+          <div class="card p-4 hover:shadow-md transition-shadow duration-200">
+            <div class="flex items-start gap-3">
+              <i [class]="paso.icon + ' mt-0.5'" style="color: var(--secondary); font-size: 0.9rem; flex-shrink: 0;"></i>
+              <div class="flex-1 min-w-0">
+                <p class="font-semibold text-sm mb-1" style="color: var(--text);">{{ paso.title }}</p>
+                <p class="text-xs leading-relaxed" style="color: var(--text-muted);">{{ paso.desc }}</p>
+                @if (paso.link) {
+                  <a [href]="paso.link" target="_blank" rel="noopener noreferrer"
+                    class="inline-flex items-center gap-1 mt-2 text-xs font-medium"
+                    style="color: var(--secondary);">
+                    {{ paso.linkLabel }}
+                    <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.6rem;"></i>
+                  </a>
+                }
+              </div>
+            </div>
+          </div>
+        </li>
+      }
+    </ol>
+  </div>
+</div>

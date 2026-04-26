@@ -1,0 +1,104 @@
+<div class="space-y-6">
+
+  <!-- Inputs -->
+  <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 card p-6">
+    <div>
+      <label class="form-label">Consumo mensual (kWh)</label>
+      <input type="number" class="form-input" min="10" max="10000" step="10"
+        [value]="consumoKwh()"
+        (input)="consumoKwh.set(+$any($event.target).value || 0)"
+        placeholder="Ej: 250">
+      <p class="text-xs mt-1" style="color: var(--text-muted);">Consulta tu factura de energía</p>
+    </div>
+    <div>
+      <label class="form-label">Tarifa kWh (COP)</label>
+      <input type="number" class="form-input" min="100" max="5000" step="10"
+        [value]="tarifaKwh()"
+        (input)="tarifaKwh.set(+$any($event.target).value || 0)"
+        placeholder="Ej: 900">
+      <p class="text-xs mt-1" style="color: var(--text-muted);">Tarifa de tu operador de red</p>
+    </div>
+    <div>
+      <label class="form-label">Inversión en sistema solar (COP)</label>
+      <input type="text" class="form-input" inputmode="numeric" autocomplete="off"
+        [value]="inversionDisplay()" (input)="onInversionInput($event)"
+        placeholder="Ej: 15.000.000">
+    </div>
+    <div>
+      <label class="form-label">Generación solar (% del consumo)</label>
+      <input type="number" class="form-input" min="10" max="100" step="5"
+        [value]="generacionPct()"
+        (input)="generacionPct.set(+$any($event.target).value || 0)"
+        placeholder="Ej: 80">
+      <p class="text-xs mt-1" style="color: var(--text-muted);">Estimado por el instalador</p>
+    </div>
+  </div>
+
+  <!-- Results grid -->
+  <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+
+    <div class="rounded-2xl p-6 text-center" style="background: var(--primary);">
+      <i class="fa-solid fa-bolt text-2xl mb-3" style="color: var(--secondary);"></i>
+      <p class="text-xs uppercase tracking-wide mb-1" style="color: rgba(255,255,255,0.55);">Ahorro mensual</p>
+      <p class="font-heading font-bold text-2xl" style="color: var(--secondary);">{{ fmt(result().ahorroMensual) }}</p>
+      <p class="text-xs mt-1" style="color: rgba(255,255,255,0.45);">{{ fmtDec(consumoKwh() * generacionPct() / 100) }} kWh/mes cubiertos</p>
+    </div>
+
+    <div class="rounded-2xl p-6 text-center" style="background: var(--primary);">
+      <i class="fa-solid fa-calendar-check text-2xl mb-3" style="color: var(--secondary);"></i>
+      <p class="text-xs uppercase tracking-wide mb-1" style="color: rgba(255,255,255,0.55);">Ahorro anual</p>
+      <p class="font-heading font-bold text-2xl" style="color: var(--secondary);">{{ fmt(result().ahorroAnual) }}</p>
+      <p class="text-xs mt-1" style="color: rgba(255,255,255,0.45);">ROI 10 años: {{ fmtDec(result().roi10Anos) }}%</p>
+    </div>
+
+    <div class="rounded-2xl p-6 text-center" style="background: var(--primary);">
+      <i class="fa-solid fa-hourglass-half text-2xl mb-3" style="color: var(--secondary);"></i>
+      <p class="text-xs uppercase tracking-wide mb-1" style="color: rgba(255,255,255,0.55);">Retorno de inversión</p>
+      <p class="font-heading font-bold text-2xl" style="color: var(--secondary);">
+        {{ result().paybackAnos > 0 ? fmtDec(result().paybackAnos) + ' años' : '—' }}
+      </p>
+      <p class="text-xs mt-1" style="color: rgba(255,255,255,0.45);">Tiempo recuperación del capital</p>
+    </div>
+
+    <div class="card p-6 text-center">
+      <i class="fa-solid fa-leaf text-2xl mb-3" style="color: var(--success);"></i>
+      <p class="text-xs uppercase tracking-wide mb-1" style="color: var(--text-muted);">CO₂ evitado / año</p>
+      <p class="font-bold text-xl" style="color: var(--success);">{{ fmtDec(result().co2AnualTon, 2) }} ton</p>
+      <p class="text-xs mt-1" style="color: var(--text-muted);">Factor SIN Colombia: 0.1261 kg/kWh</p>
+    </div>
+
+    <div class="card p-6 text-center">
+      <i class="fa-solid fa-file-invoice-dollar text-2xl mb-3" style="color: var(--secondary);"></i>
+      <p class="text-xs uppercase tracking-wide mb-1" style="color: var(--text-muted);">Deducción Ley 1715</p>
+      <p class="font-bold text-xl" style="color: var(--secondary);">{{ fmt(result().deduccionLey1715) }}</p>
+      <p class="text-xs mt-1" style="color: var(--text-muted);">50% de la inversión en renta</p>
+    </div>
+
+    <div class="card p-6 text-center">
+      <i class="fa-solid fa-piggy-bank text-2xl mb-3" style="color: var(--secondary);"></i>
+      <p class="text-xs uppercase tracking-wide mb-1" style="color: var(--text-muted);">Ahorro fiscal est. (PJ 35%)</p>
+      <p class="font-bold text-xl" style="color: var(--secondary);">{{ fmt(result().ahorroFiscalPJ) }}</p>
+      <p class="text-xs mt-1" style="color: var(--text-muted);">Estimación — depende de tu tarifa</p>
+    </div>
+  </div>
+
+  <!-- Ley 1715 info -->
+  <div class="card p-5 flex items-start gap-4">
+    <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
+      style="background: rgba(197,160,89,0.12);">
+      <i class="fa-solid fa-solar-panel" style="color: var(--secondary);"></i>
+    </div>
+    <div class="text-sm">
+      <p class="font-semibold mb-1" style="color: var(--text);">Beneficios Ley 1715 de 2014 (mod. Ley 2099 de 2021)</p>
+      <ul class="space-y-1 text-xs" style="color: var(--text-muted);">
+        <li>• <strong style="color: var(--text);">Deducción renta:</strong> 50% del valor de la inversión (máx. 50% de renta líquida) — se puede repartir en hasta 5 años fiscales.</li>
+        <li>• <strong style="color: var(--text);">Exclusión IVA:</strong> en la compra de equipos, elementos y maquinaria de generación.</li>
+        <li>• <strong style="color: var(--text);">Exención arancelaria:</strong> sobre importaciones de equipos y maquinaria relacionados.</li>
+        <li>• <strong style="color: var(--text);">Depreciación acelerada:</strong> hasta 5 años para los activos del sistema.</li>
+      </ul>
+      <p class="mt-2 text-xs" style="color: var(--text-muted);">
+        Beneficios aplican a personas jurídicas. Para personas naturales, consultar con tu asesor tributario.
+      </p>
+    </div>
+  </div>
+</div>

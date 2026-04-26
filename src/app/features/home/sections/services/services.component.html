@@ -4,19 +4,30 @@
         <!-- Header -->
         <div class="text-center mb-14" appScrollAnimate>
             <span class="badge badge-gold mb-4">Servicios Profesionales</span>
-            <h2 class="section-title mb-4">Todo lo que necesitas<br>en un solo lugar</h2>
+            <h2 class="section-title mb-4">Servicios <em>especializados</em></h2>
             <p class="section-subtitle mx-auto">
-                Soluciones contables y financieras integrales adaptadas a las necesidades de cada cliente.
+                Asesoría contable, tributaria, pensional y de energía solar. Presencial en Boyacá o virtual para todo Colombia.
             </p>
         </div>
 
         <!-- Grid de servicios -->
         <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             @for (service of services; track service.title; let i = $index) {
-            <div appScrollAnimate [class]="'delay-' + (i % 3 * 100 + 100)" class="card p-7 flex flex-col gap-4 group">
+            <div appScrollAnimate [class]="'delay-' + (i % 3 * 100 + 100)"
+                class="card p-7 flex flex-col gap-4 group relative"
+                [style]="service.featured ? 'border-color: rgba(197,160,89,0.5);' : ''">
+
+                <!-- Destacado badge -->
+                @if (service.featured) {
+                <span class="absolute top-4 right-4 text-xs font-semibold px-2 py-0.5 rounded"
+                    style="background: rgba(197,160,89,0.15); color: var(--secondary); border: 1px solid rgba(197,160,89,0.35);">
+                    Destacado
+                </span>
+                }
+
                 <!-- Icon -->
                 <div class="w-14 h-14 rounded-2xl flex items-center justify-center text-2xl flex-shrink-0"
-                    style="background: rgba(197,160,89,0.1); color: var(--secondary);">
+                    [style]="service.featured ? 'background: rgba(197,160,89,0.18); color: var(--secondary);' : 'background: rgba(197,160,89,0.1); color: var(--secondary);'">
                     <i [class]="service.icon"></i>
                 </div>
 

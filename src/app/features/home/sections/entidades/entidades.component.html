@@ -1,0 +1,43 @@
+<section id="entidades" style="background: var(--primary); padding: 4rem 1.5rem;">
+  <div class="max-w-7xl mx-auto">
+
+    <!-- Entities header -->
+    <div class="mb-8">
+      <p class="text-xs tracking-widest uppercase mb-2"
+        style="color: rgba(201,168,76,0.7); letter-spacing: 0.22em;">Entidades que manejo</p>
+      <h2 class="font-heading font-light text-3xl text-white">
+        Entidades <em class="italic" style="color: #c9a84c;">gubernamentales</em> y plataformas
+      </h2>
+    </div>
+
+    <!-- Entities grid -->
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2 mb-12">
+      @for (ent of entities; track ent.name) {
+        <div class="p-3 text-center border transition-all duration-300 cursor-default hover:border-yellow-500/40"
+          style="background: rgba(255,255,255,0.04); border-color: rgba(201,168,76,0.12);">
+          <div class="text-2xl mb-1">{{ ent.icon }}</div>
+          <div class="text-xs font-semibold mb-1" style="color: #c9a84c;">{{ ent.name }}</div>
+          <div class="text-xs leading-tight" style="color: rgba(255,255,255,0.35);">{{ ent.desc }}</div>
+        </div>
+      }
+    </div>
+
+    <!-- Tools header -->
+    <p class="text-xs uppercase tracking-widest mb-4"
+      style="color: rgba(201,168,76,0.5); letter-spacing: 0.18em;">
+      Herramientas tecnológicas y sistemas contables
+    </p>
+
+    <!-- Tools grid -->
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2">
+      @for (tool of tools; track tool.name) {
+        <div class="p-3 text-center border"
+          style="background: rgba(201,168,76,0.07); border-color: rgba(201,168,76,0.18);">
+          <div class="text-xs font-semibold" style="color: #c9a84c;">{{ tool.name }}</div>
+          <div class="text-xs mt-0.5" style="color: rgba(255,255,255,0.3);">{{ tool.cat }}</div>
+        </div>
+      }
+    </div>
+
+  </div>
+</section>

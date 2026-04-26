@@ -1,0 +1,133 @@
+<div class="grid lg:grid-cols-2 gap-8">
+
+  <!-- Form -->
+  <div class="card p-7 space-y-5">
+    <div>
+      <div class="flex items-center gap-3 mb-1">
+        <div class="w-9 h-9 rounded-xl flex items-center justify-center"
+          style="background: var(--error);">
+          <i class="fa-solid fa-triangle-exclamation text-sm text-white"></i>
+        </div>
+        <h3 class="font-semibold text-lg" style="color: var(--text);">Calculadora de mora DIAN</h3>
+      </div>
+      <p class="text-xs ml-12" style="color: var(--text-muted);">
+        Tasa de mora 2026: <strong style="color: var(--secondary);">22.36% EA</strong> (Art. 635 ET)
+      </p>
+    </div>
+
+    <div>
+      <label class="form-label">Deuda tributaria (COP)</label>
+      <input type="text" class="form-input" inputmode="numeric" autocomplete="off"
+        [value]="deudaDisplay()" (input)="onDeudaInput($event)"
+        placeholder="Ej: 5.000.000">
+    </div>
+
+    <!-- Toggle días / fecha -->
+    <div class="flex gap-3">
+      <button (click)="usarFecha.set(false)"
+        class="flex-1 py-2.5 rounded-lg text-sm font-medium transition-colors cursor-pointer"
+        [style.background]="!usarFecha() ? 'var(--primary)' : 'var(--surface-2)'"
+        [style.color]="!usarFecha() ? 'var(--secondary)' : 'var(--text-muted)'"
+        [style.border]="!usarFecha() ? '1px solid var(--secondary)' : '1px solid var(--border)'">
+        Número de días
+      </button>
+      <button (click)="usarFecha.set(true)"
+        class="flex-1 py-2.5 rounded-lg text-sm font-medium transition-colors cursor-pointer"
+        [style.background]="usarFecha() ? 'var(--primary)' : 'var(--surface-2)'"
+        [style.color]="usarFecha() ? 'var(--secondary)' : 'var(--text-muted)'"
+        [style.border]="usarFecha() ? '1px solid var(--secondary)' : '1px solid var(--border)'">
+        Fecha de vencimiento
+      </button>
+    </div>
+
+    @if (!usarFecha()) {
+      <div>
+        <label class="form-label">Días de mora</label>
+        <input type="number" class="form-input" min="1" step="1"
+          [value]="diasMora()"
+          (input)="diasMora.set(+$any($event.target).value || 1)"
+          placeholder="Ej: 90">
+      </div>
+    } @else {
+      <div>
+        <label class="form-label">Fecha de vencimiento de la obligación</label>
+        <input type="date" class="form-input"
+          [value]="fechaVencimiento()"
+          (change)="fechaVencimiento.set($any($event.target).value)">
+        @if (diasCalculados() > 0) {
+          <p class="text-xs mt-1.5" style="color: var(--text-muted);">
+            Días transcurridos: <strong style="color: var(--secondary);">{{ diasCalculados() }} días</strong>
+          </p>
+        }
+      </div>
+    }
+
+    <!-- Info -->
+    <div class="rounded-xl p-4" style="background: rgba(239,68,68,0.07); border: 1px solid rgba(239,68,68,0.2);">
+      <p class="text-xs font-medium mb-1" style="color: #f87171;">
+        <i class="fa-solid fa-circle-info mr-1"></i> Alcance de la calculadora
+      </p>
+      <p class="text-xs leading-relaxed" style="color: var(--text-muted);">
+        Calcula los intereses de mora (Art. 634 ET) sobre el impuesto. No incluye sanción por
+        extemporaneidad ni corrección de declaraciones. Consulta a un asesor para tu caso específico.
+      </p>
+    </div>
+  </div>
+
+  <!-- Results -->
+  <div class="flex flex-col gap-4">
+    <div class="rounded-2xl p-7" style="background: var(--primary);">
+      <p class="text-xs uppercase tracking-widest mb-2" style="color: rgba(255,255,255,0.4);">
+        TOTAL A CANCELAR
+      </p>
+      <p class="font-heading font-bold mb-6" style="font-size: 2.25rem; color: var(--secondary);">
+        {{ fmt(result().total) }}
+      </p>
+
+      <div class="divide-y space-y-0" style="border-color: rgba(255,255,255,0.1);">
+        <div class="flex justify-between py-3 text-sm">
+          <span style="color: rgba(255,255,255,0.65);">Deuda original</span>
+          <span class="font-semibold text-white">{{ fmt(deudaRaw()) }}</span>
+        </div>
+        <div class="flex justify-between py-3 text-sm">
+          <span style="color: rgba(255,255,255,0.65);">Días de mora</span>
+          <span class="font-semibold text-white">{{ diasCalculados() }} días</span>
+        </div>
+        <div class="flex justify-between py-3 text-sm">
+          <span style="color: rgba(255,255,255,0.65);">Tasa diaria equivalente</span>
+          <span class="font-semibold text-white">{{ result().tasaDiaria.toFixed(4) }}%</span>
+        </div>
+        <div class="flex justify-between py-3 text-sm">
+          <span style="color: rgba(255,255,255,0.65);">Intereses acumulados</span>
+          <span class="font-semibold" style="color: #f87171;">{{ fmt(result().intereses) }}</span>
+        </div>
+        <div class="flex justify-between pt-4 font-bold text-base">
+          <span style="color: var(--secondary);">Total a cancelar</span>
+          <span style="color: var(--secondary);">{{ fmt(result().total) }}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sanciones adicionales -->
+    <div class="card p-5 space-y-3">
+      <p class="text-sm font-semibold" style="color: var(--text);">
+        <i class="fa-solid fa-gavel mr-2" style="color: var(--secondary);"></i>
+        Sanciones adicionales (Art. 641 ET)
+      </p>
+      <div class="space-y-2 text-xs">
+        <div class="flex justify-between py-1.5 border-b" style="border-color: var(--border);">
+          <span style="color: var(--text-muted);">Extemporaneidad (5%/mes, máx. 200%)</span>
+          <span class="font-medium" style="color: var(--warning);">Requiere asesoría</span>
+        </div>
+        <div class="flex justify-between py-1.5 border-b" style="border-color: var(--border);">
+          <span style="color: var(--text-muted);">Sanción mínima (10 UVT 2026)</span>
+          <span class="font-medium" style="color: var(--secondary);">$524.000</span>
+        </div>
+        <div class="flex justify-between py-1.5">
+          <span style="color: var(--text-muted);">No declarar tras requerimiento (20%/mes)</span>
+          <span class="font-medium" style="color: var(--error);">Requiere asesoría</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

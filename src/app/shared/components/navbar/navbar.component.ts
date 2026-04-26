@@ -24,12 +24,10 @@ export class NavbarComponent {
   private router = inject(Router);
 
   readonly navLinks: NavLink[] = [
-    { label: 'Inicio', anchor: 'hero' },
     { label: 'Servicios', anchor: 'servicios' },
     { label: 'Sobre mí', anchor: 'sobre-mi' },
     { label: 'Calculadoras', route: '/calculadoras' },
     { label: 'Testimonios', anchor: 'testimonios' },
-    { label: 'Recursos', anchor: 'recursos' },
     { label: 'Preguntas', anchor: 'faq' },
     { label: 'Contacto', anchor: 'contacto' },
     { label: 'PQRS', route: '/pqrs' },

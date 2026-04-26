@@ -1,0 +1,1534 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Óptima by Angie Céspedes | Contadora · Tributaria · Pensiones · Energía Solar</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--v:#1e3d2f;--v2:#2a5240;--d:#c9a84c;--d2:#e8c97a;--cr:#f7f3eb;--cr2:#ede7d8;--tx:#1a2e22;--txc:#4a6358;--dark:#0f2219;--darker:#080f0a;}
+html{scroll-behavior:smooth}
+body{font-family:'Jost',sans-serif;background:var(--cr);color:var(--tx);line-height:1.7;overflow-x:hidden}
+nav{position:fixed;top:0;width:100%;z-index:300;background:rgba(30,61,47,0.97);backdrop-filter:blur(10px);display:flex;align-items:center;justify-content:space-between;padding:0.75rem 2.5rem;border-bottom:1px solid rgba(201,168,76,0.25)}
+.nl{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:600;color:var(--d);cursor:pointer;letter-spacing:0.02em}
+.nl span{font-style:italic;font-weight:300}
+.nlinks{display:flex;gap:1.2rem;list-style:none}
+.nlinks a{color:rgba(255,255,255,0.68);text-decoration:none;font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;transition:color 0.3s}
+.nlinks a:hover{color:var(--d)}
+.ncta{background:var(--d);color:var(--v);padding:0.42rem 1.15rem;border:none;font-family:'Jost',sans-serif;font-size:0.65rem;letter-spacing:0.13em;text-transform:uppercase;cursor:pointer;font-weight:500;transition:all 0.3s}
+.ncta:hover{background:var(--d2)}
+.ticker{background:var(--darker);padding:0.38rem 0;margin-top:54px;border-bottom:1px solid rgba(201,168,76,0.15);overflow:hidden;white-space:nowrap}
+.ticker-inner{display:inline-flex;gap:3rem;animation:ticker 40s linear infinite;padding-left:100%}
+@keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-100%)}}
+.ti-item{display:inline-flex;align-items:center;gap:0.5rem}
+.ti-label{color:rgba(255,255,255,0.32);text-transform:uppercase;font-size:0.56rem;letter-spacing:0.13em}
+.ti-val{color:var(--d);font-family:'Cormorant Garamond',serif;font-size:0.98rem;font-weight:600}
+.live-dot{width:5px;height:5px;border-radius:50%;background:#4caf50;animation:blink 2s infinite;display:inline-block;margin-left:1rem}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.25}}
+.hero{min-height:100vh;background:var(--v);display:grid;grid-template-columns:1.15fr 0.85fr;align-items:center;padding:5rem 4rem 3rem;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-40%;right:-5%;width:520px;height:520px;border:1px solid rgba(201,168,76,0.08);border-radius:50%;pointer-events:none}
+.ht{position:relative;z-index:2}
+.hey{font-size:0.63rem;letter-spacing:0.27em;text-transform:uppercase;color:var(--d);margin-bottom:1rem;display:flex;align-items:center;gap:0.7rem}
+.hey::before{content:'';display:block;width:28px;height:1px;background:var(--d)}
+h1.htitle{font-family:'Cormorant Garamond',serif;font-size:3.6rem;font-weight:300;line-height:1.08;color:#fff;margin-bottom:0.9rem}
+h1.htitle em{color:var(--d);font-style:italic}
+.hsub{font-size:0.87rem;color:rgba(255,255,255,0.58);max-width:430px;margin-bottom:1.5rem;line-height:1.9}
+.htags{display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:1.8rem}
+.htag{background:rgba(201,168,76,0.09);border:1px solid rgba(201,168,76,0.22);color:var(--d);font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.22rem 0.65rem}
+.hbtns{display:flex;gap:0.8rem;flex-wrap:wrap}
+.bp{background:var(--d);color:var(--v);padding:0.78rem 1.8rem;border:none;font-family:'Jost',sans-serif;font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;font-weight:500;transition:all 0.3s}
+.bp:hover{background:var(--d2)}
+.bo{background:transparent;color:rgba(255,255,255,0.68);padding:0.78rem 1.8rem;border:1px solid rgba(255,255,255,0.18);font-family:'Jost',sans-serif;font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;transition:all 0.3s}
+.bo:hover{border-color:var(--d);color:var(--d)}
+.hstats{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid rgba(201,168,76,0.18);margin-top:2.5rem}
+.hst{padding:1rem 0;text-align:center;border-right:1px solid rgba(201,168,76,0.18)}
+.hst:last-child{border-right:none}
+.hst-num{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;color:var(--d);display:block}
+.hst-lbl{font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.38)}
+.hero-right{position:relative;z-index:2;display:flex;flex-direction:column;gap:0.75rem}
+.hcard{background:rgba(255,255,255,0.035);border:1px solid rgba(201,168,76,0.16);padding:1.1rem 1.3rem}
+.hcard-tag{font-size:0.58rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(201,168,76,0.52);margin-bottom:0.35rem}
+.hcard-main{font-family:'Cormorant Garamond',serif;font-size:1.25rem;color:#fff;font-weight:300;line-height:1.2}
+.hcard-sub{font-size:0.72rem;color:rgba(255,255,255,0.38);margin-top:0.2rem;line-height:1.5}
+.kpi-strip{background:var(--darker);padding:1.5rem 4rem}
+.kpi-grid{display:grid;grid-template-columns:repeat(10,1fr);gap:1px;background:rgba(201,168,76,0.12);margin-top:0.8rem}
+.kpi{background:var(--darker);padding:0.9rem 0.5rem;text-align:center}
+.kpi-lbl{font-size:0.52rem;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:0.15rem}
+.kpi-val{font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--d);font-weight:300}
+.kpi-sub{font-size:0.55rem;color:rgba(255,255,255,0.22)}
+section{padding:4rem}
+.stag{font-size:0.6rem;letter-spacing:0.26em;text-transform:uppercase;color:var(--d);margin-bottom:0.65rem;display:flex;align-items:center;gap:0.6rem}
+.stag::before{content:'';width:22px;height:1px;background:var(--d)}
+.stag.center{justify-content:center}.stag.center::before{display:none}
+h2.stitle{font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:300;line-height:1.2;color:var(--v);margin-bottom:0.4rem}
+h2.stitle em{font-style:italic;color:var(--d)}
+h2.stitle.w{color:#fff}
+.entidades{background:var(--v);padding:3rem 4rem}
+.ent-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:0.6rem;margin-top:1.5rem}
+.ent-card{background:rgba(255,255,255,0.04);border:1px solid rgba(201,168,76,0.12);padding:0.8rem 0.7rem;text-align:center;transition:all 0.3s}
+.ent-card:hover{border-color:rgba(201,168,76,0.4);background:rgba(201,168,76,0.05)}
+.ent-icon{font-size:1.3rem;margin-bottom:0.3rem}
+.ent-name{font-size:0.68rem;color:var(--d);font-weight:500;margin-bottom:0.1rem}
+.ent-desc{font-size:0.58rem;color:rgba(255,255,255,0.35);line-height:1.4}
+.tool-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:0.5rem;margin-top:1.2rem}
+.tool-pill{background:rgba(201,168,76,0.07);border:1px solid rgba(201,168,76,0.18);padding:0.5rem 0.6rem;text-align:center}
+.tool-name{font-size:0.65rem;color:var(--d);font-weight:500}
+.tool-cat{font-size:0.55rem;color:rgba(255,255,255,0.3)}
+.sgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+.sc{background:#fff;padding:1.8rem 1.5rem;border:1px solid var(--cr2);transition:all 0.4s;position:relative}
+.sc:hover{border-color:var(--d);transform:translateY(-3px);box-shadow:0 6px 28px rgba(30,61,47,0.07)}
+.sc-num{font-family:'Cormorant Garamond',serif;font-size:2.6rem;font-weight:300;color:var(--cr2);line-height:1;margin-bottom:0.7rem}
+.sc-line{width:24px;height:2px;background:var(--d);margin-bottom:0.7rem;transition:width 0.4s}
+.sc:hover .sc-line{width:50px}
+.sc-title{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:var(--v);margin-bottom:0.5rem}
+.sc-desc{font-size:0.8rem;color:var(--txc);line-height:1.75}
+.sc-badge{position:absolute;top:0.75rem;right:0.75rem;background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.28);color:var(--d);font-size:0.52rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.18rem 0.45rem}
+.sc-items{margin-top:0.7rem;display:flex;flex-direction:column;gap:0.25rem}
+.sc-item{font-size:0.72rem;color:var(--txc);display:flex;align-items:flex-start;gap:0.4rem}
+.sc-item::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--d);margin-top:0.45rem;flex-shrink:0}
+.srv-modes{display:flex;gap:0.5rem;margin-bottom:1.5rem;flex-wrap:wrap}
+.srv-mode{background:rgba(30,61,47,0.06);border:1px solid rgba(30,61,47,0.12);color:var(--v);font-size:0.62rem;letter-spacing:0.08em;text-transform:uppercase;padding:0.3rem 0.8rem;font-weight:500}
+.energia{background:var(--v);padding:4rem}
+.egrid{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:start;margin-top:2rem}
+.edesc{font-size:0.85rem;color:rgba(255,255,255,0.6);margin-top:0.8rem;line-height:1.9}
+.efeats{margin-top:1.5rem;display:flex;flex-direction:column;gap:0.7rem}
+.efeat{display:flex;align-items:flex-start;gap:0.8rem;padding:0.75rem 1rem;border:1px solid rgba(201,168,76,0.1);background:rgba(201,168,76,0.03)}
+.ficon{width:26px;height:26px;background:rgba(201,168,76,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:11px}
+.ftit2{font-size:0.8rem;color:var(--d);font-weight:500;margin-bottom:0.1rem}
+.fdesc2{font-size:0.72rem;color:rgba(255,255,255,0.42)}
+.ley-box{background:rgba(201,168,76,0.05);border:1px solid rgba(201,168,76,0.18);padding:1.6rem}
+.ley-header{font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(201,168,76,0.55);margin-bottom:1.2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.5rem}
+.ley-vigencia{background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.25);color:var(--d);font-size:0.6rem;padding:0.2rem 0.5rem}
+.ley-row{padding:0.8rem 0;border-bottom:1px solid rgba(255,255,255,0.05)}
+.ley-row:last-child{border-bottom:none}
+.ley-beneficio{font-size:0.85rem;color:#fff;font-weight:500;margin-bottom:0.2rem}
+.ley-norma{font-size:0.68rem;color:var(--d);margin-bottom:0.2rem}
+.ley-detalle{font-size:0.72rem;color:rgba(255,255,255,0.42);line-height:1.55}
+.ley-req{font-size:0.65rem;color:rgba(201,168,76,0.5);margin-top:0.2rem;font-style:italic}
+.ley-alerta{background:rgba(201,168,76,0.08);border-left:3px solid var(--d);padding:0.8rem 1rem;margin-top:1rem;font-size:0.75rem;color:rgba(255,255,255,0.55);line-height:1.6}
+.solar-calc{background:var(--cr2);padding:4rem}
+.solar-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:1.8rem}
+.solar-form{background:#fff;padding:2rem;border:1px solid var(--cr2)}
+.solar-result{background:var(--v);padding:2rem;position:relative;overflow:hidden}
+.flabel{font-size:0.63rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--txc);margin-bottom:0.3rem;display:block}
+.finput{padding:0.58rem 0.85rem;border:1px solid var(--cr2);background:var(--cr);font-family:'Jost',sans-serif;font-size:0.87rem;color:var(--tx);outline:none;transition:border 0.3s;width:100%;margin-bottom:0.8rem}
+.finput:focus{border-color:var(--d)}
+.fselect{padding:0.58rem 0.85rem;border:1px solid var(--cr2);background:var(--cr);font-family:'Jost',sans-serif;font-size:0.83rem;color:var(--tx);outline:none;cursor:pointer;width:100%;margin-bottom:0.8rem}
+.ftitle{font-family:'Cormorant Garamond',serif;font-size:1.25rem;color:var(--v);margin-bottom:1rem}
+.res-label{font-size:0.58rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.32);margin-bottom:0.25rem}
+.res-main{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:300;color:var(--d);margin-bottom:1rem;line-height:1.1}
+.res-rows{display:flex;flex-direction:column;gap:0.35rem}
+.res-row{display:flex;justify-content:space-between;padding:0.35rem 0;border-bottom:1px solid rgba(255,255,255,0.05);font-size:0.76rem;gap:0.5rem}
+.res-row:last-child{border-bottom:none}
+.rrl{color:rgba(255,255,255,0.42);flex:1}
+.rrv{color:#fff;font-weight:500;text-align:right}
+.rrv.gold{color:var(--d)}
+.res-note{margin-top:0.8rem;font-size:0.66rem;color:rgba(255,255,255,0.28);line-height:1.6;font-style:italic}
+.info-box{background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.2);padding:0.8rem 1rem;font-size:0.76rem;color:var(--txc);line-height:1.7;margin-bottom:1rem}
+.info-box strong{color:var(--v)}
+.planeacion{background:var(--cr)}
+.plan-tabs{display:flex;gap:0;margin-top:2rem;border-bottom:2px solid var(--d)}
+.plan-tab{padding:0.7rem 1.4rem;background:transparent;border:none;font-family:'Jost',sans-serif;font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;color:var(--txc);transition:all 0.3s;border-bottom:2px solid transparent;margin-bottom:-2px}
+.plan-tab.active{color:var(--v);border-bottom-color:var(--v);font-weight:500}
+.plan-panel{display:none}
+.plan-panel.active{display:block}
+.plan-intro{background:var(--v);padding:1.5rem 2rem;font-size:0.83rem;color:rgba(255,255,255,0.62);line-height:1.85}
+.plan-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+.plan-card{background:#fff;padding:1.8rem 1.5rem;border:1px solid var(--cr2);transition:all 0.35s}
+.plan-card:hover{border-color:var(--d);box-shadow:0 4px 20px rgba(30,61,47,0.06)}
+.plan-icon{font-size:1.3rem;margin-bottom:0.8rem}
+.plan-title{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:600;color:var(--v);margin-bottom:0.3rem}
+.plan-norma{font-size:0.62rem;color:var(--d);letter-spacing:0.06em;margin-bottom:0.6rem;font-weight:500}
+.plan-desc{font-size:0.78rem;color:var(--txc);line-height:1.75;margin-bottom:0.7rem}
+.plan-ejemplo{background:var(--cr);border-left:2px solid var(--d);padding:0.6rem 0.8rem;font-size:0.72rem;color:var(--txc);line-height:1.6}
+.plan-ejemplo strong{color:var(--v)}
+.plan-nota{font-size:0.65rem;color:rgba(30,61,47,0.45);margin-top:0.5rem;font-style:italic}
+.amort-table{width:100%;border-collapse:collapse;font-size:0.72rem;margin-top:0.8rem}
+.amort-table th{background:var(--v);color:var(--d);padding:0.4rem 0.5rem;text-align:left;font-size:0.6rem}
+.amort-table td{padding:0.35rem 0.5rem;border-bottom:1px solid var(--cr2);color:var(--txc)}
+.amort-table tr.total-row td{background:rgba(201,168,76,0.1);color:var(--v);font-weight:600}
+.calculadoras{background:var(--cr2)}
+.ctabs{display:flex;gap:0;margin-top:2rem;border-bottom:2px solid var(--d);flex-wrap:wrap}
+.ctab{padding:0.65rem 1rem;background:transparent;border:none;font-family:'Jost',sans-serif;font-size:0.61rem;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;color:var(--txc);transition:all 0.3s;border-bottom:2px solid transparent;margin-bottom:-2px}
+.ctab.active{color:var(--v);border-bottom-color:var(--v);font-weight:500}
+.ctab:hover{color:var(--v)}
+.cpanel{display:none;background:#fff;padding:2rem;border:1px solid var(--cr2);border-top:none}
+.cpanel.active{display:block}
+.cgrid{display:grid;grid-template-columns:1fr 1fr;gap:1.8rem;align-items:start}
+.cresult{background:var(--v);padding:1.8rem}
+.ctitle{font-family:'Cormorant Garamond',serif;font-size:1.25rem;color:var(--v);margin-bottom:1rem}
+.rte-mini{width:100%;border-collapse:collapse;font-size:0.7rem;margin-top:0.8rem}
+.rte-mini th{background:var(--v);color:var(--d);padding:0.4rem 0.5rem;text-align:left;font-weight:500;font-size:0.58rem}
+.rte-mini td{padding:0.35rem 0.5rem;border-bottom:1px solid var(--cr2);color:var(--txc)}
+.rte-mini tr.hl td{color:var(--v);font-weight:500;background:rgba(201,168,76,0.06)}
+.warn-box{background:rgba(201,168,76,0.08);border-left:3px solid var(--d);padding:0.6rem 0.8rem;font-size:0.72rem;color:var(--txc);margin-top:0.5rem;line-height:1.6}
+.warn-box strong{color:var(--v)}
+.pensiones{background:#fff;padding:4rem}
+.pen-tabs{display:flex;gap:0;margin-top:2rem;border-bottom:2px solid var(--d)}
+.pen-tab{padding:0.7rem 1.3rem;background:transparent;border:none;font-family:'Jost',sans-serif;font-size:0.63rem;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;color:var(--txc);transition:all 0.3s;border-bottom:2px solid transparent;margin-bottom:-2px}
+.pen-tab.active{color:var(--v);border-bottom-color:var(--v);font-weight:500}
+.pen-panel{display:none}
+.pen-panel.active{display:block;margin-top:1.5rem}
+.comp-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:1.5rem}
+.comp-card{padding:1.5rem;border:1px solid var(--cr2)}
+.comp-header{padding:0.8rem 1rem;margin-bottom:1rem}
+.comp-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;margin-bottom:0.2rem}
+.comp-sub{font-size:0.72rem;opacity:0.7}
+.comp-pro{background:rgba(30,61,47,0.04);padding:0.8rem;margin-bottom:0.5rem}
+.comp-con{background:rgba(201,168,76,0.06);padding:0.8rem}
+.comp-label{font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;font-weight:500;margin-bottom:0.5rem}
+.comp-item{font-size:0.76rem;color:var(--txc);display:flex;gap:0.4rem;margin-bottom:0.3rem;line-height:1.5}
+.comp-item::before{content:'';width:5px;height:5px;border-radius:50%;flex-shrink:0;margin-top:0.42rem}
+.comp-item.pro::before{background:#2a7a4b}
+.comp-item.con::before{background:#c0392b}
+.info-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1.5rem}
+.info-card{border:1px solid var(--cr2);overflow:hidden}
+.info-card-head{background:var(--v);padding:0.8rem 1rem}
+.info-card-ico{font-size:1.2rem;margin-bottom:0.2rem}
+.info-card-title{font-family:'Cormorant Garamond',serif;font-size:1rem;color:#fff}
+.info-card-body{padding:1rem;font-size:0.76rem;color:var(--txc);line-height:1.75}
+.info-card-norma{font-size:0.63rem;color:var(--d);margin-top:0.5rem;font-weight:500}
+.ind-section{background:var(--cr)}
+.ind-tabs{display:flex;gap:0.4rem;margin-top:2rem;flex-wrap:wrap}
+.ind-tab{padding:0.45rem 1.1rem;background:transparent;border:1px solid var(--cr2);font-family:'Jost',sans-serif;font-size:0.62rem;letter-spacing:0.09em;text-transform:uppercase;cursor:pointer;color:var(--txc);transition:all 0.3s}
+.ind-tab.active{background:var(--v);color:var(--d);border-color:var(--v)}
+.ind-panel{display:none;margin-top:1rem}
+.ind-panel.active{display:block}
+.ind-table{width:100%;border-collapse:collapse;font-size:0.78rem}
+.ind-table th{background:var(--v);color:var(--d);padding:0.55rem 0.8rem;text-align:left;font-weight:500;font-size:0.62rem;letter-spacing:0.04em}
+.ind-table td{padding:0.45rem 0.8rem;border-bottom:1px solid var(--cr2);color:var(--txc)}
+.ind-table tr:hover td{background:rgba(201,168,76,0.03)}
+.ind-table tr.cat td{background:rgba(30,61,47,0.05);color:var(--v);font-weight:500;font-size:0.68rem;letter-spacing:0.04em}
+.portafolio{background:var(--v);padding:4rem}
+.ptabs{display:flex;gap:0.4rem;margin:2rem 0 1.5rem;flex-wrap:wrap}
+.ptab{padding:0.45rem 1.1rem;background:transparent;border:1px solid rgba(201,168,76,0.25);font-family:'Jost',sans-serif;font-size:0.62rem;letter-spacing:0.09em;text-transform:uppercase;cursor:pointer;color:rgba(255,255,255,0.5);transition:all 0.3s}
+.ptab.active{background:var(--d);color:var(--v);border-color:var(--d)}
+.ptab:hover:not(.active){border-color:var(--d);color:var(--d)}
+.pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+.pcard{background:rgba(255,255,255,0.04);border:1px solid rgba(201,168,76,0.15);overflow:hidden;transition:all 0.3s}
+.pcard:hover{border-color:rgba(201,168,76,0.4)}
+.phead{background:rgba(201,168,76,0.08);padding:1.1rem;border-bottom:1px solid rgba(201,168,76,0.1)}
+.pcat{font-size:0.57rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(201,168,76,0.52);margin-bottom:0.2rem}
+.ptit{font-family:'Cormorant Garamond',serif;font-size:1.05rem;color:#fff;font-weight:400;line-height:1.3}
+.pbody{padding:1.1rem}
+.pdesc{font-size:0.76rem;color:rgba(255,255,255,0.5);line-height:1.75;margin-bottom:0.7rem}
+.ptags{display:flex;flex-wrap:wrap;gap:0.3rem}
+.ptag2{background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.2);color:rgba(201,168,76,0.7);font-size:0.58rem;padding:0.12rem 0.45rem}
+.tray{background:var(--cr2);padding:4rem}
+.trow{display:grid;grid-template-columns:160px 1fr;gap:1.8rem;padding:2rem 0;border-bottom:1px solid rgba(30,61,47,0.1)}
+.trow:last-child{border-bottom:none}
+.tfecha{font-size:0.7rem;color:var(--d);letter-spacing:0.04em;text-align:right;padding-top:0.15rem}
+.tbadge{display:inline-block;background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.28);color:var(--d);font-size:0.53rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.18rem 0.45rem;margin-top:0.35rem}
+.tciudad{font-size:0.63rem;color:var(--txc);margin-top:0.25rem}
+.tcargo{font-family:'Cormorant Garamond',serif;font-size:1.35rem;color:var(--v);font-weight:600;margin-bottom:0.45rem;line-height:1.2}
+.tdesc{font-size:0.8rem;color:var(--txc);line-height:1.85}
+.tlogros{margin-top:0.7rem;display:flex;flex-direction:column;gap:0.25rem}
+.tlogro{display:flex;align-items:flex-start;gap:0.45rem;font-size:0.74rem;color:var(--txc)}
+.tlogro::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--d);margin-top:0.42rem;flex-shrink:0}
+.tconf{background:rgba(201,168,76,0.08);border-left:3px solid var(--d);padding:1rem 1.2rem;font-size:0.74rem;color:var(--txc);line-height:1.7;font-style:italic;margin-top:2rem}
+.sobre{background:#fff;padding:4rem}
+.sobre-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;margin-top:2rem}
+.sobre-text{font-size:0.84rem;color:var(--txc);line-height:1.9;margin-top:0.8rem}
+.logros-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1.8rem}
+.logro{border-left:2px solid var(--d);padding-left:0.8rem}
+.lt{font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--v);font-weight:600}
+.ld{font-size:0.68rem;color:var(--txc);margin-top:0.08rem}
+.flist{list-style:none;margin-top:0.5rem}
+.fitem{padding:0.85rem 0;border-bottom:1px solid rgba(30,61,47,0.09);display:grid;grid-template-columns:7px 1fr;gap:0.8rem;align-items:start}
+.fdot{width:7px;height:7px;border-radius:50%;background:var(--d);margin-top:0.38rem}
+.ftit3{font-family:'Cormorant Garamond',serif;font-size:0.93rem;color:var(--v)}
+.finst{font-size:0.66rem;color:var(--txc)}
+.faq-section{background:var(--v);padding:4rem}
+.faq-list{margin-top:2rem;display:flex;flex-direction:column;gap:0.6rem}
+.faq-item{border:1px solid rgba(201,168,76,0.15);overflow:hidden}
+.faq-q{padding:1rem 1.3rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-size:0.84rem;color:#fff;font-weight:500;transition:background 0.3s}
+.faq-q:hover{background:rgba(201,168,76,0.05)}
+.faq-q.open{color:var(--d);background:rgba(201,168,76,0.06)}
+.faq-arrow{font-size:0.8rem;color:var(--d);transition:transform 0.3s;flex-shrink:0}
+.faq-q.open .faq-arrow{transform:rotate(180deg)}
+.faq-a{display:none;padding:1rem 1.3rem;font-size:0.79rem;color:rgba(255,255,255,0.55);line-height:1.8;border-top:1px solid rgba(201,168,76,0.1)}
+.faq-a.open{display:block}
+.faq-norma{font-size:0.65rem;color:var(--d);margin-top:0.5rem;font-weight:500}
+.contacto{background:var(--darker);text-align:center;padding:5rem 4rem}
+h2.ctitle-h{font-family:'Cormorant Garamond',serif;font-size:3rem;font-weight:300;color:#fff;line-height:1.15;margin-bottom:0.5rem}
+h2.ctitle-h em{font-style:italic;color:var(--d)}
+.csub{color:rgba(255,255,255,0.42);max-width:460px;margin:0.8rem auto 2.2rem;font-size:0.84rem;line-height:1.8}
+.ccards{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;margin-bottom:2rem}
+.ccard{background:rgba(201,168,76,0.06);border:1px solid rgba(201,168,76,0.18);padding:1.1rem 1.7rem;min-width:175px;text-align:left}
+.ccl{font-size:0.56rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.28);margin-bottom:0.3rem}
+.ccv{font-family:'Cormorant Garamond',serif;font-size:0.98rem;color:var(--d)}
+.wabtn{background:var(--d);color:var(--v);padding:0.88rem 2.4rem;border:none;font-family:'Jost',sans-serif;font-size:0.73rem;letter-spacing:0.13em;text-transform:uppercase;cursor:pointer;font-weight:500;transition:all 0.3s}
+.wabtn:hover{background:var(--d2)}
+footer{background:var(--darker);padding:1.4rem 4rem;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(201,168,76,0.08)}
+.flogo{font-family:'Cormorant Garamond',serif;font-size:0.95rem;color:rgba(201,168,76,0.4)}
+.fcopy{font-size:0.62rem;color:rgba(255,255,255,0.18);letter-spacing:0.04em}
+.wa-float{position:fixed;bottom:2rem;right:2rem;z-index:400;background:#25d366;width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 20px rgba(37,211,102,0.4);transition:all 0.3s;font-size:1.4rem;text-decoration:none}
+.wa-float:hover{transform:scale(1.1);box-shadow:0 6px 28px rgba(37,211,102,0.5)}
+@media(max-width:900px){
+  nav{padding:0.75rem 1.2rem}.nlinks{display:none}
+  .hero{grid-template-columns:1fr;padding:5rem 1.5rem 3rem}.hero-right{display:none}
+  section{padding:3rem 1.5rem}
+  .sgrid,.egrid,.solar-grid,.cgrid,.pgrid,.sobre-grid,.comp-grid,.info-cards{grid-template-columns:1fr}
+  .kpi-grid{grid-template-columns:repeat(5,1fr)}
+  .trow{grid-template-columns:1fr;gap:0.5rem}.tfecha{text-align:left}
+  .plan-grid{grid-template-columns:1fr}
+  .ent-grid{grid-template-columns:repeat(3,1fr)}.tool-grid{grid-template-columns:repeat(3,1fr)}
+  footer{flex-direction:column;gap:0.6rem;padding:1.4rem;text-align:center}
+  .entidades{padding:2rem 1.5rem}.faq-section{padding:3rem 1.5rem}
+}
+</style>
+</head>
+<body>
+
+<a class="wa-float" href="https://wa.me/573205575139?text=Hola%20Angie%2C%20me%20interesa%20una%20asesor%C3%ADa%20con%20%C3%93ptima" target="_blank" title="WhatsApp">💬</a>
+
+<nav>
+  <div class="nl" onclick="g('inicio')"><span>Óptima</span> by Angie Céspedes</div>
+  <ul class="nlinks">
+    <li><a onclick="g('servicios')">Servicios</a></li>
+    <li><a onclick="g('energia')">Solar</a></li>
+    <li><a onclick="g('planeacion')">Planeación</a></li>
+    <li><a onclick="g('pensiones')">Pensiones</a></li>
+    <li><a onclick="g('calculadoras')">Calculadoras</a></li>
+    <li><a onclick="g('portafolio')">Portafolio</a></li>
+    <li><a onclick="g('contacto')">Contacto</a></li>
+  </ul>
+  <button class="ncta" onclick="g('contacto')">Agenda tu asesoría</button>
+</nav>
+
+<div class="ticker"><div class="ticker-inner">
+  <span class="ti-item"><span class="ti-label">TRM</span><span class="ti-val" id="trm">$4.258</span></span>
+  <span class="ti-item"><span class="ti-label">Smmlv 2026</span><span class="ti-val">$1.750.905</span></span>
+  <span class="ti-item"><span class="ti-label">UVT 2026</span><span class="ti-val">$52.374</span></span>
+  <span class="ti-item"><span class="ti-label">Aux. Transporte</span><span class="ti-val">$249.095</span></span>
+  <span class="ti-item"><span class="ti-label">IPC 2025</span><span class="ti-val">5,10%</span></span>
+  <span class="ti-item"><span class="ti-label">Renta jurídicas</span><span class="ti-val">35%</span></span>
+  <span class="ti-item"><span class="ti-label">IVA general</span><span class="ti-val">19%</span></span>
+  <span class="ti-item"><span class="ti-label">Sanción mínima</span><span class="ti-val">$524.000</span></span>
+  <span class="ti-item"><span class="ti-label">Mora DIAN</span><span class="ti-val">22,36% EA</span></span>
+  <span class="ti-item"><span class="ti-label">Pensión mujeres</span><span class="ti-val">1.275 sem / 57 años</span></span>
+  <span class="ti-item"><span class="ti-label">Pensión hombres</span><span class="ti-val">1.300 sem / 62 años</span></span>
+  <span class="live-dot"></span>
+</div></div>
+
+<section class="hero" id="inicio">
+  <div class="ht">
+    <p class="hey">Contadora Pública · Asesora Tributaria · Pensional · Energía Solar</p>
+    <h1 class="htitle">Tu empresa,<br><em>gestionada con precisión</em></h1>
+    <p class="hsub">Asesoría contable, financiera, tributaria, pensional y evaluación de proyectos de energía solar. Magíster en Contabilidad y Tributación — Universidad Externado de Colombia. Asesoría presencial en Boyacá o virtual para todo Colombia.</p>
+    <div class="htags">
+      <span class="htag">NIIF · Estados Financieros</span>
+      <span class="htag">Energía Solar · Ley 1715/2099</span>
+      <span class="htag">Planeación Tributaria</span>
+      <span class="htag">Pensiones · Colpensiones vs. Fondos</span>
+      <span class="htag">Creación de Empresas</span>
+      <span class="htag">Presencial Boyacá · Virtual Colombia</span>
+    </div>
+    <div class="hbtns">
+      <button class="bp" onclick="g('servicios')">Ver servicios</button>
+      <button class="bo" onclick="g('planeacion')">Optimiza tus impuestos</button>
+    </div>
+    <div class="hstats">
+      <div class="hst"><span class="hst-num">6+</span><span class="hst-lbl">Años de experiencia</span></div>
+      <div class="hst"><span class="hst-num">Mg.</span><span class="hst-lbl">Externado Colombia</span></div>
+      <div class="hst"><span class="hst-num">100%</span><span class="hst-lbl">Presencial o virtual</span></div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hcard"><div class="hcard-tag">Trabajo de grado · Maestría Externado 2025</div><div class="hcard-main">"Evaluación del impacto de los beneficios tributarios en la adopción de sistemas de energía solar fotovoltaica en Colombia"</div><div class="hcard-sub">Metodología cualitativa · 6 expertos entrevistados · Ley 1715/2099</div></div>
+    <div class="hcard"><div class="hcard-tag">Ponente · III Congreso Internacional UAN 2022</div><div class="hcard-main">Beneficios tributarios sistemas energía solar en empresa Boyacense</div><div class="hcard-sub">Reconocimiento oficial Universidad Antonio Nariño · Duitama</div></div>
+    <div class="hcard"><div class="hcard-tag">Beneficios vigentes · Ley 1715/2014 mod. Ley 2099/2021</div><div class="hcard-main">Deducción renta 50% · IVA excluido · Sin aranceles · Dep. acelerada 33%/año</div><div class="hcard-sub">Vigencia 30 años desde 1 julio 2021 · Art. 14-1 Ley 2099 · Requiere certificación UPME</div></div>
+  </div>
+</section>
+
+<div class="kpi-strip">
+  <div style="font-size:0.58rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--d);margin-bottom:0.6rem">Cifras clave Colombia 2026</div>
+  <div class="kpi-grid">
+    <div class="kpi"><div class="kpi-lbl">Smmlv</div><div class="kpi-val">$1.750.905</div><div class="kpi-sub">Dec. 2343/2025</div></div>
+    <div class="kpi"><div class="kpi-lbl">UVT 2026</div><div class="kpi-val">$52.374</div><div class="kpi-sub">Res. 000187/2025</div></div>
+    <div class="kpi"><div class="kpi-lbl">Renta PJ</div><div class="kpi-val">35%</div><div class="kpi-sub">Art. 240 ET</div></div>
+    <div class="kpi"><div class="kpi-lbl">IVA</div><div class="kpi-val">19%</div><div class="kpi-sub">Art. 468 ET</div></div>
+    <div class="kpi"><div class="kpi-lbl">Sanción mín.</div><div class="kpi-val">$524.000</div><div class="kpi-sub">Art. 639 ET</div></div>
+    <div class="kpi"><div class="kpi-lbl">Reteiva</div><div class="kpi-val">15%</div><div class="kpi-sub">Art. 437-1 ET</div></div>
+    <div class="kpi"><div class="kpi-lbl">Pensión ♀</div><div class="kpi-val">57 años</div><div class="kpi-sub">1.275 sem · L.2381</div></div>
+    <div class="kpi"><div class="kpi-lbl">Pensión ♂</div><div class="kpi-val">62 años</div><div class="kpi-sub">1.300 sem · L.100</div></div>
+    <div class="kpi"><div class="kpi-lbl">IPC 2025</div><div class="kpi-val">5,10%</div><div class="kpi-sub">DANE</div></div>
+    <div class="kpi"><div class="kpi-lbl">Mora DIAN</div><div class="kpi-val">22,36%</div><div class="kpi-sub">EA ene 2026</div></div>
+  </div>
+</div>
+
+<section class="entidades" id="entidades">
+  <div class="stag" style="color:rgba(201,168,76,0.7)"><span>Entidades que manejo</span></div>
+  <h2 class="stitle w">Entidades <em>gubernamentales</em> y plataformas</h2>
+  <div class="ent-grid">
+    <div class="ent-card"><div class="ent-icon">🏛</div><div class="ent-name">DIAN</div><div class="ent-desc">Declaraciones, RUT, MUISCA, facturación electrónica, devoluciones</div></div>
+    <div class="ent-card"><div class="ent-icon">👁</div><div class="ent-name">UGPP</div><div class="ent-desc">Fiscalización aportes, IBC independientes, nómina electrónica</div></div>
+    <div class="ent-card"><div class="ent-icon">🏢</div><div class="ent-name">Cámara de Comercio</div><div class="ent-desc">Constitución, renovación matrícula, certificados, RUES</div></div>
+    <div class="ent-card"><div class="ent-icon">📋</div><div class="ent-name">SECOP I y II</div><div class="ent-desc">Contratación estatal, licitaciones, propuestas técnicas</div></div>
+    <div class="ent-card"><div class="ent-icon">🔍</div><div class="ent-name">Supersociedades</div><div class="ent-desc">Estados financieros, SAGRILAFT, informes de gestión</div></div>
+    <div class="ent-card"><div class="ent-icon">📑</div><div class="ent-name">RUP</div><div class="ent-desc">Registro Único de Proponentes · Clasificación UNSPSC</div></div>
+    <div class="ent-card"><div class="ent-icon">🏙</div><div class="ent-name">Alcaldías</div><div class="ent-desc">Impuesto industria y comercio, predial, vehículos</div></div>
+    <div class="ent-card"><div class="ent-icon">⚡</div><div class="ent-name">UPME</div><div class="ent-desc">Certificación FNCE · requisito para beneficios Ley 1715/2099</div></div>
+    <div class="ent-card"><div class="ent-icon">🧓</div><div class="ent-name">Colpensiones</div><div class="ent-desc">RPM, bono pensional, BEPS, historia laboral, traslado</div></div>
+    <div class="ent-card"><div class="ent-icon">🏦</div><div class="ent-name">Fondos Privados</div><div class="ent-desc">RAIS: Porvenir, Protección, Colfondos, Old Mutual</div></div>
+    <div class="ent-card"><div class="ent-icon">🦺</div><div class="ent-name">ARL</div><div class="ent-desc">Positiva, SURA, Colmena · riesgos laborales, cotización</div></div>
+    <div class="ent-card"><div class="ent-icon">💳</div><div class="ent-name">PILA</div><div class="ent-desc">Planilla Integrada Liquidación Aportes · independientes y dependientes</div></div>
+    <div class="ent-card"><div class="ent-icon">🌿</div><div class="ent-name">CAR</div><div class="ent-desc">Certificación inversiones ambientales · descuento Art. 255 ET</div></div>
+    <div class="ent-card"><div class="ent-icon">🔬</div><div class="ent-name">Minciencias</div><div class="ent-desc">Certificación I+D+i · descuento tributario Art. 256 ET</div></div>
+    <div class="ent-card"><div class="ent-icon">🏭</div><div class="ent-name">MinComercio</div><div class="ent-desc">Zonas francas, licencias importación, registro exportadores</div></div>
+    <div class="ent-card"><div class="ent-icon">🎓</div><div class="ent-name">SENA · Fondo Emprender</div><div class="ent-desc">Formulación proyectos, financiación, aval emprendimiento</div></div>
+    <div class="ent-card"><div class="ent-icon">📊</div><div class="ent-name">DANE</div><div class="ent-desc">IPC, PIB, estadísticas económicas, encuestas sectoriales</div></div>
+    <div class="ent-card"><div class="ent-icon">🏛</div><div class="ent-name">Banco de la República</div><div class="ent-desc">TRM, tasas interés, DTF, IBR, política monetaria</div></div>
+    <div class="ent-card"><div class="ent-icon">⚖</div><div class="ent-name">SIC</div><div class="ent-desc">Protección datos, marcas, habeas data, propiedad industrial</div></div>
+    <div class="ent-card"><div class="ent-icon">🌱</div><div class="ent-name">XM / CREG / IPSE</div><div class="ent-desc">Mercado energía eléctrica, tarifas, autogeneración solar</div></div>
+  </div>
+  <div style="font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(201,168,76,0.5);margin-top:2rem;margin-bottom:0.8rem">Herramientas tecnológicas y sistemas contables</div>
+  <div class="tool-grid">
+    <div class="tool-pill"><div class="tool-name">Power BI</div><div class="tool-cat">Análisis datos</div></div>
+    <div class="tool-pill"><div class="tool-name">Siigo</div><div class="tool-cat">Sistema contable</div></div>
+    <div class="tool-pill"><div class="tool-name">World Office</div><div class="tool-cat">Sistema contable</div></div>
+    <div class="tool-pill"><div class="tool-name">Helisa</div><div class="tool-cat">Sistema contable</div></div>
+    <div class="tool-pill"><div class="tool-name">CONTPAQi</div><div class="tool-cat">Sistema contable</div></div>
+    <div class="tool-pill"><div class="tool-name">Excel Avanzado</div><div class="tool-cat">Macros · Tablas dinámicas</div></div>
+    <div class="tool-pill"><div class="tool-name">Google Sheets</div><div class="tool-cat">Informes en línea</div></div>
+    <div class="tool-pill"><div class="tool-name">ClickUp</div><div class="tool-cat">Gestión proyectos</div></div>
+    <div class="tool-pill"><div class="tool-name">MUISCA · DIAN</div><div class="tool-cat">Plataforma fiscal</div></div>
+    <div class="tool-pill"><div class="tool-name">Nómina electrónica</div><div class="tool-cat">UGPP · DIAN</div></div>
+    <div class="tool-pill"><div class="tool-name">Facturación electrónica</div><div class="tool-cat">DIAN · Operadores</div></div>
+    <div class="tool-pill"><div class="tool-name">IA aplicada a finanzas</div><div class="tool-cat">Automatización</div></div>
+  </div>
+</section>
+
+<section id="servicios" style="background:var(--cr)">
+  <div class="stag">Lo que ofrezco</div>
+  <h2 class="stitle">Servicios <em>especializados</em></h2>
+  <div class="srv-modes" style="margin-top:0.8rem">
+    <span class="srv-mode">Asesoría presencial en Boyacá</span>
+    <span class="srv-mode">Virtual para todo Colombia</span>
+    <span class="srv-mode">Todos los sectores económicos</span>
+  </div>
+  <div class="sgrid" style="margin-top:1rem">
+    <div class="sc"><div class="sc-num">01</div><div class="sc-line"></div><div class="sc-title">Asesoría Contable · NIIF</div><p class="sc-desc">Estados financieros bajo NIIF Pymes y Estándar Pleno. Registro contable, análisis de costos. Siigo, World Office, Helisa. Todos los sectores.</p></div>
+    <div class="sc"><div class="sc-num">02</div><div class="sc-line"></div><div class="sc-title">Planeación Tributaria</div><p class="sc-desc">Optimización fiscal legal. Estrategias PN y PJ usando todos los beneficios del ET. Deducciones, rentas exentas, descuentos, Ley 1715/2099.</p></div>
+    <div class="sc"><div class="sc-badge">Destacado</div><div class="sc-num">03</div><div class="sc-line"></div><div class="sc-title">Energía Solar · Ley 1715/2099</div><p class="sc-desc">Evaluación financiera proyectos solares. Deducción renta 50%, IVA excluido, exención aranceles, depreciación acelerada. Certificación UPME.</p></div>
+    <div class="sc"><div class="sc-num">04</div><div class="sc-line"></div><div class="sc-title">Asesoría Pensional</div><p class="sc-desc">Cálculo semanas cotizadas y proyección pensión. Comparativo RPM vs. RAIS. Traslado de régimen. Pensión anticipada. Ley 2381/2024.</p><div class="sc-items"><div class="sc-item">¿Cuándo me pensiono? — semanas y edad</div><div class="sc-item">Colpensiones vs. fondo privado</div><div class="sc-item">BEPS · indemnización sustitutiva · traslado</div></div></div>
+    <div class="sc"><div class="sc-num">05</div><div class="sc-line"></div><div class="sc-title">Creación de Empresas</div><p class="sc-desc">Constitución SAS, LTDA, SA, EU. Cámara de Comercio, RUT, estructura financiera inicial. Clasificación Mipyme Decreto 957/2019.</p></div>
+    <div class="sc"><div class="sc-num">06</div><div class="sc-line"></div><div class="sc-title">Nómina · Seguridad Social</div><p class="sc-desc">Liquidación nómina, PILA, seguridad social, parafiscales. SG-SST. Jornada reducida 2026 Ley 2101/2021. Dependientes e independientes.</p></div>
+    <div class="sc"><div class="sc-num">07</div><div class="sc-line"></div><div class="sc-title">Gestión Financiera</div><p class="sc-desc">Presupuestos, flujo de caja, tesorería, Power BI. Evaluación inversiones: CDT, negocios, proyectos solares. TIR, VPN, payback.</p></div>
+    <div class="sc"><div class="sc-num">08</div><div class="sc-line"></div><div class="sc-title">Licitaciones · SECOP</div><p class="sc-desc">Acompañamiento contratación estatal, RUP, propuestas técnicas. Fondo Emprender, formulación y legalización de proyectos.</p></div>
+    <div class="sc"><div class="sc-num">09</div><div class="sc-line"></div><div class="sc-title">Reportes · Control Interno</div><p class="sc-desc">Supersociedades, revisoría fiscal, auditoría, SAGRILAFT, informes de gestión, control interno, cumplimiento normativo DIAN/UGPP.</p></div>
+  </div>
+</section>
+
+<section class="energia" id="energia">
+  <div class="stag" style="color:rgba(201,168,76,0.7)">Especialidad diferenciadora</div>
+  <h2 class="stitle w">Transición <em>Energética</em></h2>
+  <div class="egrid">
+    <div>
+      <p class="edesc">Contadora especializada en proyectos de energía solar con investigación de maestría (Universidad Externado de Colombia) sobre el impacto de los beneficios tributarios de la Ley 1715/2014 modificada por la Ley 2099/2021. Trabajo actualmente en el sector de energías renovables en Boyacá.</p>
+      <div class="efeats">
+        <div class="efeat"><div class="ficon">☀</div><div><div class="ftit2">Evaluación financiera proyectos solares</div><div class="fdesc2">TIR, VPN, payback e impacto tributario real por Ley 1715/2099</div></div></div>
+        <div class="efeat"><div class="ficon">📋</div><div><div class="ftit2">Certificación UPME · Trámite ante DIAN</div><div class="fdesc2">Acompañamiento completo — requisito previo obligatorio</div></div></div>
+        <div class="efeat"><div class="ficon">⚡</div><div><div class="ftit2">Depreciación acelerada · Previa comunicación DIAN</div><div class="fdesc2">Máx. 33%/año · Art. 14 Ley 1715 mod. Art. 11 Ley 2099</div></div></div>
+        <div class="efeat"><div class="ficon">🏢</div><div><div class="ftit2">Estructuración empresas sector solar</div><div class="fdesc2">Modelo fiscal óptimo para empresas FNCE y autogeneración</div></div></div>
+      </div>
+    </div>
+    <div>
+      <div class="ley-box">
+        <div class="ley-header">Beneficios Ley 1715/2014 · Ley 2099/2021<span class="ley-vigencia">30 años · desde 1 jul 2021</span></div>
+        <div class="ley-row"><div class="ley-beneficio">① Deducción especial del 50% en renta</div><div class="ley-norma">Art. 11 Ley 1715 · Art. 8 Ley 2099/2021 · Dec. 895/2022</div><div class="ley-detalle">50% de la inversión deducible en máximo 15 años. No puede superar el 50% de la renta líquida antes de la deducción.</div><div class="ley-req">⚠ Requiere certificación UPME previa</div></div>
+        <div class="ley-row"><div class="ley-beneficio">② Exclusión de IVA en equipos y servicios</div><div class="ley-norma">Art. 12 Ley 1715 · Art. 9 Ley 2099/2021</div><div class="ley-detalle">Equipos, materiales y servicios para proyectos FNCE excluidos del IVA (19%).</div><div class="ley-req">⚠ Requiere certificación UPME</div></div>
+        <div class="ley-row"><div class="ley-beneficio">③ Exención derechos arancelarios</div><div class="ley-norma">Art. 13 Ley 1715 · Art. 10 Ley 2099/2021</div><div class="ley-detalle">Exención aranceles importación de maquinaria y equipos para proyectos FNCE.</div><div class="ley-req">⚠ Requiere certificación UPME + licencia MinComercio</div></div>
+        <div class="ley-row"><div class="ley-beneficio">④ Depreciación acelerada de activos</div><div class="ley-norma">Art. 14 Ley 1715 · Art. 11 Ley 2099/2021</div><div class="ley-detalle">Tasa máxima 33.33%/año. Previa comunicación a la DIAN. Mínimo 2 años.</div><div class="ley-req">⚠ Previa comunicación a la DIAN · Certificación UPME</div></div>
+        <div class="ley-row"><div class="ley-beneficio">⑤ Vigencia: 30 años desde 1 julio 2021</div><div class="ley-norma">Art. 14-1 adicionado por Art. 55 Ley 2099/2021</div><div class="ley-detalle">Todos los beneficios vigentes hasta el 1 de julio de 2051.</div></div>
+        <div class="ley-alerta">⚠ La <strong>certificación UPME</strong> es requisito previo OBLIGATORIO para acceder a todos los beneficios. Angie te acompaña en todo el proceso.</div>
+      </div>
+      <button class="bp" style="width:100%;margin-top:1rem;font-size:0.7rem" onclick="g('solar-calc')">Calcular mi impacto tributario solar →</button>
+    </div>
+  </div>
+</section>
+
+<section class="solar-calc" id="solar-calc">
+  <div class="stag">Herramienta gratuita</div>
+  <h2 class="stitle">Impacto <em>tributario real</em> · Inversión solar</h2>
+  <div class="solar-grid">
+    <div class="solar-form">
+      <div class="ftitle">Tus datos financieros</div>
+      <div class="info-box"><strong>Art. 11 Ley 1715 · Art. 8 Ley 2099/2021:</strong> Deducción 50% inversión de la renta líquida · Máx. 15 años · Requiere certificación UPME</div>
+      <label class="flabel">Tipo de contribuyente</label>
+      <select class="fselect" id="s-tipo" onchange="calcSolar()"><option value="0.35">Persona Jurídica — 35%</option><option value="0.15">Persona Natural — ~15%</option><option value="0.22">Persona Natural — ~22%</option><option value="0.28">Persona Natural — ~28%</option></select>
+      <label class="flabel">Renta líquida gravable anual $</label>
+      <input class="finput" type="number" id="s-renta" placeholder="Ej: 200.000.000" oninput="calcSolar()">
+      <label class="flabel">Inversión total sistema solar $</label>
+      <input class="finput" type="number" id="s-inv" placeholder="Ej: 80.000.000" oninput="calcSolar()">
+      <label class="flabel">Años para distribuir la deducción</label>
+      <select class="fselect" id="s-anos" onchange="calcSolar()"><option value="3">3 años</option><option value="5">5 años</option><option value="10">10 años</option><option value="15">15 años</option></select>
+      <label class="flabel">Consumo eléctrico mensual (kWh)</label>
+      <input class="finput" type="number" id="s-kwh" placeholder="Ej: 1200" oninput="calcSolar()">
+      <label class="flabel">Tarifa energía actual ($/kWh)</label>
+      <input class="finput" type="number" id="s-tarifa" placeholder="Ej: 750" oninput="calcSolar()">
+    </div>
+    <div class="solar-result">
+      <div class="res-label">Análisis tributario</div>
+      <div class="res-main" id="s-main">Ingresa tus datos</div>
+      <div class="res-rows">
+        <div class="res-row"><span class="rrl">Renta líquida gravable</span><span class="rrv" id="s-r1">$0</span></div>
+        <div class="res-row"><span class="rrl">Impuesto SIN inversión solar</span><span class="rrv" id="s-r2">$0</span></div>
+        <div class="res-row" style="border-top:1px solid rgba(201,168,76,0.2);padding-top:0.5rem"><span class="rrl" style="color:var(--d)">CON Ley 1715/2099:</span></div>
+        <div class="res-row"><span class="rrl">Deducción 50% anual (Art. 11)</span><span class="rrv gold" id="s-r3">$0</span></div>
+        <div class="res-row"><span class="rrl">Renta líquida después de deducción</span><span class="rrv" id="s-r4">$0</span></div>
+        <div class="res-row"><span class="rrl">Impuesto CON beneficio</span><span class="rrv" id="s-r5">$0</span></div>
+        <div class="res-row"><span class="rrl">Ahorro en impuesto de renta/año</span><span class="rrv gold" id="s-r6">$0</span></div>
+        <div class="res-row"><span class="rrl">Ahorro IVA equipos 19% (Art. 12)</span><span class="rrv gold" id="s-r7">$0</span></div>
+        <div class="res-row"><span class="rrl">Ahorro anual en energía eléctrica</span><span class="rrv gold" id="s-r8">$0</span></div>
+      </div>
+      <div style="background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.25);padding:0.8rem;margin-top:0.8rem;text-align:center">
+        <div class="res-label" style="margin-bottom:0.2rem">Ahorro total IVA + Renta (durante deducción)</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:2rem;color:var(--d)" id="s-total">$0</div>
+      </div>
+      <div class="res-note">Deducción del 50% no puede superar el 50% de la renta líquida en cada año. Requiere certificación UPME.</div>
+    </div>
+  </div>
+  <div id="solar-amort-box" style="display:none;margin-top:2rem;background:#fff;padding:2rem;border:1px solid var(--cr2)">
+    <div class="ftitle">Tabla de amortización — Deducción 50% Ley 1715</div>
+    <div class="info-box"><strong>Art. 11 Ley 1715 · Art. 8 Ley 2099/2021:</strong> El 50% de la inversión se distribuye en los años elegidos (máx. 15). En ningún año puede exceder el 50% de la renta líquida.</div>
+    <div style="overflow-x:auto"><table class="amort-table" id="solar-amort-table"><thead><tr><th>Año</th><th>Renta bruta</th><th>Deducción anual</th><th>Límite 50% renta</th><th>Deducción efectiva</th><th>Renta neta</th><th>Impuesto</th><th>Ahorro/año</th></tr></thead><tbody id="solar-amort-body"></tbody></table></div>
+  </div>
+</section>
+
+<section class="planeacion" id="planeacion">
+  <div class="stag">Optimiza tus impuestos</div>
+  <h2 class="stitle">Planeación <em>tributaria</em></h2>
+  <div class="plan-tabs">
+    <button class="plan-tab active" onclick="showPlan('pn',this)">Persona Natural</button>
+    <button class="plan-tab" onclick="showPlan('pj',this)">Persona Jurídica</button>
+  </div>
+
+  <div class="plan-panel active" id="plan-pn">
+    <div class="plan-intro">Como persona natural puedes reducir legalmente tu impuesto de renta usando los beneficios del Estatuto Tributario vigentes. La clave está en conocerlos y aplicarlos correctamente antes del vencimiento.</div>
+    <div class="plan-grid">
+      <div class="plan-card"><div class="plan-icon">👨‍👩‍👧</div><div class="plan-title">Dependientes económicos</div><div class="plan-norma">Art. 387 ET · Parágrafo 2 · Decreto 099/2013</div><div class="plan-desc">Deducción hasta 10% de ingresos brutos, máximo 32 UVT/mes por dependiente ($1.675.968/mes en 2026). <strong>Máximo 4 personas</strong>. Son dependientes: hijos menores de 18 años, hijos 18-23 años estudiando, hijos en situación de dependencia, cónyuge sin ingresos, padres o hermanos dependientes económicamente.</div><div class="plan-ejemplo"><strong>Ejemplo 4 dependientes:</strong> Máx. 4 × $1.675.968/mes limitado al 10% de ingresos brutos.</div><div class="plan-nota">Art. 387 Parágrafo 2: "El número máximo de personas reconocidas como dependientes son cuatro (4)."</div></div>
+      <div class="plan-card"><div class="plan-icon">🏠</div><div class="plan-title">Intereses crédito de vivienda</div><div class="plan-norma">Art. 119 ET · Circular DIAN 009/2007</div><div class="plan-desc">Intereses pagados en créditos hipotecarios para vivienda deducibles hasta 1.200 UVT anuales ($62.848.800 en 2026). Aplica para vivienda propia con crédito hipotecario o leasing habitacional en entidad financiera vigilada.</div><div class="plan-ejemplo"><strong>Ejemplo:</strong> Pagas $8M en intereses al año → los restas de tu renta líquida.</div></div>
+      <div class="plan-card"><div class="plan-icon">🏥</div><div class="plan-title">Medicina prepagada y seguros</div><div class="plan-norma">Art. 387 ET · Decreto 3256/2002</div><div class="plan-desc">Pagos por medicina prepagada y seguros de salud para el trabajador y dependientes deducibles hasta 16 UVT mensuales ($837.984/mes · $10.055.808/año en 2026).</div><div class="plan-ejemplo"><strong>Ejemplo:</strong> Pagas $700.000/mes en prepagada → deduces hasta $837.984/mes de tu base gravable.</div></div>
+      <div class="plan-card"><div class="plan-icon">📈</div><div class="plan-title">Aportes voluntarios AFC y AFP</div><div class="plan-norma">Art. 126-1 y Art. 126-4 ET · Ley 1943/2018</div><div class="plan-desc">Aportes voluntarios a AFP y cuentas AFC son rentas exentas hasta el 30% de los ingresos, máximo 3.800 UVT ($199.021.200 en 2026). AFC mínimo 10 años para no pagar impuesto al retirar.</div><div class="plan-ejemplo"><strong>Ejemplo:</strong> Ganas $10M/mes y aportas 10% a AFC → reduces $12M/año de tu base gravable.</div></div>
+      <div class="plan-card"><div class="plan-icon">💼</div><div class="plan-title">Renta exenta del 25%</div><div class="plan-norma">Art. 206 numeral 10 ET · Ley 2010/2019</div><div class="plan-desc">25% de los pagos laborales son renta exenta, límite 790 UVT anuales ($41.375.460 en 2026). El beneficio más importante para empleados y honorarios.</div><div class="plan-ejemplo"><strong>Ejemplo:</strong> $150M en ingresos laborales → $37.500.000 quedan exentos.</div></div>
+      <div class="plan-card"><div class="plan-icon">❤️</div><div class="plan-title">Donaciones certificadas</div><div class="plan-norma">Art. 125 ET · Art. 257 ET</div><div class="plan-desc">Donaciones a ESAL debidamente certificadas dan derecho a descuento tributario del 25% del valor donado. Máximo 25% del impuesto a cargo.</div><div class="plan-ejemplo"><strong>Ejemplo:</strong> Donas $10M → descuentas $2.500.000 directamente del impuesto.</div></div>
+      <div class="plan-card"><div class="plan-icon">☀</div><div class="plan-title">Inversión en energía solar · 50%</div><div class="plan-norma">Art. 11 Ley 1715 · Art. 8 Ley 2099/2021 · Dec. 895/2022</div><div class="plan-desc">Como PN declarante de renta, puedes deducir el 50% de la inversión solar de tu renta líquida en máximo 15 años. El valor no puede superar el 50% de la renta líquida en cada año.</div><div class="plan-ejemplo"><strong>Ejemplo:</strong> Inviertes $30M → deduces hasta $15M/año de tu renta líquida.</div><div class="plan-nota">Requiere certificación UPME previa. Angie te acompaña en todo el proceso.</div></div>
+      <div class="plan-card" style="grid-column:1/-1">
+        <div class="plan-icon">📊</div>
+        <div class="plan-title">Calculadora de ahorro tributario — Persona Natural</div>
+        <div class="plan-norma">Múltiples artículos ET · Estimación orientativa</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:1rem">
+          <div>
+            <label class="flabel">Ingresos laborales anuales $</label>
+            <input class="finput" type="number" id="pn-ing" placeholder="Ej: 120.000.000" oninput="calcPN()">
+            <label class="flabel">Dependientes económicos (máx. 4 · Art. 387 Pár. 2)</label>
+            <select class="fselect" id="pn-dep" onchange="calcPN()">
+              <option value="0">Ninguno</option><option value="1">1 dependiente</option>
+              <option value="2">2 dependientes</option><option value="3">3 dependientes</option><option value="4">4 dependientes</option>
+            </select>
+            <label class="flabel">Intereses crédito vivienda al año $</label>
+            <input class="finput" type="number" id="pn-viv" placeholder="Ej: 8.000.000" oninput="calcPN()">
+            <label class="flabel">Aportes voluntarios AFC/AFP al año $</label>
+            <input class="finput" type="number" id="pn-afc" placeholder="Ej: 6.000.000" oninput="calcPN()">
+            <label class="flabel">Medicina prepagada al año $</label>
+            <input class="finput" type="number" id="pn-med" placeholder="Ej: 4.000.000" oninput="calcPN()">
+            <label class="flabel">Inversión solar (Art. 11 L.1715 — 50% se deduce) $</label>
+            <input class="finput" type="number" id="pn-solar" placeholder="Ej: 20.000.000" oninput="calcPN()">
+            <label class="flabel">Donaciones certificadas $</label>
+            <input class="finput" type="number" id="pn-don" placeholder="Ej: 5.000.000" oninput="calcPN()">
+          </div>
+          <div id="pn-result" style="background:var(--v);padding:1.5rem">
+            <div class="res-label">Estimado ahorro tributario</div>
+            <div class="res-main" id="pn-ahorro" style="font-size:1.6rem">Ingresa datos</div>
+            <div class="res-rows">
+              <div class="res-row"><span class="rrl">Ingresos anuales</span><span class="rrv" id="pn-r0">$0</span></div>
+              <div class="res-row"><span class="rrl">Impuesto sin beneficios</span><span class="rrv" id="pn-sin">$0</span></div>
+              <div class="res-row"><span class="rrl">(-) Renta exenta 25% (Art.206)</span><span class="rrv gold" id="pn-e1">$0</span></div>
+              <div class="res-row"><span class="rrl">(-) Dependientes — máx. 4 (Art.387)</span><span class="rrv gold" id="pn-e2">$0</span></div>
+              <div class="res-row"><span class="rrl">(-) Vivienda (Art.119 ET)</span><span class="rrv gold" id="pn-e3">$0</span></div>
+              <div class="res-row"><span class="rrl">(-) AFC/AFP (Art.126-1/4)</span><span class="rrv gold" id="pn-e4">$0</span></div>
+              <div class="res-row"><span class="rrl">(-) Medicina prepagada (Art.387)</span><span class="rrv gold" id="pn-e5">$0</span></div>
+              <div class="res-row"><span class="rrl">(-) Solar 50% (Art.11 L.1715)</span><span class="rrv gold" id="pn-e6">$0</span></div>
+              <div class="res-row"><span class="rrl">(-) Donaciones 25% (Art.257)</span><span class="rrv gold" id="pn-e7">$0</span></div>
+              <div class="res-row"><span class="rrl">Impuesto con beneficios</span><span class="rrv" id="pn-con">$0</span></div>
+              <div class="res-row" style="border:none;padding-top:0.5rem"><span class="rrl" style="color:var(--d)">AHORRO ESTIMADO</span><span class="rrv gold" id="pn-dif">$0</span></div>
+            </div>
+            <div class="res-note">Estimado orientativo. Angie realiza la planeación completa con tus datos reales.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="plan-panel" id="plan-pj">
+    <div class="plan-intro">Las empresas tienen múltiples herramientas legales para optimizar su carga tributaria. Una buena planeación fiscal puede representar ahorros significativos que se convierten en mayor competitividad y flujo de caja.</div>
+    <div class="plan-grid">
+      <div class="plan-card"><div class="plan-icon">👥</div><div class="plan-title">Exoneración aportes nómina</div><div class="plan-norma">Art. 114-1 ET · Ley 1607/2012</div><div class="plan-desc">Sociedades declarantes de renta exoneradas de salud (8.5%), SENA (2%) e ICBF (3%) por trabajadores con salario menor a 10 smmlv ($17.509.050). Ahorro del 13.5% por empleado.</div><div class="plan-ejemplo"><strong>5 empleados smmlv:</strong> $1.750.905 × 0.135 × 5 × 12 = $14.182.331/año</div></div>
+      <div class="plan-card"><div class="plan-icon">☀</div><div class="plan-title">Beneficios energía solar</div><div class="plan-norma">Arts. 11-14 Ley 1715 · Arts. 8-11 Ley 2099/2021</div><div class="plan-desc">Deducción 50% renta, IVA excluido 19%, exención aranceles, depreciación acelerada 33%/año. Vigentes 30 años desde jul 2021.</div><div class="plan-ejemplo"><strong>$200M inversión:</strong> Deduce $100M de renta + ahorra $38M en IVA.</div></div>
+      <div class="plan-card"><div class="plan-icon">🔬</div><div class="plan-title">Descuento inversión I+D+i</div><div class="plan-norma">Art. 256 ET · Minciencias</div><div class="plan-desc">Descuento del 25% de inversiones certificadas por Minciencias. Máximo 25% del impuesto a cargo.</div><div class="plan-ejemplo"><strong>Ejemplo:</strong> $50M en I+D certificado → descuenta $12.500.000 del impuesto.</div></div>
+      <div class="plan-card"><div class="plan-icon">❤️</div><div class="plan-title">Donaciones certificadas</div><div class="plan-norma">Art. 257 ET · Art. 125 ET</div><div class="plan-desc">Donaciones a ESAL certificadas generan descuento tributario del 25%. Máximo el 25% del impuesto neto a cargo.</div><div class="plan-ejemplo"><strong>Ejemplo:</strong> Dona $20M → descuenta $5.000.000 del impuesto.</div></div>
+      <div class="plan-card"><div class="plan-icon">🌟</div><div class="plan-title">Economía Naranja · 7 años</div><div class="plan-norma">Art. 235-2 ET · Ley 1834/2017</div><div class="plan-desc">Empresas creativas (software, diseño, cine, medios) exención de renta por 7 años si se constituyen antes del 31 dic 2027.</div><div class="plan-ejemplo"><strong>Empresa software 2025:</strong> Exenta de renta 7 años cumpliendo requisitos.</div></div>
+      <div class="plan-card"><div class="plan-icon">🌱</div><div class="plan-title">Inversiones medio ambiente</div><div class="plan-norma">Art. 255 ET · CAR regional</div><div class="plan-desc">Descuento tributario del 25% de inversiones en control ambiental certificadas por las CAR.</div><div class="plan-ejemplo"><strong>Ejemplo:</strong> $40M certificados → descuenta $10.000.000 del impuesto.</div></div>
+      <div class="plan-card" style="grid-column:1/-1">
+        <div class="plan-icon">📊</div>
+        <div class="plan-title">Calculadora + Tabla de amortización solar — Persona Jurídica</div>
+        <div class="plan-norma">Art. 114-1 ET · Art. 11 Ley 1715 · Art. 8 Ley 2099/2021 · Estimación orientativa</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:1rem">
+          <div>
+            <label class="flabel">Renta líquida gravable empresa $</label>
+            <input class="finput" type="number" id="pj-renta" placeholder="Ej: 500.000.000" oninput="calcPJ()">
+            <label class="flabel">N° empleados con salario &lt; 10 smmlv</label>
+            <input class="finput" type="number" id="pj-emp" placeholder="Ej: 10" oninput="calcPJ()">
+            <label class="flabel">Inversión solar (deducción 50% — Art. 11 Ley 1715) $</label>
+            <input class="finput" type="number" id="pj-solar" placeholder="Ej: 200.000.000" oninput="calcPJ()">
+            <label class="flabel">Años para distribuir la deducción solar</label>
+            <select class="fselect" id="pj-años" onchange="calcPJ()"><option value="3">3 años</option><option value="5">5 años</option><option value="10">10 años</option><option value="15">15 años</option></select>
+            <label class="flabel">Donaciones certificadas $</label>
+            <input class="finput" type="number" id="pj-don" placeholder="Ej: 10.000.000" oninput="calcPJ()">
+            <label class="flabel">Inversión I+D+i certificada Minciencias $</label>
+            <input class="finput" type="number" id="pj-idi" placeholder="Ej: 50.000.000" oninput="calcPJ()">
+          </div>
+          <div style="background:var(--v);padding:1.5rem">
+            <div class="res-label">Estimado ahorro tributario empresa</div>
+            <div class="res-main" id="pj-ahorro" style="font-size:1.6rem">Ingresa datos</div>
+            <div class="res-rows">
+              <div class="res-row"><span class="rrl">Impuesto sin beneficios (35%)</span><span class="rrv" id="pj-sin">$0</span></div>
+              <div class="res-row"><span class="rrl">Ahorro exoneración nómina/año</span><span class="rrv gold" id="pj-nom">$0</span></div>
+              <div class="res-row"><span class="rrl">Ahorro deducción solar/año</span><span class="rrv gold" id="pj-sol">$0</span></div>
+              <div class="res-row"><span class="rrl">Ahorro IVA solar (Art.12 L.1715)</span><span class="rrv gold" id="pj-iva">$0</span></div>
+              <div class="res-row"><span class="rrl">Descuento donaciones (Art.257)</span><span class="rrv gold" id="pj-don2">$0</span></div>
+              <div class="res-row"><span class="rrl">Descuento I+D+i (Art.256)</span><span class="rrv gold" id="pj-idi2">$0</span></div>
+              <div class="res-row" style="border:none;padding-top:0.5rem"><span class="rrl" style="color:var(--d)">AHORRO TOTAL ESTIMADO</span><span class="rrv gold" id="pj-tot">$0</span></div>
+            </div>
+            <div class="res-note">Estimado orientativo. Angie realiza la planeación fiscal completa.</div>
+          </div>
+        </div>
+        <div id="pj-amort-box" style="display:none;margin-top:1.5rem">
+          <div class="ftitle">Tabla de amortización deducción solar — Persona Jurídica</div>
+          <div class="info-box"><strong>Art. 11 Ley 1715 · Art. 8 Ley 2099:</strong> El 50% de la inversión ($<span id="pj-inv-label">0</span>) se distribuye en <span id="pj-anos-label">—</span> años. No puede exceder el 50% de la renta líquida en ningún año.</div>
+          <div style="overflow-x:auto"><table class="amort-table" id="pj-amort-table"><thead><tr><th>Año</th><th>Deducción anual</th><th>Límite 50% renta</th><th>Deducción efectiva</th><th>Renta neta</th><th>Impuesto (35%)</th><th>Ahorro/año</th><th>Acumulado</th></tr></thead><tbody id="pj-amort-body"></tbody></table></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="calculadoras" id="calculadoras">
+  <div class="stag">Herramientas gratuitas</div>
+  <h2 class="stitle">Calculadoras <em>financieras y tributarias</em></h2>
+  <div class="info-box"><strong>UVT 2026: $52.374</strong> · Smmlv: $1.750.905 · Sanción mínima: $524.000 (10 UVT) · Mora DIAN: 22.36% EA · IVA: 19%</div>
+  <div class="ctabs">
+    <button class="ctab active" onclick="showC('iva',this)">IVA y Retención</button>
+    <button class="ctab" onclick="showC('nomina',this)">Nómina · Contratista</button>
+    <button class="ctab" onclick="showC('inversion',this)">CDT vs. Negocio</button>
+    <button class="ctab" onclick="showC('empresa',this)">Crear Empresa</button>
+    <button class="ctab" onclick="showC('mora',this)">Mora Tributaria</button>
+    <button class="ctab" onclick="showC('calendario',this)">Calendario DIAN</button>
+    <button class="ctab" onclick="showC('ahorro',this)">Ahorro Energético</button>
+  </div>
+
+  <div class="cpanel active" id="calc-iva">
+    <div class="cgrid">
+      <div>
+        <div class="ctitle">Liquidador IVA · Retención · Reteiva 2026</div>
+        <label class="flabel">Valor de la operación $</label>
+        <input class="finput" type="number" id="iv-base" placeholder="Ej: 5.000.000" oninput="calcIva()">
+        <label class="flabel">¿El IVA está incluido en el precio?</label>
+        <select class="fselect" id="iv-inc" onchange="calcIva()"><option value="0">No — se suma al valor</option><option value="1">Sí — ya incluido</option></select>
+        <label class="flabel">Tarifa IVA aplicable</label>
+        <select class="fselect" id="iv-tiva" onchange="calcIva()"><option value="0.19">19% — Tarifa general</option><option value="0.05">5% — Bienes específicos</option><option value="0">0% — Excluido o exento</option></select>
+        <label class="flabel">Tipo de retención en la fuente</label>
+        <select class="fselect" id="iv-rte" onchange="calcIva()">
+          <option value="0.025|524000|compras">2.5% — Compras (obligado declarar · base mín. $524.000)</option>
+          <option value="0.035|524000|compras">3.5% — Compras (no obligado · base mín. $524.000)</option>
+          <option value="0.04|104748|servicios">4% — Servicios generales (base mín. $104.748)</option>
+          <option value="0.035|524000|arrendamiento">3.5% — Arrendamiento bienes raíces</option>
+          <option value="0.11|0|honorarios">11% — Honorarios (persona jurídica)</option>
+          <option value="0.10|0|honorarios">10% — Honorarios (persona natural)</option>
+          <option value="0.02|104748|aiu">2% — AIU aseo/vigilancia</option>
+          <option value="0.01|524000|inmueble">1% — Venta bienes raíces vivienda ≤10.000 UVT</option>
+          <option value="0|0|ninguna">0% — No aplica retención</option>
+        </select>
+        <label class="flabel">Reteiva (% del IVA)</label>
+        <select class="fselect" id="iv-rteiva" onchange="calcIva()"><option value="0.15">15% — Residentes (Art. 437-1 ET)</option><option value="1.0">100% — No residentes / exterior</option><option value="0">0% — No aplica</option></select>
+        <label class="flabel">Reteica (por mil — según municipio)</label>
+        <input class="finput" type="number" id="iv-ica" placeholder="Ej: 4.14 (Bogotá comercio)" oninput="calcIva()">
+      </div>
+      <div class="cresult">
+        <div class="res-label">Liquidación completa</div>
+        <div class="res-main" id="iv-total">$0</div>
+        <div class="res-rows">
+          <div class="res-row"><span class="rrl">Base gravable</span><span class="rrv" id="iv-r1">$0</span></div>
+          <div class="res-row"><span class="rrl">IVA</span><span class="rrv" id="iv-r2">$0</span></div>
+          <div class="res-row"><span class="rrl">Subtotal con IVA</span><span class="rrv" id="iv-r3">$0</span></div>
+          <div class="res-row"><span class="rrl">(-) Retención en la Fuente</span><span class="rrv" id="iv-r4">$0</span></div>
+          <div class="res-row"><span class="rrl">(-) Reteiva</span><span class="rrv" id="iv-r5">$0</span></div>
+          <div class="res-row"><span class="rrl">(-) Reteica</span><span class="rrv" id="iv-r6">$0</span></div>
+          <div class="res-row" style="border:none"><span class="rrl" style="color:var(--d)">Valor neto a pagar</span><span class="rrv gold" id="iv-r7">$0</span></div>
+        </div>
+        <div id="iv-alert" class="warn-box" style="display:none;margin-top:0.8rem"></div>
+        <table class="rte-mini">
+          <tr><th>Concepto</th><th>Tarifa</th><th>Base mín.</th></tr>
+          <tr><td>Compras (obligado declarar)</td><td>2.5%</td><td>$524.000</td></tr>
+          <tr><td>Compras (no obligado)</td><td>3.5%</td><td>$524.000</td></tr>
+          <tr><td>Servicios generales</td><td>4%</td><td>$104.748</td></tr>
+          <tr><td>Honorarios (PJ)</td><td>11%</td><td>Cualquier valor</td></tr>
+          <tr><td>Honorarios (PN)</td><td>10%</td><td>Cualquier valor</td></tr>
+          <tr class="hl"><td>Reteiva residentes</td><td>15% del IVA</td><td>—</td></tr>
+          <tr class="hl"><td>Reteiva no residentes</td><td>100% del IVA</td><td>—</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="cpanel" id="calc-nomina">
+    <div class="ctitle">Nómina dependiente · Contratista Independiente 2026</div>
+    <div style="display:flex;gap:0;border-bottom:2px solid var(--d);margin-bottom:1.5rem">
+      <button class="ctab active" id="nom-tab-dep" onclick="showNom('dep')" style="border-bottom:2px solid var(--v);margin-bottom:-2px">Empleado dependiente</button>
+      <button class="ctab" id="nom-tab-ind" onclick="showNom('ind')" style="margin-bottom:-2px">Contratista independiente</button>
+    </div>
+    <div id="nom-dep">
+      <div class="cgrid">
+        <div>
+          <label class="flabel">Salario mensual $</label>
+          <input class="finput" type="number" id="nom-sal" placeholder="Mín $1.750.905" oninput="calcNom()">
+          <label class="flabel">Días laborados en el mes</label>
+          <input class="finput" type="number" id="nom-dias" value="30" oninput="calcNom()">
+          <label class="flabel">Auxilio de transporte</label>
+          <select class="fselect" id="nom-aux" onchange="calcNom()"><option value="1">Sí (salario ≤ 2 smmlv = $3.501.810)</option><option value="0">No</option></select>
+          <label class="flabel">Nivel de riesgo ARL</label>
+          <select class="fselect" id="nom-arl" onchange="calcNom()"><option value="0.00522">I — 0.522%</option><option value="0.01044">II — 1.044%</option><option value="0.02436">III — 2.436%</option><option value="0.04350">IV — 4.350%</option><option value="0.06960">V — 6.960%</option></select>
+          <label class="flabel">¿Empleador exonerado Art. 114-1 ET?</label>
+          <select class="fselect" id="nom-exo" onchange="calcNom()"><option value="1">Sí (sociedad declarante renta)</option><option value="0">No (persona natural empleadora)</option></select>
+        </div>
+        <div class="cresult">
+          <div class="res-label">Costo total empleador / mes</div>
+          <div class="res-main" id="nom-main">$0</div>
+          <div class="res-rows">
+            <div class="res-row"><span class="rrl">Salario + aux. transporte</span><span class="rrv" id="nom-r1">$0</span></div>
+            <div class="res-row"><span class="rrl">Prima (8.33%)</span><span class="rrv" id="nom-r2">$0</span></div>
+            <div class="res-row"><span class="rrl">Cesantías (8.33%)</span><span class="rrv" id="nom-r3">$0</span></div>
+            <div class="res-row"><span class="rrl">Int. cesantías (1%)</span><span class="rrv" id="nom-r4">$0</span></div>
+            <div class="res-row"><span class="rrl">Vacaciones (4.17%)</span><span class="rrv" id="nom-r5">$0</span></div>
+            <div class="res-row"><span class="rrl">Salud empleador (8.5%)</span><span class="rrv" id="nom-r6">$0</span></div>
+            <div class="res-row"><span class="rrl">Pensión empleador (12%)</span><span class="rrv" id="nom-r7">$0</span></div>
+            <div class="res-row"><span class="rrl">ARL + parafiscales</span><span class="rrv" id="nom-r8">$0</span></div>
+            <div class="res-row" style="border:none"><span class="rrl" style="color:var(--d)">Costo anual empleador</span><span class="rrv gold" id="nom-anual">$0</span></div>
+          </div>
+          <div class="res-note">Jornada máx: 44h/sem hasta 14 jul · 42h desde 15 jul 2026 (Ley 2101/2021). Dominical: 80% hasta 30 jun · 90% desde 1 jul 2026 (Ley 2466/2025).</div>
+        </div>
+      </div>
+    </div>
+    <div id="nom-ind" style="display:none">
+      <div class="info-box"><strong>Art. 89 Ley 2277/2022 · Res. UGPP 001798/2023:</strong> El IBC varía según el tipo de contrato. Cotización mínima: 1 smmlv ($1.750.905). Como contratista pagas el 100% de los aportes.</div>
+      <div class="cgrid">
+        <div>
+          <label class="flabel">Tipo de contrato / vinculación</label>
+          <select class="fselect" id="ind-tipo" onchange="calcInd()">
+            <option value="prest">Prestación de servicios (IBC = 40% del valor del contrato)</option>
+            <option value="cta">Cuenta propia / negocio (IBC = 40% de ingresos menos costos)</option>
+            <option value="integral">Salario integral (IBC = 70% del salario integral)</option>
+          </select>
+          <label class="flabel">Valor mensual del contrato / ingresos $</label>
+          <input class="finput" type="number" id="ind-val" placeholder="Ej: 5.000.000" oninput="calcInd()">
+          <label class="flabel">Costos y gastos mensuales $ <span style="font-size:0.65rem;color:var(--txc)">(solo cuenta propia)</span></label>
+          <input class="finput" type="number" id="ind-cos" placeholder="Ej: 1.000.000" oninput="calcInd()">
+          <label class="flabel">Nivel de riesgo ARL</label>
+          <select class="fselect" id="ind-arl" onchange="calcInd()"><option value="0.00522">Nivel I — 0.522%</option><option value="0.01044">Nivel II — 1.044%</option><option value="0.02436">Nivel III — 2.436%</option><option value="0.04350">Nivel IV — 4.350%</option><option value="0.06960">Nivel V — 6.960%</option></select>
+        </div>
+        <div class="cresult">
+          <div class="res-label">Aportes seguridad social / mes</div>
+          <div class="res-main" id="ind-main">$0</div>
+          <div class="res-rows">
+            <div class="res-row"><span class="rrl">Ingresos / Valor contrato</span><span class="rrv" id="ind-r0">$0</span></div>
+            <div class="res-row"><span class="rrl">IBC calculado</span><span class="rrv gold" id="ind-ibc">$0</span></div>
+            <div class="res-row"><span class="rrl">% usado para IBC</span><span class="rrv" id="ind-pct">—</span></div>
+            <div class="res-row" style="border-top:1px solid rgba(201,168,76,0.2);padding-top:0.4rem"><span class="rrl">Salud — 12.5% del IBC</span><span class="rrv" id="ind-sal">$0</span></div>
+            <div class="res-row"><span class="rrl">Pensión — 16% del IBC</span><span class="rrv" id="ind-pen">$0</span></div>
+            <div class="res-row"><span class="rrl">ARL — % del IBC</span><span class="rrv" id="ind-arl2">$0</span></div>
+            <div class="res-row"><span class="rrl">Total aportes / mes</span><span class="rrv gold" id="ind-tot">$0</span></div>
+            <div class="res-row" style="border:none"><span class="rrl" style="color:var(--d)">Total aportes / año</span><span class="rrv gold" id="ind-anual">$0</span></div>
+          </div>
+          <div class="res-note">IBC mínimo: 1 smmlv ($1.750.905). Pago mediante PILA mensual obligatorio.</div>
+        </div>
+      </div>
+      <div style="background:rgba(30,61,47,0.04);border:1px solid rgba(30,61,47,0.1);padding:1.2rem;margin-top:1rem">
+        <div style="font-size:0.63rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--d);margin-bottom:0.8rem">IBC según tipo de vinculación — Art. 89 Ley 2277/2022 · Res. UGPP 1798/2023</div>
+        <table class="rte-mini">
+          <tr><th>Tipo vinculación</th><th>Base IBC</th><th>Norma</th></tr>
+          <tr><td>Prestación de servicios</td><td>40% del valor del contrato mensual</td><td>Art. 89 L.2277/2022</td></tr>
+          <tr><td>Cuenta propia / negocio</td><td>40% de (ingresos − costos comprobados)</td><td>Art. 89 L.2277/2022</td></tr>
+          <tr><td>Salario integral</td><td>70% del salario integral</td><td>Art. 132 CST · Concepto UGPP</td></tr>
+          <tr class="hl"><td>Mínimo cotizable siempre</td><td>1 smmlv = $1.750.905</td><td>Art. 18 L.100/1993</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="cpanel" id="calc-inversion">
+    <div class="cgrid">
+      <div>
+        <div class="ctitle">CDT vs. Inversión en Negocio</div>
+        <label class="flabel">Capital a invertir $</label>
+        <input class="finput" type="number" id="inv-cap" placeholder="Ej: 50.000.000" oninput="calcInv()">
+        <label class="flabel">Tasa CDT anual (%)</label>
+        <input class="finput" type="number" id="inv-cdt" placeholder="Ej: 9.09" oninput="calcInv()">
+        <label class="flabel">Retorno estimado negocio (%/año)</label>
+        <input class="finput" type="number" id="inv-neg" placeholder="Ej: 25" oninput="calcInv()">
+        <label class="flabel">Riesgo del negocio</label>
+        <select class="fselect" id="inv-riesgo" onchange="calcInv()"><option value="0.85">Bajo (sector consolidado)</option><option value="0.70">Medio (crecimiento)</option><option value="0.55">Alto (startup)</option></select>
+        <label class="flabel">Horizonte de inversión</label>
+        <select class="fselect" id="inv-anos" onchange="calcInv()"><option value="3">3 años</option><option value="5">5 años</option><option value="10">10 años</option></select>
+      </div>
+      <div class="cresult">
+        <div class="res-label">Análisis comparativo</div>
+        <div class="res-main" id="inv-main">Ingresa datos</div>
+        <div class="res-rows">
+          <div class="res-row"><span class="rrl">CDT: valor final</span><span class="rrv" id="inv-r1">$0</span></div>
+          <div class="res-row"><span class="rrl">CDT: rendimiento total</span><span class="rrv" id="inv-r2">$0</span></div>
+          <div class="res-row"><span class="rrl">Negocio: valor proyectado</span><span class="rrv" id="inv-r3">$0</span></div>
+          <div class="res-row"><span class="rrl">Negocio: rendimiento total</span><span class="rrv" id="inv-r4">$0</span></div>
+          <div class="res-row" style="border:none"><span class="rrl" style="color:var(--d)">Recomendación</span><span class="rrv gold" id="inv-rec">—</span></div>
+        </div>
+        <div class="res-note">DTF dic 2025: 9.09% EA. Análisis orientativo.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cpanel" id="calc-empresa">
+    <div class="cgrid">
+      <div>
+        <div class="ctitle">Crear Empresa en Colombia 2026</div>
+        <label class="flabel">Tipo de sociedad</label>
+        <select class="fselect" id="emp-tipo" onchange="calcEmp()"><option value="SAS">SAS (mín. 1 socio)</option><option value="LTDA">LTDA (2-25 socios)</option><option value="SA">SA (mín. 5 socios)</option><option value="EU">EU Unipersonal</option><option value="PN">Persona Natural</option></select>
+        <label class="flabel">Capital declarado $</label>
+        <input class="finput" type="number" id="emp-cap" placeholder="Ej: 10.000.000" oninput="calcEmp()">
+        <label class="flabel">Ciudad</label>
+        <select class="fselect" id="emp-ciu" onchange="calcEmp()"><option value="boy">Boyacá (Paipa, Duitama, Tunja)</option><option value="bog">Bogotá D.C.</option><option value="med">Medellín</option><option value="cal">Cali</option></select>
+        <label class="flabel">Ingresos proyectados año 1 $</label>
+        <input class="finput" type="number" id="emp-ing" placeholder="Ej: 200.000.000" oninput="calcEmp()">
+        <div id="emp-clas" class="warn-box" style="margin-top:0">Ingresa ingresos proyectados para ver clasificación Mipyme.</div>
+      </div>
+      <div class="cresult">
+        <div class="res-label">Costos constitución</div>
+        <div class="res-main" id="emp-main">Ingresa datos</div>
+        <div class="res-rows">
+          <div class="res-row"><span class="rrl">Registro Cámara de Comercio</span><span class="rrv" id="emp-r1">$0</span></div>
+          <div class="res-row"><span class="rrl">Formularios y derechos</span><span class="rrv">$58.000</span></div>
+          <div class="res-row"><span class="rrl">Notaría (LTDA/SA)</span><span class="rrv" id="emp-r3">No aplica</span></div>
+          <div class="res-row" style="border:none"><span class="rrl" style="color:var(--d)">Asesoría Óptima</span><span class="rrv gold">✓ Consultar</span></div>
+        </div>
+        <div class="res-note">Renovación matrícula: hasta 31 marzo. Multa por no renovar: hasta 17 smmlv ($29.765.385).</div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:1.5rem">
+      <div style="background:var(--cr);border:1px solid var(--cr2);padding:1.2rem">
+        <div style="font-size:0.63rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--d);margin-bottom:0.8rem">📋 Documentos base — Persona Jurídica (SAS/LTDA)</div>
+        <div style="font-size:0.76rem;color:var(--txc);display:flex;flex-direction:column;gap:0.3rem">
+          <div class="sc-item">Cédula de ciudadanía de todos los socios/accionistas</div>
+          <div class="sc-item">Acta de constitución (SAS: documento privado)</div>
+          <div class="sc-item">Estatutos sociales firmados por todos los socios</div>
+          <div class="sc-item">Formulario RUES (Cámara de Comercio)</div>
+          <div class="sc-item">Formulario RUT DIAN para asignación del NIT</div>
+          <div class="sc-item">Cuenta bancaria empresarial (con RUT provisional)</div>
+          <div class="sc-item">Usuario MUISCA DIAN para declaraciones</div>
+          <div class="sc-item">Registro en plataforma PILA</div>
+          <div class="sc-item">Habilitación facturación electrónica DIAN (Res. 042/2020)</div>
+          <div class="sc-item">SG-SST básico</div>
+        </div>
+        <div style="margin-top:0.8rem;font-size:0.68rem;color:var(--d);font-style:italic">⚠ Angie te indica los documentos adicionales según tu actividad económica (CIIU), licencias, permisos sectoriales y obligaciones específicas.</div>
+      </div>
+      <div style="background:var(--cr);border:1px solid var(--cr2);padding:1.2rem">
+        <div style="font-size:0.63rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--d);margin-bottom:0.8rem">📋 Documentos base — Persona Natural</div>
+        <div style="font-size:0.76rem;color:var(--txc);display:flex;flex-direction:column;gap:0.3rem">
+          <div class="sc-item">Cédula de ciudadanía original</div>
+          <div class="sc-item">Formulario matrícula mercantil Cámara de Comercio</div>
+          <div class="sc-item">Formulario RUT DIAN</div>
+          <div class="sc-item">Cuenta bancaria a nombre del negocio (recomendada)</div>
+          <div class="sc-item">Habilitación facturación electrónica DIAN</div>
+          <div class="sc-item">Usuario MUISCA para declaraciones</div>
+          <div class="sc-item">Registro PILA si tiene empleados</div>
+          <div class="sc-item">Certificado uso de suelo (según actividad)</div>
+          <div class="sc-item">SG-SST si tiene empleados</div>
+          <div class="sc-item">Póliza de responsabilidad (según sector)</div>
+        </div>
+        <div style="margin-top:0.8rem;font-size:0.68rem;color:var(--d);font-style:italic">⚠ Los documentos adicionales dependen de la actividad económica. Angie te orienta en todo el proceso.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cpanel" id="calc-mora">
+    <div class="cgrid">
+      <div>
+        <div class="ctitle">Mora Tributaria DIAN 2026</div>
+        <div class="info-box"><strong>Tasa mora ene 2026: 22.36% EA</strong> (Art. 635 ET) · Interés compuesto diario · Sanción mínima: $524.000 (10 UVT · Art. 639 ET)</div>
+        <label class="flabel">Valor del impuesto en mora $</label>
+        <input class="finput" type="number" id="mor-val" placeholder="Ej: 3.000.000" oninput="calcMora()">
+        <label class="flabel">Fecha en que debió pagarse</label>
+        <input class="finput" type="date" id="mor-fecha" oninput="calcMora()">
+        <label class="flabel">Tipo de sanción</label>
+        <select class="fselect" id="mor-tipo" onchange="calcMora()">
+          <option value="extemp">Extemporaneidad · Art. 641 ET — 5%/mes (máx. 100%)</option>
+          <option value="corr">Corrección · Art. 644 ET — 10% o 20%</option>
+          <option value="inexac">Inexactitud · Art. 647 ET — 100% mayor valor</option>
+          <option value="nodecl">No declarar · Art. 643 ET</option>
+          <option value="solo">Solo intereses de mora</option>
+        </select>
+        <label class="flabel">¿Es corrección antes de emplazamiento?</label>
+        <select class="fselect" id="mor-corr" onchange="calcMora()"><option value="0.1">Sí — 10% (Art. 644 num. 1)</option><option value="0.2">No — 20% (Art. 644 num. 2)</option></select>
+      </div>
+      <div class="cresult">
+        <div class="res-label">Total a pagar a la DIAN</div>
+        <div class="res-main" id="mor-main">$0</div>
+        <div class="res-rows">
+          <div class="res-row"><span class="rrl">Impuesto original</span><span class="rrv" id="mor-r1">$0</span></div>
+          <div class="res-row"><span class="rrl">Días de mora</span><span class="rrv" id="mor-dias">0 días</span></div>
+          <div class="res-row"><span class="rrl">Intereses de mora (comp. diario)</span><span class="rrv" id="mor-r2">$0</span></div>
+          <div class="res-row"><span class="rrl">Tipo de sanción</span><span class="rrv" id="mor-tipo2">—</span></div>
+          <div class="res-row"><span class="rrl">Valor sanción</span><span class="rrv" id="mor-r3">$0</span></div>
+          <div class="res-row" style="border:none;padding-top:0.5rem"><span class="rrl" style="color:var(--d)">TOTAL A PAGAR DIAN</span><span class="rrv gold" id="mor-r4">$0</span></div>
+        </div>
+        <div class="res-note">22.36% EA = tasa diaria compuesta. Sanción mínima siempre: $524.000 (Art. 639 ET). Verificar en dian.gov.co.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cpanel" id="calc-calendario">
+    <div class="ctitle">Calendario Tributario DIAN 2026</div>
+    <div style="background:rgba(30,61,47,0.04);border:1px solid rgba(30,61,47,0.1);padding:1.5rem;margin-bottom:1.5rem">
+      <div style="font-size:0.63rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--d);margin-bottom:1rem">Cuéntame sobre tu situación</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem">
+        <div><label class="flabel">NIT o Cédula</label><input class="finput" type="text" id="cal-nit" placeholder="Ej: 1053615140" oninput="calcCal()" style="margin-bottom:0"></div>
+        <div><label class="flabel">Tipo de contribuyente</label><select class="fselect" id="cal-tipo" onchange="calcCal()" style="margin-bottom:0"><option value="pn">Persona Natural</option><option value="pj">Persona Jurídica</option><option value="gc">Gran Contribuyente</option></select></div>
+        <div><label class="flabel">¿Responsable de IVA?</label><select class="fselect" id="cal-iva" onchange="calcCal()" style="margin-bottom:0"><option value="no">No</option><option value="bi">Sí — bimestral</option><option value="cuat">Sí — cuatrimestral</option></select></div>
+        <div><label class="flabel">¿Declaras renta? (PN)</label><select class="fselect" id="cal-renta" onchange="calcCal()" style="margin-bottom:0"><option value="auto">Verificar automáticamente</option><option value="si">Sí, soy declarante</option><option value="no">No declaro</option></select></div>
+        <div><label class="flabel">¿Tienes empleados?</label><select class="fselect" id="cal-rte" onchange="calcCal()" style="margin-bottom:0"><option value="no">No</option><option value="si">Sí — agente retención</option></select></div>
+        <div><label class="flabel">¿Presentas exógena?</label><select class="fselect" id="cal-exo" onchange="calcCal()" style="margin-bottom:0"><option value="no">No</option><option value="si">Sí (PJ o PN ingresos &gt;500M)</option></select></div>
+      </div>
+    </div>
+    <div id="cal-result" style="display:none">
+      <div style="background:rgba(30,61,47,0.05);padding:0.7rem 1rem;margin-bottom:1rem;font-size:0.78rem;color:var(--txc);display:flex;gap:1.5rem;flex-wrap:wrap">
+        <span><strong>NIT/Cédula:</strong> <span id="cal-nit-show" style="color:var(--v);font-weight:500"></span></span>
+        <span><strong>Últimos 2 dígitos:</strong> <span id="cal-dig" style="color:var(--v);font-weight:500"></span></span>
+        <span><strong>Día hábil asignado:</strong> <span id="cal-hab" style="color:var(--d);font-weight:500"></span></span>
+      </div>
+      <div id="cal-renta-alert" style="display:none" class="warn-box"></div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.8rem" id="cal-grid"></div>
+      <div style="background:rgba(201,168,76,0.07);border-left:3px solid var(--d);padding:1rem 1.2rem;font-size:0.76rem;color:var(--txc);margin-top:1rem;line-height:1.7" id="cal-nota"></div>
+    </div>
+    <div style="background:rgba(30,61,47,0.04);border:1px solid rgba(30,61,47,0.08);padding:1.2rem;margin-top:1.5rem">
+      <div style="font-size:0.63rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--d);margin-bottom:0.8rem">Topes declaración renta · Personas Naturales AG 2025</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;font-size:0.76rem;color:var(--txc)">
+        <div>• Patrimonio bruto &gt; <strong style="color:var(--v)">$224.095.500</strong> (4.500 UVT 2025)</div>
+        <div>• Ingresos brutos &gt; <strong style="color:var(--v)">$69.718.600</strong> (1.400 UVT 2025)</div>
+        <div>• Compras y consumos &gt; <strong style="color:var(--v)">$69.718.600</strong></div>
+        <div>• Tarjeta de crédito consumo &gt; <strong style="color:var(--v)">$69.718.600</strong></div>
+        <div>• Consignaciones bancarias &gt; <strong style="color:var(--v)">$69.718.600</strong></div>
+        <div>• Responsable de IVA en 2025</div>
+      </div>
+      <div style="margin-top:0.8rem;font-size:0.7rem;color:var(--txc);font-style:italic">UVT 2025: $49.799. Superar cualquiera obliga a declarar renta AG 2025.</div>
+    </div>
+  </div>
+
+  <div class="cpanel" id="calc-ahorro">
+    <div class="cgrid">
+      <div>
+        <div class="ctitle">Estimador Ahorro Energético Solar</div>
+        <label class="flabel">Factura promedio mensual $</label>
+        <input class="finput" type="number" id="ah-fac" placeholder="Ej: 900.000" oninput="calcAh()">
+        <label class="flabel">Tipo de usuario</label>
+        <select class="fselect" id="ah-sector" onchange="calcAh()"><option value="0.35">Industrial (35%)</option><option value="0.28">Comercial (28%)</option><option value="0.22">Servicios/oficinas (22%)</option><option value="0.18">Residencial (18%)</option></select>
+        <label class="flabel">Años de proyección</label>
+        <select class="fselect" id="ah-anos" onchange="calcAh()"><option value="5">5 años</option><option value="10">10 años</option><option value="15">15 años</option><option value="25">25 años (vida útil paneles)</option></select>
+        <label class="flabel">Incremento tarifario anual (%)</label>
+        <input class="finput" type="number" id="ah-inc" placeholder="Ej: 8" oninput="calcAh()">
+      </div>
+      <div class="cresult">
+        <div class="res-label">Proyección ahorro acumulado</div>
+        <div class="res-main" id="ah-main">Ingresa datos</div>
+        <div class="res-rows">
+          <div class="res-row"><span class="rrl">Ahorro mensual estimado</span><span class="rrv" id="ah-r1">$0</span></div>
+          <div class="res-row"><span class="rrl">Ahorro año 1</span><span class="rrv" id="ah-r2">$0</span></div>
+          <div class="res-row"><span class="rrl">Ahorro acumulado proyectado</span><span class="rrv" id="ah-r3">$0</span></div>
+          <div class="res-row" style="border:none"><span class="rrl" style="color:var(--d)">CO₂ evitado estimado</span><span class="rrv gold" id="ah-r4">—</span></div>
+        </div>
+        <div class="res-note">Con incremento tarifario compuesto anual. Factor CO₂: 0.126 ton/MWh.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pensiones" id="pensiones">
+  <div class="stag">Planea tu futuro</div>
+  <h2 class="stitle">Asesoría <em>Pensional</em></h2>
+  <div class="pen-tabs">
+    <button class="pen-tab active" onclick="showPen('calc',this)">Calculadora ¿Cuándo me pensiono?</button>
+    <button class="pen-tab" onclick="showPen('comp',this)">Colpensiones vs. Fondo Privado</button>
+    <button class="pen-tab" onclick="showPen('info',this)">¿Por qué cotizar? · Beneficios</button>
+  </div>
+
+  <div class="pen-panel active" id="pen-calc">
+    <div class="cgrid">
+      <div>
+        <div class="ftitle">¿Cuándo puedo pensionarme?</div>
+        <div class="info-box" style="margin-bottom:0.8rem"><strong>Ley 2381/2024 (Reforma Pensional):</strong> Mujeres — 57 años y <strong>1.275 semanas</strong> (antes 1.300, ¡25 semanas menos!). Hombres — 62 años y <strong>1.300 semanas</strong> (Art. 33 Ley 100/1993 modificado).</div>
+        <label class="flabel">Sexo biológico</label>
+        <select class="fselect" id="pen-sexo" onchange="calcPension()">
+          <option value="F">Femenino — 57 años · 1.275 semanas</option>
+          <option value="M">Masculino — 62 años · 1.300 semanas</option>
+        </select>
+        <label class="flabel">Edad actual (años cumplidos)</label>
+        <input class="finput" type="number" id="pen-edad" placeholder="Ej: 35" oninput="calcPension()">
+        <label class="flabel">Semanas cotizadas hasta hoy</label>
+        <input class="finput" type="number" id="pen-sem" placeholder="Ej: 520 — puedes consultar en colpensiones.gov.co" oninput="calcPension()">
+        <label class="flabel">Salario mensual promedio $</label>
+        <input class="finput" type="number" id="pen-sal" placeholder="Ej: 3.500.000" oninput="calcPension()">
+        <label class="flabel">Régimen pensional actual</label>
+        <select class="fselect" id="pen-reg" onchange="calcPension()">
+          <option value="col">Colpensiones (RPM)</option>
+          <option value="pri">Fondo privado (RAIS)</option>
+        </select>
+        <label class="flabel">Incremento salarial anual estimado (%)</label>
+        <input class="finput" type="number" id="pen-inc" placeholder="Ej: 5 (IPC estimado)" value="5" oninput="calcPension()">
+      </div>
+      <div style="background:var(--v);padding:2rem">
+        <div class="res-label">Proyección pensional personalizada</div>
+        <div class="res-main" id="pen-main" style="font-size:1.5rem">Ingresa tus datos</div>
+        <div class="res-rows">
+          <div class="res-row"><span class="rrl">Semanas requeridas</span><span class="rrv" id="pen-r1">—</span></div>
+          <div class="res-row"><span class="rrl">Semanas cotizadas</span><span class="rrv" id="pen-r2">—</span></div>
+          <div class="res-row"><span class="rrl">Semanas faltantes</span><span class="rrv gold" id="pen-r3">—</span></div>
+          <div class="res-row"><span class="rrl">Años faltantes para completar</span><span class="rrv" id="pen-r4">—</span></div>
+          <div class="res-row"><span class="rrl">Edad al completar semanas</span><span class="rrv" id="pen-r4b">—</span></div>
+          <div class="res-row"><span class="rrl">Edad estimada de pensión</span><span class="rrv gold" id="pen-r5">—</span></div>
+          <div class="res-row"><span class="rrl">Pensión estimada mensual</span><span class="rrv gold" id="pen-r6">—</span></div>
+          <div class="res-row"><span class="rrl">Tasa de reemplazo estimada</span><span class="rrv" id="pen-r7">—</span></div>
+          <div class="res-row" style="border:none"><span class="rrl">Pensión mínima garantizada 2026</span><span class="rrv">$1.750.905</span></div>
+        </div>
+        <div id="pen-beneficio" style="background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.2);padding:0.8rem;margin-top:0.8rem;font-size:0.74rem;color:rgba(255,255,255,0.6);line-height:1.7"></div>
+        <div class="res-note">Proyección orientativa con norma vigente. Angie realiza el análisis completo con tu historia laboral oficial Colpensiones / fondo privado. Art. 33-34 Ley 100/1993 · Ley 2381/2024.</div>
+      </div>
+    </div>
+
+    <!-- TABLA DE AMORTIZACIÓN DE SEMANAS -->
+    <div id="pen-amort-box" style="display:none;margin-top:2rem">
+      <div style="background:var(--v);padding:0.9rem 1.2rem;display:flex;align-items:center;justify-content:space-between">
+        <div>
+          <div style="font-size:0.58rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(201,168,76,0.6)">Tabla de cotización proyectada</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:#fff;font-weight:300" id="pen-amort-title">Acumulado semanas año a año</div>
+        </div>
+        <div style="font-size:0.72rem;color:rgba(255,255,255,0.45);max-width:260px;line-height:1.5">Aportando 52 semanas/año de manera continua · Salario con incremento anual estimado</div>
+      </div>
+      <div style="overflow-x:auto">
+        <table class="ind-table" style="width:100%;margin-top:0">
+          <thead>
+            <tr>
+              <th>Año</th>
+              <th>Edad</th>
+              <th>Sem. año</th>
+              <th>Sem. acumuladas</th>
+              <th>Sem. faltantes</th>
+              <th>Salario estimado</th>
+              <th>Aporte mensual (16%)</th>
+              <th>Aporte anual</th>
+              <th>Estado</th>
+            </tr>
+          </thead>
+          <tbody id="pen-amort-body"></tbody>
+        </table>
+      </div>
+      <div style="background:rgba(201,168,76,0.06);border:1px solid rgba(201,168,76,0.15);padding:1rem 1.2rem;font-size:0.76rem;color:var(--txc);line-height:1.7;margin-top:0.5rem">
+        <strong style="color:var(--v)">Nota metodológica:</strong> Cotización pensión: 16% del salario (empleado 4% + empleador 12%). Proyección con incremento salarial compuesto. Tasas de reemplazo Colpensiones: 55% a 65% según semanas (Art. 34 Ley 100/1993 modificado Ley 2381/2024). Para historia laboral oficial visita <strong>colpensiones.gov.co</strong> o consulta tu fondo privado.
+      </div>
+    </div>
+  </div>
+
+  <div class="pen-panel" id="pen-comp">
+    <div style="background:var(--v);padding:1.5rem 2rem;font-size:0.84rem;color:rgba(255,255,255,0.6);line-height:1.85;margin-bottom:1.5rem">Colombia tiene dos regímenes: el <strong style="color:var(--d)">RPM (Régimen de Prima Media)</strong> — Colpensiones, y el <strong style="color:var(--d)">RAIS (Régimen de Ahorro Individual)</strong> — fondos privados. La elección es una de las decisiones financieras más importantes de tu vida.</div>
+    <div class="comp-grid">
+      <div class="comp-card">
+        <div class="comp-header" style="background:var(--v)"><div class="comp-title" style="color:var(--d)">🏛 Colpensiones (RPM)</div><div class="comp-sub" style="color:rgba(255,255,255,0.5)">Régimen de Prima Media · Ley 100/1993</div></div>
+        <div class="comp-pro"><div class="comp-label" style="color:#2a7a4b">VENTAJAS</div>
+          <div class="comp-item pro">Pensión vitalicia garantizada de por vida</div>
+          <div class="comp-item pro">Pensión mínima garantizada: 1 smmlv ($1.750.905 en 2026)</div>
+          <div class="comp-item pro">Mejor opción para salarios cercanos al smmlv</div>
+          <div class="comp-item pro">Subsidio solidaridad para ingresos bajos</div>
+          <div class="comp-item pro">IBL promedio últimos 10 años de cotización</div>
+        </div>
+        <div class="comp-con"><div class="comp-label" style="color:#c0392b">DESVENTAJAS</div>
+          <div class="comp-item con">Los aportes no son de tu propiedad — van al fondo común</div>
+          <div class="comp-item con">Si no completas semanas, puedes perder lo cotizado (indemnización sustitutiva)</div>
+          <div class="comp-item con">Pensión máxima: 25 smmlv ($43.772.625 en 2026)</div>
+          <div class="comp-item con">Con Ley 2381/2024 todos van a Colpensiones hasta 2.3 smmlv</div>
+        </div>
+      </div>
+      <div class="comp-card">
+        <div class="comp-header" style="background:var(--cr2)"><div class="comp-title" style="color:var(--v)">🏦 Fondos Privados (RAIS)</div><div class="comp-sub" style="color:var(--txc)">Porvenir · Protección · Colfondos · Old Mutual</div></div>
+        <div class="comp-pro"><div class="comp-label" style="color:#2a7a4b">VENTAJAS</div>
+          <div class="comp-item pro">Los aportes son TU propiedad — cuenta individual de ahorro</div>
+          <div class="comp-item pro">Rendimientos del mercado de capitales</div>
+          <div class="comp-item pro">Pensión anticipada si el capital equivale al 110% del smmlv × semanas</div>
+          <div class="comp-item pro">Herencia a beneficiarios del capital ahorrado</div>
+          <div class="comp-item pro">Sin límite máximo de pensión</div>
+        </div>
+        <div class="comp-con"><div class="comp-label" style="color:#c0392b">DESVENTAJAS</div>
+          <div class="comp-item con">Pensión depende del mercado (riesgo de inversión)</div>
+          <div class="comp-item con">Garantía de pensión mínima condicionada (mín. 800 semanas)</div>
+          <div class="comp-item con">Traslado a Colpensiones tiene restricciones</div>
+        </div>
+      </div>
+    </div>
+    <div style="background:rgba(201,168,76,0.07);border:1px solid rgba(201,168,76,0.2);padding:1.2rem;margin-top:1.5rem;font-size:0.82rem;color:var(--txc);line-height:1.8">
+      <strong style="color:var(--v)">¿Cuál te conviene?</strong><br>
+      <strong>Colpensiones:</strong> Mejor si tienes salario cercano al smmlv, eres mayor de 45 años o prefieres seguridad garantizada. Con Ley 2381/2024, quienes devenguen hasta 2.3 smmlv cotizarán obligatoriamente en Colpensiones.<br>
+      <strong>Fondo privado:</strong> Mejor si eres joven (menos de 35 años), tienes salario alto y puedes asumir riesgo de inversión.<br>
+      <strong style="color:var(--d)">Restricción traslado:</strong> Solo puedes trasladarte 1 vez cada 5 años. Si te faltan 10 años o menos para pensionarte, no puedes trasladarte de Colpensiones a un fondo privado. Angie te asesora sobre cuál conviene según tu perfil.
+    </div>
+  </div>
+
+  <div class="pen-panel" id="pen-info">
+    <div class="info-cards">
+      <div class="info-card"><div class="info-card-head"><div class="info-card-ico">📜</div><div class="info-card-title">Historia del sistema pensional</div></div><div class="info-card-body">El sistema pensional colombiano nació con la <strong>Ley 100 de 1993</strong>, que unificó y modernizó el sistema de seguridad social. Antes existían múltiples cajas de previsión fragmentadas. La Ley 100 creó el RPM (Colpensiones) y el RAIS (fondos privados). La <strong>Ley 2381 de 2024</strong> modificó las semanas de cotización para mujeres (1.275) y estableció cotización obligatoria en Colpensiones hasta 2.3 smmlv.<div class="info-card-norma">Ley 100/1993 · Ley 2381/2024 · Decreto 3041/2013</div></div></div>
+      <div class="info-card"><div class="info-card-head"><div class="info-card-ico">🦺</div><div class="info-card-title">Protección por accidente de trabajo</div></div><div class="info-card-body">Cotizar activa la cobertura del <strong>Sistema de Riesgos Laborales (ARL)</strong>. Si sufres un accidente de trabajo tienes derecho a: atención médica completa, incapacidad temporal (100% del salario), pensión de invalidez (pérdida &gt;50% capacidad), pensión de sobrevivientes para tu familia. Los independientes también deben cotizar a ARL según su actividad.<div class="info-card-norma">Ley 100/1993 · Decreto 1295/1994 · Ley 776/2002</div></div></div>
+      <div class="info-card"><div class="info-card-head"><div class="info-card-ico">✅</div><div class="info-card-title">Beneficios de cotizar consistentemente</div></div><div class="info-card-body">Cotizar de manera continua te garantiza: <strong>Pensión de vejez</strong> (jubilación), <strong>pensión de invalidez</strong> si pierdes más del 50% de capacidad laboral, <strong>pensión de sobrevivientes</strong> para tu familia, <strong>auxilio funerario</strong> (mes y medio de smmlv), <strong>licencia de maternidad/paternidad</strong> e <strong>incapacidad por enfermedad</strong>. Cada semana cotizada cuenta y se acumula para siempre.<div class="info-card-norma">Art. 36-48 Ley 100/1993 · Ley 2381/2024</div></div></div>
+      <div class="info-card"><div class="info-card-head"><div class="info-card-ico">⏳</div><div class="info-card-title">Ley 2381/2024 · Reforma pensional</div></div><div class="info-card-body">Cambios importantes: las mujeres ahora requieren <strong>1.275 semanas</strong> (antes 1.300, ahorro de 25 semanas). Quienes devenguen hasta 2.3 smmlv cotizarán obligatoriamente en Colpensiones como primer pilar. Se mejora el programa <strong>BEPS</strong> para quienes no alcancen a pensionarse.<div class="info-card-norma">Ley 2381/2024 · Art. 33 Ley 100/1993 modificado</div></div></div>
+      <div class="info-card"><div class="info-card-head"><div class="info-card-ico">💵</div><div class="info-card-title">Indemnización sustitutiva y BEPS</div></div><div class="info-card-body">Si llegas a la edad de pensión sin completar semanas, tienes derecho a la <strong>indemnización sustitutiva</strong>: devolución de lo aportado ajustado por inflación (Colpensiones) o el saldo de tu cuenta (fondo privado). Alternativamente, accede al programa <strong>BEPS</strong> (Beneficios Económicos Periódicos) que otorga un subsidio periódico de subsistencia.<div class="info-card-norma">Art. 37 Ley 100/1993 · Decreto 3041/2013 · Ley 2381/2024</div></div></div>
+      <div class="info-card"><div class="info-card-head"><div class="info-card-ico">🧑‍💼</div><div class="info-card-title">Independientes: cómo y cuánto cotizar</div></div><div class="info-card-body">Si trabajas como independiente, estás <strong>OBLIGADO</strong> a cotizar a salud, pensión y ARL. El IBC es el 40% del valor de tus contratos (prestación de servicios) o 40% de (ingresos − costos) para cuenta propia. Mínimo: 1 smmlv. El pago se hace mensualmente a través de la <strong>planilla PILA</strong>. No cotizar puede resultar en sanciones de la UGPP.<div class="info-card-norma">Art. 89 Ley 2277/2022 · Res. UGPP 1798/2023</div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="ind-section" id="indicadores">
+  <div class="stag">Cifras oficiales 2026</div>
+  <h2 class="stitle">Indicadores <em>tributarios, laborales y pensionales</em></h2>
+  <div class="ind-tabs">
+    <button class="ind-tab active" onclick="showInd('trib',this)">Tributario</button>
+    <button class="ind-tab" onclick="showInd('lab',this)">Laboral</button>
+    <button class="ind-tab" onclick="showInd('pen',this)">Pensional</button>
+    <button class="ind-tab" onclick="showInd('soc',this)">Sociedades · Mipymes</button>
+  </div>
+  <div class="ind-panel active" id="ind-trib">
+    <table class="ind-table">
+      <tr><th>Concepto</th><th>Valor</th><th>Norma</th></tr>
+      <tr class="cat"><td colspan="3">Indicadores principales 2026</td></tr>
+      <tr><td>UVT 2026</td><td>$52.374</td><td>Res. DIAN 000187/2025</td></tr>
+      <tr><td>Sanción mínima (10 UVT)</td><td>$524.000</td><td>Art. 639 ET</td></tr>
+      <tr><td>IVA tarifa general</td><td>19%</td><td>Art. 468 ET</td></tr>
+      <tr><td>Renta personas jurídicas</td><td>35%</td><td>Art. 240 ET</td></tr>
+      <tr><td>Tasa interés moratorio (ene 2026)</td><td>22.36% EA</td><td>Art. 635 ET</td></tr>
+      <tr><td>Reteiva residentes</td><td>15% del IVA</td><td>Art. 437-1 ET</td></tr>
+      <tr><td>Reteiva no residentes</td><td>100% del IVA</td><td>Art. 437-1 ET</td></tr>
+      <tr><td>Rentas exentas laborales 25% (máx. 790 UVT)</td><td>$41.375.460/año</td><td>Art. 206 num. 10 ET</td></tr>
+      <tr class="cat"><td colspan="3">Cuantías mínimas retención 2026</td></tr>
+      <tr><td>Por compras (10 UVT)</td><td>$523.740</td><td>Art. 368 ET</td></tr>
+      <tr><td>Por servicios (2 UVT)</td><td>$104.748</td><td>Art. 392 ET</td></tr>
+    </table>
+  </div>
+  <div class="ind-panel" id="ind-lab">
+    <table class="ind-table">
+      <tr><th>Concepto</th><th>Valor</th><th>Norma</th></tr>
+      <tr class="cat"><td colspan="3">Salarios 2026</td></tr>
+      <tr><td>Salario mínimo mensual (smmlv)</td><td>$1.750.905</td><td>Decreto 2343/2025</td></tr>
+      <tr><td>Auxilio de transporte</td><td>$249.095</td><td>Decreto 2344/2025</td></tr>
+      <tr><td>Salario integral (10 smmlv factor salarial)</td><td>$22.761.765</td><td>Art. 132 CST</td></tr>
+      <tr class="cat"><td colspan="3">Seguridad social empleado</td></tr>
+      <tr><td>Salud empleado / empleador</td><td>4% / 8.5%</td><td>Ley 100/1993</td></tr>
+      <tr><td>Pensión empleado / empleador</td><td>4% / 12%</td><td>Ley 100/1993</td></tr>
+      <tr><td>ARL nivel I / nivel V</td><td>0.522% / 6.960%</td><td>Decreto 1607/2002</td></tr>
+      <tr class="cat"><td colspan="3">Jornada laboral 2026</td></tr>
+      <tr><td>Máx. 1 ene — 14 jul 2026</td><td>44 horas/semana</td><td>Ley 2101/2021</td></tr>
+      <tr><td>Máx. desde 15 jul 2026</td><td>42 horas/semana</td><td>Ley 2101/2021</td></tr>
+      <tr><td>Recargo dominical hasta 30 jun 2026</td><td>80%</td><td>Ley 2466/2025</td></tr>
+      <tr><td>Recargo dominical desde 1 jul 2026</td><td>90%</td><td>Ley 2466/2025</td></tr>
+    </table>
+  </div>
+  <div class="ind-panel" id="ind-pen">
+    <table class="ind-table">
+      <tr><th>Concepto</th><th>Valor</th><th>Norma</th></tr>
+      <tr class="cat"><td colspan="3">Requisitos pensión de vejez 2026</td></tr>
+      <tr><td>Edad mujeres</td><td>57 años</td><td>Ley 100/1993 · Ley 2381/2024</td></tr>
+      <tr><td>Semanas mujeres</td><td>1.275 semanas</td><td>Ley 2381/2024</td></tr>
+      <tr><td>Edad hombres</td><td>62 años</td><td>Ley 100/1993 Art. 33</td></tr>
+      <tr><td>Semanas hombres</td><td>1.300 semanas</td><td>Ley 100/1993 Art. 33</td></tr>
+      <tr class="cat"><td colspan="3">Valores pensionales 2026</td></tr>
+      <tr><td>Pensión mínima de vejez</td><td>$1.750.905/mes</td><td>Art. 35 Ley 100/1993</td></tr>
+      <tr><td>Pensión máxima Colpensiones</td><td>$43.772.625 (25 smmlv)</td><td>Art. 18 Ley 100/1993</td></tr>
+      <tr class="cat"><td colspan="3">IBC independientes 2026</td></tr>
+      <tr><td>Prestación de servicios</td><td>40% del valor contrato mensual</td><td>Art. 89 Ley 2277/2022</td></tr>
+      <tr><td>Cuenta propia</td><td>40% de (ingresos − costos)</td><td>Art. 89 Ley 2277/2022</td></tr>
+      <tr><td>Mínimo cotizable</td><td>1 smmlv = $1.750.905</td><td>Art. 18 Ley 100/1993</td></tr>
+    </table>
+  </div>
+  <div class="ind-panel" id="ind-soc">
+    <table class="ind-table">
+      <tr><th>Tipo</th><th>Socios</th><th>Capital</th><th>Norma</th></tr>
+      <tr><td><strong>SAS</strong></td><td>Mín. 1</td><td>Acciones</td><td>Ley 1258/2008</td></tr>
+      <tr><td><strong>LTDA</strong></td><td>2 a 25</td><td>Cuotas partes</td><td>Art. 353 Cod. Comercio</td></tr>
+      <tr><td><strong>SA</strong></td><td>Mín. 5</td><td>Acciones</td><td>Art. 374 Cod. Comercio</td></tr>
+      <tr><td><strong>EU</strong></td><td>1</td><td>Partes interés</td><td>Ley 222/1995</td></tr>
+      <tr class="cat"><td colspan="4">Clasificación Mipymes · Decreto 957/2019 · Sector Servicios</td></tr>
+      <tr><td>Microempresa</td><td colspan="2">Ingresos ≤ 32.988 UVT ($1.728.742.812)</td><td>Dec. 957/2019</td></tr>
+      <tr><td>Pequeña empresa</td><td colspan="2">32.988 — 131.951 UVT</td><td>Dec. 957/2019</td></tr>
+      <tr><td>Mediana empresa</td><td colspan="2">131.951 — 483.034 UVT</td><td>Dec. 957/2019</td></tr>
+    </table>
+  </div>
+</section>
+
+<section class="portafolio" id="portafolio">
+  <div class="stag" style="color:rgba(201,168,76,0.7)">Mi trabajo</div>
+  <h2 class="stitle w">Portafolio <em>y logros</em></h2>
+  <div class="ptabs">
+    <button class="ptab active" onclick="showP('todos',this)">Todos</button>
+    <button class="ptab" onclick="showP('investigacion',this)">Investigación</button>
+    <button class="ptab" onclick="showP('proyectos',this)">Proyectos</button>
+    <button class="ptab" onclick="showP('certificados',this)">Certificados</button>
+  </div>
+  <div class="pgrid" id="pgrid">
+    <div class="pcard" data-cat="investigacion"><div class="phead"><div class="pcat">Trabajo de grado · Maestría Externado 2025</div><div class="ptit">Impacto beneficios tributarios en energía solar fotovoltaica Colombia</div></div><div class="pbody"><p class="pdesc">Metodología cualitativa, 6 expertos entrevistados. Ley 1715/2099. Externado Colombia 2025.</p><div class="ptags"><span class="ptag2">Ley 1715/2099</span><span class="ptag2">Externado</span><span class="ptag2">Investigación</span></div></div></div>
+    <div class="pcard" data-cat="investigacion"><div class="phead"><div class="pcat">Ponencia · III Congreso Internacional UAN 2022</div><div class="ptit">Beneficios tributarios sistemas energía solar empresa Boyacense</div></div><div class="pbody"><p class="pdesc">Ponente reconocida. Beneficios tributarios y financieros Ley 1715. UAN Duitama, octubre 2022.</p><div class="ptags"><span class="ptag2">Ponente</span><span class="ptag2">Solar</span><span class="ptag2">UAN 2022</span></div></div></div>
+    <div class="pcard" data-cat="proyectos"><div class="phead"><div class="pcat">Proyecto · Sector energía renovable</div><div class="ptit">Liderazgo contable, financiero y administrativo · Boyacá · Jul 2020–Actualidad</div></div><div class="pbody"><p class="pdesc">Liderazgo integral área contable y financiera. NIIF, control interno, crecimiento sostenible.</p><div class="ptags"><span class="ptag2">Liderazgo</span><span class="ptag2">Solar</span><span class="ptag2">NIIF</span></div></div></div>
+    <div class="pcard" data-cat="certificados"><div class="phead"><div class="pcat">Título · Posgrado</div><div class="ptit">Magíster en Contabilidad y Tributación · Externado de Colombia · 2026</div></div><div class="pbody"><p class="pdesc">Universidad Externado de Colombia. 9 de abril de 2026. Registro 122021.</p><div class="ptags"><span class="ptag2">Magíster</span><span class="ptag2">Externado</span><span class="ptag2">2026</span></div></div></div>
+    <div class="pcard" data-cat="certificados"><div class="phead"><div class="pcat">Título · Pregrado</div><div class="ptit">Contadora Pública · Universidad Antonio Nariño · 2023</div></div><div class="pbody"><p class="pdesc">JCC N° 62590. UAN, octubre 2023.</p><div class="ptags"><span class="ptag2">Contadora</span><span class="ptag2">JCC N° 62590</span></div></div></div>
+    <div class="pcard" data-cat="certificados"><div class="phead"><div class="pcat">Certificación · DIAN Sogamoso 2022</div><div class="ptit">Núcleo de Apoyo Fiscal NAF · 232 horas</div></div><div class="pbody"><p class="pdesc">42h capacitación + 180h atención práctica. Certificado por DIAN y UAN Duitama.</p><div class="ptags"><span class="ptag2">DIAN</span><span class="ptag2">NAF</span><span class="ptag2">232 horas</span></div></div></div>
+  </div>
+</section>
+
+<section class="tray" id="trayectoria">
+  <div class="stag">Experiencia</div>
+  <h2 class="stitle">Trayectoria <em>profesional</em></h2>
+  <div style="margin-top:2rem">
+    <div class="trow"><div><div class="tfecha">2022 — Actualidad</div><span class="tbadge">Independiente</span><div class="tciudad">Presencial Boyacá · Virtual Colombia</div></div><div><div class="tcargo">Asesora Contable, Financiera, Tributaria y Pensional</div><p class="tdesc">Asesoría presencial en Boyacá y virtual para todo Colombia. Personas naturales y jurídicas de todos los sectores.</p><div class="tlogros"><div class="tlogro">Planeación tributaria PN y PJ usando todos los beneficios del ET</div><div class="tlogro">Evaluación proyectos energía solar · Certificación UPME · Ley 1715/2099</div><div class="tlogro">Asesoría pensional · Colpensiones vs. fondos · Traslado de régimen</div><div class="tlogro">Creación y estructuración financiera de empresas</div></div></div></div>
+    <div class="trow"><div><div class="tfecha">Jul. 2020 — Actualidad</div><span class="tbadge">Energía Renovable</span><div class="tciudad">Boyacá, Colombia</div></div><div><div class="tcargo">Líder Contable, Financiera y Administrativa</div><p class="tdesc">Empresa del sector de energías renovables (solar fotovoltaica), Boyacá. Liderazgo del equipo contable y administrativo. NIIF, tesorería, cartera, control interno, cumplimiento normativo DIAN/UGPP.</p></div></div>
+    <div class="trow"><div><div class="tfecha">Dic. 2018 — Jun. 2020</div><span class="tbadge">Sector Industrial</span><div class="tciudad">Boyacá, Colombia</div></div><div><div class="tcargo">Analista Contable y Financiera</div><p class="tdesc">Empresa mediana del sector industrial manufacturero, Boyacá. Registro contable, análisis de costos, liquidación de impuestos, implementación software contable.</p></div></div>
+    <div class="trow"><div><div class="tfecha">Mar. 2018 — Sep. 2018</div><span class="tbadge">Sector Servicios</span><div class="tciudad">Boyacá, Colombia</div></div><div><div class="tcargo">Analista Contable — Práctica Empresarial</div><p class="tdesc">Empresa del sector de servicios, Boyacá. Causación, nómina, control de costos y archivo contable.</p></div></div>
+  </div>
+  <div class="tconf">Por política de confidencialidad profesional, los nombres de las organizaciones se mantienen reservados — el mismo compromiso de discreción que ofrezco a cada cliente.</div>
+</section>
+
+<section class="sobre" id="sobre">
+  <div class="stag">Sobre mí</div>
+  <h2 class="stitle">Angie Paola <em>Céspedes Portela</em></h2>
+  <div class="sobre-grid">
+    <div>
+      <p class="sobre-text">Contadora Pública con Magíster en Contabilidad y Tributación (Universidad Externado de Colombia, 2026). Más de 6 años liderando áreas contables, financieras y administrativas con especial enfoque en energía solar, transición energética y asesoría pensional.</p>
+      <p class="sobre-text" style="margin-top:0.8rem">Brindo asesoría presencial en Boyacá y virtual para todo Colombia. Investigadora en beneficios tributarios para energías renovables. Mi misión: que tus números trabajen para ti, hoy y en tu jubilación.</p>
+      <div class="logros-grid">
+        <div class="logro"><div class="lt">Magíster</div><div class="ld">Externado Colombia · 2026</div></div>
+        <div class="logro"><div class="lt">Ponente</div><div class="ld">Congreso Internacional 2022</div></div>
+        <div class="logro"><div class="lt">Ley 1715/2099</div><div class="ld">Especialista energía solar</div></div>
+        <div class="logro"><div class="lt">Pensional</div><div class="ld">Colpensiones · RAIS · BEPS</div></div>
+        <div class="logro"><div class="lt">6+ años</div><div class="ld">Todos los sectores</div></div>
+        <div class="logro"><div class="lt">Presencial + Virtual</div><div class="ld">Boyacá y Colombia</div></div>
+      </div>
+    </div>
+    <div>
+      <ul class="flist">
+        <li class="fitem"><div class="fdot"></div><div><div class="ftit3">Magíster en Contabilidad y Tributación</div><div class="finst">Universidad Externado de Colombia · 9 abr 2026 · Reg. 122021</div></div></li>
+        <li class="fitem"><div class="fdot"></div><div><div class="ftit3">Contadora Pública</div><div class="finst">Universidad Antonio Nariño · Oct 2023 · N° 62590 · JCC</div></div></li>
+        <li class="fitem"><div class="fdot"></div><div><div class="ftit3">Tecnóloga en Contabilidad y Finanzas</div><div class="finst">SENA · Ene 2019 · Reg. 39447522</div></div></li>
+        <li class="fitem"><div class="fdot"></div><div><div class="ftit3">Diplomado Finanzas y Tributación</div><div class="finst">Universidad Antonio Nariño · 120 horas · 2022</div></div></li>
+        <li class="fitem"><div class="fdot"></div><div><div class="ftit3">Núcleo de Apoyo Fiscal NAF · DIAN Sogamoso</div><div class="finst">232 horas certificadas · 2022</div></div></li>
+        <li class="fitem"><div class="fdot"></div><div><div class="ftit3">Power BI · Siigo · World Office · Helisa · Excel Avanzado · ClickUp</div><div class="finst">Gobernación de Boyacá · 2024</div></div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="faq-section" id="faq">
+  <div class="stag" style="color:rgba(201,168,76,0.7)">Preguntas frecuentes</div>
+  <h2 class="stitle w">Lo que más <em>me preguntan</em></h2>
+  <div class="faq-list">
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">¿Qué es la planeación tributaria y es legal? <span class="faq-arrow">▼</span></div><div class="faq-a">La planeación tributaria es el uso legal y estratégico de los beneficios, deducciones y descuentos del Estatuto Tributario para reducir la carga fiscal. Es completamente legal y diferente a la evasión (ilegal). Todos los beneficios que aplico están sustentados en normas vigentes.<div class="faq-norma">Art. 119, 125, 126-1, 126-4, 206, 257, 387 ET · Ley 1715/2014 · Ley 2099/2021</div></div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">¿Cuántos dependientes puedo llevar en mi declaración de renta? <span class="faq-arrow">▼</span></div><div class="faq-a">Puedes reconocer hasta <strong>4 personas</strong> como dependientes económicos (Art. 387 ET Parágrafo 2). La deducción es hasta el 10% de tus ingresos brutos, máximo 32 UVT mensuales por dependiente ($1.675.968/mes en 2026). Son dependientes: hijos menores de 18 años, hijos 18-23 estudiando y dependiendo económicamente, hijos en situación de discapacidad, cónyuge o compañero permanente sin ingresos, padres o hermanos dependientes.<div class="faq-norma">Art. 387 ET · Parágrafo 2 · Decreto 099/2013</div></div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">¿Qué beneficios tributarios tiene invertir en energía solar? <span class="faq-arrow">▼</span></div><div class="faq-a">La Ley 1715/2014 mod. Ley 2099/2021 otorga: ① Deducción del 50% de la inversión en renta (máx. 15 años), ② Exclusión de IVA 19% en equipos y servicios, ③ Exención de aranceles, ④ Depreciación acelerada máx. 33%/año. Todos vigentes 30 años desde 1 julio 2021. Requieren certificación UPME previa.<div class="faq-norma">Arts. 11-14 Ley 1715/2014 · Arts. 8-11 Ley 2099/2021 · Dec. 895/2022</div></div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">¿Cuándo debo declarar renta como persona natural? <span class="faq-arrow">▼</span></div><div class="faq-a">Debes declarar renta por el AG 2025 si cumpliste cualquiera de estos topes: patrimonio bruto mayor a $224.095.500, ingresos brutos mayores a $69.718.600, consumos con tarjeta o compras mayores a $69.718.600, consignaciones bancarias mayores a $69.718.600, o fuiste responsable del régimen común de IVA en 2025.<div class="faq-norma">Art. 592, 594-3 ET · UVT 2025: $49.799</div></div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">¿Cuánto debe cotizar un contratista independiente? <span class="faq-arrow">▼</span></div><div class="faq-a">El IBC para prestación de servicios es el <strong>40% del valor mensual del contrato</strong>. Sobre ese IBC pagas: salud 12.5% + pensión 16% + ARL según nivel de riesgo. El mínimo es 1 smmlv ($1.750.905 en 2026). Pago mensual mediante planilla PILA.<div class="faq-norma">Art. 89 Ley 2277/2022 · Res. UGPP 1798/2023</div></div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">¿Me conviene más Colpensiones o un fondo privado? <span class="faq-arrow">▼</span></div><div class="faq-a">Depende de tu perfil. Colpensiones es mejor si tienes salario cercano al smmlv, eres mayor de 45 años o prefieres seguridad garantizada. Los fondos privados son mejor si eres joven (menos de 35 años) y tienes salario alto. Con la Ley 2381/2024, quienes devenguen hasta 2.3 smmlv cotizarán obligatoriamente en Colpensiones. El traslado tiene restricciones: solo una vez cada 5 años. Angie te asesora en la decisión correcta.<div class="faq-norma">Ley 100/1993 · Ley 2381/2024</div></div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">¿Cuánto cuesta una asesoría con Óptima? <span class="faq-arrow">▼</span></div><div class="faq-a">La consulta inicial es sin costo. Los honorarios dependen del tipo de servicio y la complejidad del caso. Presencial en Paipa, Duitama, Sogamoso, Tunja y municipios cercanos — virtual para todo Colombia. Escríbeme por WhatsApp al 320 557 5139.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">¿Atiende de forma presencial o solo virtual? <span class="faq-arrow">▼</span></div><div class="faq-a">Ambas. Ofrezco <strong>asesoría presencial en Boyacá</strong> (Paipa, Duitama, Sogamoso, Tunja y municipios cercanos) y <strong>asesoría virtual para todo Colombia</strong>. Las sesiones virtuales se realizan por Teams, Meet o WhatsApp Video con la misma calidad que la presencial.</div></div>
+  </div>
+</section>
+
+<section class="contacto" id="contacto">
+  <div class="stag center">Hablemos</div>
+  <h2 class="ctitle-h">¿Lista para optimizar<br><em>tu negocio?</em></h2>
+  <p class="csub">Consulta inicial sin costo. Asesoría presencial en Boyacá o virtual para todo Colombia. Cuéntame tu caso y diseñamos la mejor estrategia contable, financiera, tributaria y pensional.</p>
+  <div class="ccards">
+    <div class="ccard"><div class="ccl">WhatsApp</div><div class="ccv">320 557 5139</div></div>
+    <div class="ccard"><div class="ccl">Correo</div><div class="ccv" style="font-size:0.82rem">optimabyangie@gmail.com</div></div>
+    <div class="ccard"><div class="ccl">Atención</div><div class="ccv">Presencial Boyacá · Virtual Colombia</div></div>
+    <div class="ccard"><div class="ccl">Sede</div><div class="ccv">Paipa, Boyacá</div></div>
+  </div>
+  <button class="wabtn" onclick="window.open('https://wa.me/573205575139?text=Hola%20Angie%2C%20me%20interesa%20una%20asesor%C3%ADa%20con%20%C3%93ptima','_blank')">Escribir por WhatsApp →</button>
+</section>
+
+<footer>
+  <div class="flogo">Óptima by Angie Céspedes</div>
+  <div class="fcopy">© 2026 · Paipa, Boyacá · Magíster Contabilidad y Tributación · Presencial Boyacá · Virtual Colombia</div>
+</footer>
+
+<script>
+const cop=n=>'$'+Math.round(n).toLocaleString('es-CO');
+function g(id){document.getElementById(id)?.scrollIntoView({behavior:'smooth'})}
+async function loadTRM(){try{const r=await fetch('https://www.datos.gov.co/resource/32sa-8pi3.json?$order=vigenciadesde DESC&$limit=1');const d=await r.json();if(d&&d[0])document.getElementById('trm').textContent='$'+parseFloat(d[0].valor).toLocaleString('es-CO',{maximumFractionDigits:0})}catch(e){}}
+loadTRM();
+function showC(id,btn){document.querySelectorAll('.cpanel').forEach(p=>p.classList.remove('active'));document.querySelectorAll('.ctab').forEach(t=>t.classList.remove('active'));document.getElementById('calc-'+id)?.classList.add('active');btn.classList.add('active')}
+function showPlan(id,btn){document.querySelectorAll('.plan-panel').forEach(p=>p.classList.remove('active'));document.querySelectorAll('.plan-tab').forEach(t=>t.classList.remove('active'));document.getElementById('plan-'+id)?.classList.add('active');btn.classList.add('active')}
+function showInd(id,btn){document.querySelectorAll('.ind-panel').forEach(p=>p.classList.remove('active'));document.querySelectorAll('.ind-tab').forEach(t=>t.classList.remove('active'));document.getElementById('ind-'+id)?.classList.add('active');btn.classList.add('active')}
+function showPen(id,btn){document.querySelectorAll('.pen-panel').forEach(p=>p.classList.remove('active'));document.querySelectorAll('.pen-tab').forEach(t=>t.classList.remove('active'));document.getElementById('pen-'+id)?.classList.add('active');btn.classList.add('active')}
+function showP(cat,btn){document.querySelectorAll('.ptab').forEach(t=>t.classList.remove('active'));btn.classList.add('active');document.querySelectorAll('.pcard').forEach(c=>{c.style.display=(cat==='todos'||c.dataset.cat===cat)?'block':'none'})}
+function showNom(t){document.getElementById('nom-dep').style.display=t==='dep'?'block':'none';document.getElementById('nom-ind').style.display=t==='ind'?'block':'none';document.getElementById('nom-tab-dep').classList.toggle('active',t==='dep');document.getElementById('nom-tab-ind').classList.toggle('active',t==='ind')}
+function toggleFaq(el){el.classList.toggle('open');el.nextElementSibling.classList.toggle('open')}
+
+function calcSolar(){
+  const tasa=parseFloat(document.getElementById('s-tipo').value)||0;
+  const renta=parseFloat(document.getElementById('s-renta').value)||0;
+  const inv=parseFloat(document.getElementById('s-inv').value)||0;
+  const anos=parseInt(document.getElementById('s-anos').value)||5;
+  const kwh=parseFloat(document.getElementById('s-kwh').value)||0;
+  const tarifa=parseFloat(document.getElementById('s-tarifa').value)||0;
+  if(!renta)return;
+  const dedTotal=inv*0.5;const dedAnual=dedTotal/anos;const limAnual=renta*0.5;
+  const dedEfectiva=Math.min(dedAnual,limAnual);const impSin=renta*tasa;
+  const rentaCon=Math.max(0,renta-dedEfectiva);const impCon=rentaCon*tasa;
+  const ahorroR=impSin-impCon;const ahorroIva=inv*0.19;const energiaAnual=kwh*tarifa*12;
+  document.getElementById('s-r1').textContent=cop(renta);document.getElementById('s-r2').textContent=cop(impSin);
+  document.getElementById('s-r3').textContent=cop(dedEfectiva)+'/año';document.getElementById('s-r4').textContent=cop(rentaCon);
+  document.getElementById('s-r5').textContent=cop(impCon);document.getElementById('s-r6').textContent=cop(ahorroR);
+  document.getElementById('s-r7').textContent=cop(ahorroIva);document.getElementById('s-r8').textContent=cop(energiaAnual);
+  document.getElementById('s-main').textContent='Ahorro renta: '+cop(ahorroR)+'/año';
+  document.getElementById('s-total').textContent=cop(ahorroR*anos+ahorroIva);
+  let body='';for(let i=1;i<=anos;i++){const de=Math.min(dedAnual,renta*0.5);const rn=Math.max(0,renta-de);const imp=rn*tasa;const ah=impSin-imp;body+=`<tr><td>${i}</td><td>${cop(renta)}</td><td>${cop(dedAnual)}</td><td>${cop(limAnual)}</td><td>${cop(de)}</td><td>${cop(rn)}</td><td>${cop(imp)}</td><td style="color:var(--d);font-weight:600">${cop(ah)}</td></tr>`;}
+  document.getElementById('solar-amort-body').innerHTML=body;document.getElementById('solar-amort-box').style.display='block';
+}
+
+function calcPN(){
+  const ing=parseFloat(document.getElementById('pn-ing').value)||0;if(!ing){return}
+  const ndep=parseInt(document.getElementById('pn-dep').value)||0;
+  const viv=Math.min(parseFloat(document.getElementById('pn-viv').value)||0,62848800);
+  const afc=Math.min((parseFloat(document.getElementById('pn-afc').value)||0),ing*0.30,199021200);
+  const med=Math.min(parseFloat(document.getElementById('pn-med').value)||0,10055808);
+  const solar=parseFloat(document.getElementById('pn-solar').value)||0;
+  const don=parseFloat(document.getElementById('pn-don').value)||0;
+  const exenta=Math.min(ing*0.25,41375460);const depMax=Math.min(ndep*1675968*12,ing*0.10);
+  const dedSolar=Math.min(solar*0.5,ing*0.5);
+  const tasa=ing>300000000?0.33:ing>150000000?0.28:ing>80000000?0.22:ing>40000000?0.15:0.07;
+  const impSin=Math.max(0,(ing-exenta))*tasa;
+  const base2=Math.max(0,ing-exenta-depMax-viv-afc-med-dedSolar);
+  const impCon=Math.max(0,base2*tasa-don*0.25);const ahorro=impSin-impCon;
+  document.getElementById('pn-r0').textContent=cop(ing);document.getElementById('pn-sin').textContent=cop(impSin);
+  document.getElementById('pn-e1').textContent=cop(exenta);document.getElementById('pn-e2').textContent=cop(depMax);
+  document.getElementById('pn-e3').textContent=cop(viv);document.getElementById('pn-e4').textContent=cop(afc);
+  document.getElementById('pn-e5').textContent=cop(med);document.getElementById('pn-e6').textContent=cop(dedSolar);
+  document.getElementById('pn-e7').textContent=cop(Math.min(don*0.25,impSin*0.25));
+  document.getElementById('pn-con').textContent=cop(impCon);document.getElementById('pn-dif').textContent=cop(ahorro);
+  document.getElementById('pn-ahorro').textContent=ahorro>0?cop(ahorro)+' ahorrados':'Sin cambio';
+}
+
+function calcPJ(){
+  const renta=parseFloat(document.getElementById('pj-renta').value)||0;if(!renta){document.getElementById('pj-amort-box').style.display='none';return}
+  const emp=parseInt(document.getElementById('pj-emp').value)||0;const solar=parseFloat(document.getElementById('pj-solar').value)||0;
+  const anos=parseInt(document.getElementById('pj-años').value)||5;
+  const don=parseFloat(document.getElementById('pj-don').value)||0;const idi=parseFloat(document.getElementById('pj-idi').value)||0;
+  const impSin=renta*0.35;const ahorroNom=emp*1750905*0.135*12;
+  const dedSolarAnual=Math.min((solar*0.5)/anos,renta*0.5);const ahorroSolar=dedSolarAnual*0.35;
+  const ahorroIvaSolar=solar*0.19;const descDon=Math.min(don*0.25,impSin*0.25);const descIdi=Math.min(idi*0.25,impSin*0.25);
+  const total=ahorroNom+ahorroSolar+ahorroIvaSolar+descDon+descIdi;
+  document.getElementById('pj-sin').textContent=cop(impSin);document.getElementById('pj-nom').textContent=cop(ahorroNom);
+  document.getElementById('pj-sol').textContent=cop(ahorroSolar)+'/año';document.getElementById('pj-iva').textContent=cop(ahorroIvaSolar);
+  document.getElementById('pj-don2').textContent=cop(descDon);document.getElementById('pj-idi2').textContent=cop(descIdi);
+  document.getElementById('pj-tot').textContent=cop(total);document.getElementById('pj-ahorro').textContent=cop(total)+' estimado';
+  if(solar>0){
+    document.getElementById('pj-inv-label').textContent=cop(solar);document.getElementById('pj-anos-label').textContent=anos;
+    let body='';let acum=0;const dedA=(solar*0.5)/anos;const lim=renta*0.5;
+    for(let i=1;i<=anos;i++){const de=Math.min(dedA,lim);const rn=Math.max(0,renta-de);const imp=rn*0.35;const ah=impSin-imp;acum+=ah;body+=`<tr><td>${i}</td><td>${cop(dedA)}</td><td>${cop(lim)}</td><td>${cop(de)}</td><td>${cop(rn)}</td><td>${cop(imp)}</td><td style="color:var(--d);font-weight:600">${cop(ah)}</td><td>${cop(acum)}</td></tr>`;}
+    document.getElementById('pj-amort-body').innerHTML=body;document.getElementById('pj-amort-box').style.display='block';
+  }else{document.getElementById('pj-amort-box').style.display='none';}
+}
+
+function calcIva(){
+  const raw=parseFloat(document.getElementById('iv-base').value)||0;
+  const inc=parseInt(document.getElementById('iv-inc').value);const tiva=parseFloat(document.getElementById('iv-tiva').value);
+  const rteVal=document.getElementById('iv-rte').value;const [tasaRte,baseMinStr,tipoRte]=rteVal.split('|');
+  const tRte=parseFloat(tasaRte)||0;const baseMin=parseFloat(baseMinStr)||0;
+  const trteiva=parseFloat(document.getElementById('iv-rteiva').value);const tica=(parseFloat(document.getElementById('iv-ica').value)||0)/1000;
+  let base=inc&&tiva>0?raw/(1+tiva):raw;const iva=base*tiva;const sub=base+iva;
+  let rte=0;let alerta='';
+  if(tRte>0&&baseMin>0){if(base>=baseMin){rte=base*tRte;}else{rte=0;alerta=`⚠ No aplica retención: la base (${cop(base)}) no supera la cuantía mínima para ${tipoRte} (${cop(baseMin)}). Art. 368 ET.`;}}
+  else if(tRte>0){rte=base*tRte;}
+  const rteiva=iva*trteiva;const ica=base*tica;const neto=sub-rte-rteiva-ica;
+  document.getElementById('iv-r1').textContent=cop(base);document.getElementById('iv-r2').textContent=cop(iva);
+  document.getElementById('iv-r3').textContent=cop(sub);document.getElementById('iv-r4').textContent=rte>0?cop(rte):alerta?'$0 (no aplica)':'$0';
+  document.getElementById('iv-r5').textContent=cop(rteiva);document.getElementById('iv-r6').textContent=cop(ica);
+  document.getElementById('iv-r7').textContent=cop(neto);document.getElementById('iv-total').textContent=cop(neto);
+  const alertEl=document.getElementById('iv-alert');
+  if(alerta){alertEl.textContent=alerta;alertEl.style.display='block';}else{alertEl.style.display='none';}
+}
+
+function calcNom(){
+  let sal=parseFloat(document.getElementById('nom-sal').value)||0;if(sal<1750905)sal=1750905;
+  const dias=Math.min(parseInt(document.getElementById('nom-dias').value)||30,30);
+  const aux=parseInt(document.getElementById('nom-aux').value);const arl=parseFloat(document.getElementById('nom-arl').value);
+  const exo=parseInt(document.getElementById('nom-exo').value);
+  const base=sal*(dias/30);const auxT=aux?249095*(dias/30):0;const bPS=base+auxT;
+  const prima=bPS*0.0833;const ces=bPS*0.0833;const intCes=base*0.01;const vac=base*0.0417;
+  const salud=exo?0:base*0.085;const pen=base*0.12;const arlV=base*arl;
+  const sena=exo?0:base*0.02;const icbf=exo?0:base*0.03;const ccf=base*0.04;
+  const total=base+auxT+prima+ces+intCes+vac+salud+pen+arlV+(exo?0:sena+icbf)+ccf;
+  document.getElementById('nom-r1').textContent=cop(base+auxT);document.getElementById('nom-r2').textContent=cop(prima);
+  document.getElementById('nom-r3').textContent=cop(ces);document.getElementById('nom-r4').textContent=cop(intCes);
+  document.getElementById('nom-r5').textContent=cop(vac);document.getElementById('nom-r6').textContent=exo?'Exonerado (Art.114-1)':cop(salud);
+  document.getElementById('nom-r7').textContent=cop(pen);document.getElementById('nom-r8').textContent=cop(arlV+(exo?0:sena+icbf)+ccf);
+  document.getElementById('nom-anual').textContent=cop(total*12);document.getElementById('nom-main').textContent=cop(total)+'/mes';
+}
+
+function calcInd(){
+  const tipo=document.getElementById('ind-tipo').value;const val=parseFloat(document.getElementById('ind-val').value)||0;
+  const cos=parseFloat(document.getElementById('ind-cos').value)||0;const arl=parseFloat(document.getElementById('ind-arl').value);
+  let ibc=0;let pct='';
+  if(tipo==='prest'){ibc=val*0.4;pct='40% del contrato'}else if(tipo==='cta'){ibc=(val-cos)*0.4;pct='40% de (ingresos − costos)'}else if(tipo==='integral'){ibc=val*0.7;pct='70% del salario integral'}
+  ibc=Math.max(ibc,1750905);const salud=ibc*0.125;const pen=ibc*0.16;const arlV=ibc*arl;const tot=salud+pen+arlV;
+  document.getElementById('ind-r0').textContent=cop(val);document.getElementById('ind-ibc').textContent=cop(ibc);
+  document.getElementById('ind-pct').textContent=pct;document.getElementById('ind-sal').textContent=cop(salud);
+  document.getElementById('ind-pen').textContent=cop(pen);document.getElementById('ind-arl2').textContent=cop(arlV);
+  document.getElementById('ind-tot').textContent=cop(tot);document.getElementById('ind-anual').textContent=cop(tot*12);
+  document.getElementById('ind-main').textContent=cop(tot)+'/mes';
+}
+
+function calcInv(){
+  const cap=parseFloat(document.getElementById('inv-cap').value)||0;
+  const cdt=(parseFloat(document.getElementById('inv-cdt').value)||0)/100;
+  const neg=(parseFloat(document.getElementById('inv-neg').value)||0)/100;
+  const riesgo=parseFloat(document.getElementById('inv-riesgo').value);const anos=parseInt(document.getElementById('inv-anos').value)||5;
+  const vfCdt=cap*Math.pow(1+cdt,anos);const vfNeg=cap*Math.pow(1+neg*riesgo,anos);
+  document.getElementById('inv-r1').textContent=cop(vfCdt);document.getElementById('inv-r2').textContent=cop(vfCdt-cap);
+  document.getElementById('inv-r3').textContent=cop(vfNeg);document.getElementById('inv-r4').textContent=cop(vfNeg-cap);
+  document.getElementById('inv-rec').textContent=(vfNeg-cap)>(vfCdt-cap)?'Negocio — mayor retorno':'CDT — menor riesgo';
+  document.getElementById('inv-main').textContent=(vfNeg-cap)>(vfCdt-cap)?'Negocio favorece':'CDT más seguro';
+}
+
+function calcEmp(){
+  const tipo=document.getElementById('emp-tipo').value;const cap=parseFloat(document.getElementById('emp-cap').value)||0;
+  const ciu=document.getElementById('emp-ciu').value;const ing=parseFloat(document.getElementById('emp-ing').value)||0;
+  let cc=cap<=1e6?78000:cap<=5e6?141000:cap<=1e7?198000:cap<=5e7?460000:cap<=1e8?688000:Math.round(cap*0.0055);
+  if(ciu==='boy')cc=Math.round(cc*0.85);if(tipo==='PN'||tipo==='EU')cc=Math.round(cc*0.4);
+  const not=(tipo==='LTDA'||tipo==='SA')?380000:0;
+  document.getElementById('emp-r1').textContent=cop(cc);document.getElementById('emp-r3').textContent=not>0?cop(not):'No aplica (SAS/EU/PN)';
+  document.getElementById('emp-main').textContent=cop(cc+58000+not)+' aprox.';
+  if(ing>0){const u=52374;const iu=ing/u;let c='';if(iu<=32988)c='Microempresa · Sector Servicios (Decreto 957/2019)';else if(iu<=131951)c='Pequeña empresa · Sector Servicios';else if(iu<=483034)c='Mediana empresa · Sector Servicios';else c='Grande empresa (supera límites Mipyme)';document.getElementById('emp-clas').textContent='📌 '+c;}
+}
+
+function calcMora(){
+  const val=parseFloat(document.getElementById('mor-val').value)||0;const fechaStr=document.getElementById('mor-fecha').value;
+  const tipo=document.getElementById('mor-tipo').value;const tasaCorr=parseFloat(document.getElementById('mor-corr').value)||0.1;
+  if(!val||!fechaStr){document.getElementById('mor-main').textContent='$0';return}
+  const fechaVenc=new Date(fechaStr);const hoy=new Date();
+  const dias=Math.max(0,Math.floor((hoy-fechaVenc)/(1000*60*60*24)));const meses=dias/30;
+  const tasaDiaria=Math.pow(1.2236,1/365)-1;const intereses=val*(Math.pow(1+tasaDiaria,dias)-1);
+  let sancion=0;let tipoLabel='';
+  if(tipo==='extemp'){const pct=Math.min(0.05*Math.ceil(meses),1.0);sancion=Math.max(val*pct,524000);tipoLabel='Extemporaneidad Art.641 ET';}
+  else if(tipo==='corr'){sancion=Math.max(val*tasaCorr,524000);tipoLabel='Corrección Art.644 ET ('+Math.round(tasaCorr*100)+'%)';}
+  else if(tipo==='inexac'){sancion=Math.max(val*1.0,524000);tipoLabel='Inexactitud Art.647 ET (100%)';}
+  else if(tipo==='nodecl'){sancion=Math.max(val*0.1,524000);tipoLabel='No declarar Art.643 ET';}
+  else if(tipo==='solo'){sancion=0;tipoLabel='Solo intereses de mora';}
+  const total=val+intereses+sancion;
+  document.getElementById('mor-r1').textContent=cop(val);document.getElementById('mor-dias').textContent=dias+' días ('+Math.floor(meses)+' meses)';
+  document.getElementById('mor-r2').textContent=cop(intereses);document.getElementById('mor-tipo2').textContent=tipoLabel;
+  document.getElementById('mor-r3').textContent=cop(sancion);document.getElementById('mor-r4').textContent=cop(total);
+  document.getElementById('mor-main').textContent=cop(total);
+}
+
+const HABIL={0:2,1:2,2:2,3:2,4:2,5:2,6:2,7:2,8:3,9:3,10:3,11:3,12:3,13:3,14:3,15:4,16:4,17:4,18:4,19:4,20:4,21:4,22:5,23:5,24:5,25:5,26:5,27:5,28:5,29:6,30:6,31:6,32:6,33:6,34:6,35:6,36:7,37:7,38:7,39:7,40:7,41:7,42:7,43:8,44:8,45:8,46:8,47:8,48:8,49:8,50:9,51:9,52:9,53:9,54:9,55:9,56:9,57:10,58:10,59:10,60:10,61:10,62:10,63:10,64:11,65:11,66:11,67:11,68:11,69:11,70:12,71:12,72:12,73:12,74:12,75:12,76:13,77:13,78:13,79:13,80:13,81:13,82:14,83:14,84:14,85:14,86:14,87:14,88:15,89:15,90:15,91:15,92:15,93:15,94:16,95:16,96:16,97:16,98:16,99:16};
+
+function calcCal(){
+  const nit=document.getElementById('cal-nit').value.replace(/\D/g,'');
+  if(nit.length<2){document.getElementById('cal-result').style.display='none';return}
+  const tipo=document.getElementById('cal-tipo').value;const ud=parseInt(nit.slice(-2));const h=HABIL[ud]||2;
+  document.getElementById('cal-nit-show').textContent=nit;document.getElementById('cal-dig').textContent=nit.slice(-2);
+  document.getElementById('cal-hab').textContent=h+'° día hábil';
+  const tipoIva=document.getElementById('cal-iva').value;const decRenta=document.getElementById('cal-renta').value;
+  const tieneRte=document.getElementById('cal-rte').value;const tieneExo=document.getElementById('cal-exo').value;
+  const items=[];
+  if(tipo==='pn'){const declara=decRenta==='si'||(decRenta==='auto');if(declara){items.push({m:'Renta AG 2025 · PN',i:'Declaración renta Persona Natural',f:'Día hábil '+h+'° de agosto 2026 (aprox. 12 ago al 1 sep)',p:'Formulario 210',norma:'Art. 592 ET'});}}
+  if(tipo==='pj'){items.push({m:'Renta AG 2025 · 1a cuota',i:'50% del impuesto estimado',f:'Día hábil '+h+'° de mayo 2026 (aprox. 12–29 may)',p:'Formulario 110',norma:'Art. 240 ET'});items.push({m:'Renta AG 2025 · Decl. + 2a cuota',i:'Saldo + declaración',f:'Día hábil '+h+'° de julio 2026 (aprox. 9–29 jul)',p:'Formulario 110',norma:'Art. 240 ET'});}
+  if(tipo==='gc'){items.push({m:'Renta GC · 1a cuota',i:'Gran Contribuyente',f:'Día hábil '+h+'° de febrero 2026',p:'Formulario 110',norma:'Art. 240 ET'});}
+  if(tipoIva==='bi')items.push({m:'IVA Bimestral 2026',i:'Cada bimestre',f:'Día hábil '+h+'° del mes siguiente',p:'Formulario 300',norma:'Art. 600 ET'});
+  if(tipoIva==='cuat')items.push({m:'IVA Cuatrimestral 2026',i:'3 cuatrimestres en el año',f:'Día hábil '+h+'° de mayo, sep y ene 2027',p:'Formulario 300',norma:'Art. 600 ET'});
+  if(tieneRte==='si')items.push({m:'Retención en la Fuente · Mensual',i:'Retenciones mes anterior',f:'Día hábil '+h+'° de cada mes',p:'Formulario 350',norma:'Art. 374 ET'});
+  if(tieneExo==='si')items.push({m:'Información Exógena AG 2025',i:'Medios magnéticos DIAN',f:'8 abr al 13 may 2026 según últimos 2 dígitos',p:'Res. DIAN 000014/2023',norma:'Art. 631 ET'});
+  const g2=document.getElementById('cal-grid');g2.innerHTML='';
+  items.forEach(it=>{const div=document.createElement('div');div.style.cssText='background:var(--v);padding:1rem;border:1px solid rgba(201,168,76,0.2)';div.innerHTML=`<div style="font-size:0.55rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(201,168,76,0.5);margin-bottom:0.2rem">${it.m}</div><div style="font-family:Cormorant Garamond,serif;font-size:0.98rem;color:#fff;margin-bottom:0.15rem;line-height:1.2">${it.i}</div><div style="font-size:0.82rem;color:var(--d);font-weight:500;margin-bottom:0.1rem">📅 ${it.f}</div><div style="font-size:0.64rem;color:rgba(255,255,255,0.35)">${it.p}</div>${it.norma?`<div style="font-size:0.62rem;color:rgba(201,168,76,0.5);margin-top:0.2rem">${it.norma}</div>`:''}</div>`;g2.appendChild(div);});
+  document.getElementById('cal-nota').innerHTML=`<strong>Nota:</strong> Fechas basadas en el día hábil <strong>${h}°</strong> para los últimos 2 dígitos <strong>${nit.slice(-2)}</strong>. Verifica siempre en <strong>dian.gov.co → Calendario Tributario 2026</strong>.`;
+  document.getElementById('cal-result').style.display='block';
+  if(decRenta==='auto'){document.getElementById('cal-renta-alert').textContent='ℹ Verifica si superas los topes del AG 2025 (ver tabla abajo) para saber si debes declarar renta.';document.getElementById('cal-renta-alert').style.display='block';}else{document.getElementById('cal-renta-alert').style.display='none';}
+}
+
+function calcAh(){
+  const fac=parseFloat(document.getElementById('ah-fac').value)||0;const pot=parseFloat(document.getElementById('ah-sector').value);
+  const anos=parseInt(document.getElementById('ah-anos').value)||10;const inc=(parseFloat(document.getElementById('ah-inc').value)||8)/100;
+  const mens=fac*pot;const ano1=mens*12;let acum=0;let f=fac;
+  for(let i=0;i<anos;i++){acum+=f*pot*12;f*=(1+inc);}
+  const co2=(fac/750)*12*anos*0.126;
+  document.getElementById('ah-r1').textContent=cop(mens);document.getElementById('ah-r2').textContent=cop(ano1);
+  document.getElementById('ah-r3').textContent=cop(acum);document.getElementById('ah-r4').textContent=co2.toFixed(1)+' ton CO₂';
+  document.getElementById('ah-main').textContent=cop(acum)+' proyectados';
+}
+
+function calcPension(){
+  const sexo=document.getElementById('pen-sexo').value;
+  const edad=parseInt(document.getElementById('pen-edad').value)||0;
+  const semCot=parseInt(document.getElementById('pen-sem').value)||0;
+  const sal=parseFloat(document.getElementById('pen-sal').value)||0;
+  const reg=document.getElementById('pen-reg').value;
+  const inc=(parseFloat(document.getElementById('pen-inc').value)||5)/100;
+  if(!edad||semCot===undefined||semCot==='')return;
+  const semReq=sexo==='F'?1275:1300;
+  const edadReq=sexo==='F'?57:62;
+  const semFalt=Math.max(0,semReq-semCot);
+  const añosFalt=semFalt/52;
+  const edadAlCompletar=edad+añosFalt;
+  const edadEstPen=Math.max(edadReq,edadAlCompletar);
+  // Tasa de reemplazo Art.34 Ley 100 (RPM): 65.5% + 1.5% por cada 50 semanas adicionales sobre 500
+  const semBase=Math.min(semCot,semReq);
+  let pct=0.55;
+  if(semBase>=1275)pct=0.65;else if(semBase>=1000)pct=0.60;else if(semBase>=750)pct=0.57;
+  if(reg==='pri')pct=pct*0.9; // fondo privado depende del capital, estimación conservadora
+  const pensionEst=sal>0?Math.max(1750905,sal*pct):1750905;
+  const tasaReemplazo=(sal>0?(pensionEst/sal*100).toFixed(1):'—');
+  document.getElementById('pen-r1').textContent=semReq+' semanas';
+  document.getElementById('pen-r2').textContent=semCot+' semanas';
+  document.getElementById('pen-r3').textContent=semFalt>0?semFalt+' semanas':'✅ Completas';
+  document.getElementById('pen-r4').textContent=añosFalt>0?añosFalt.toFixed(1)+' años':'✅ Suficientes';
+  document.getElementById('pen-r4b').textContent=edadAlCompletar>0?edadAlCompletar.toFixed(0)+' años':edadReq+' años';
+  document.getElementById('pen-r5').textContent=edadEstPen.toFixed(0)+' años';
+  document.getElementById('pen-r6').textContent=sal>0?cop(pensionEst):'Ingresa salario';
+  document.getElementById('pen-r7').textContent=sal>0?tasaReemplazo+'%':'—';
+  document.getElementById('pen-main').textContent=semFalt>0?'Faltan '+semFalt+' semanas':'¡Semanas completas!';
+  let beneficio='';
+  if(sexo==='F')beneficio='<strong style="color:var(--d)">✨ Ley 2381/2024:</strong> Como mujer cotizas <strong>1.275 semanas</strong> (antes 1.300 — ¡25 semanas menos!). Pensión a los 57 años. Norma: Art. 33 Ley 100/1993 modificado por Ley 2381/2024.';
+  else beneficio='<strong style="color:var(--d)">Ley vigente:</strong> Hombres — <strong>1.300 semanas</strong> y 62 años de edad (Art. 33 Ley 100/1993 · Ley 2381/2024).';
+  if(semFalt>0)beneficio+='<br><br>⏳ <strong>Puedes cotizar voluntariamente</strong> mediante planilla PILA para completar semanas. Los independientes cotizan el 16% sobre el 40% de su ingreso (mín. 1 smmlv).';
+  if(semCot>=semReq)beneficio+='<br><br>🎉 <strong>¡Ya tienes las semanas suficientes!</strong> Consulta con Angie el trámite para iniciar tu pensión.';
+  if(reg==='pri')beneficio+='<br><br>🏦 <strong>Fondo privado:</strong> Tu pensión depende del capital acumulado + rendimientos del mercado. Puedes acceder a pensión anticipada si tu capital equivale a pensión mínima del 110% smmlv × semanas.';
+  document.getElementById('pen-beneficio').innerHTML=beneficio;
+  // TABLA DE AMORTIZACIÓN
+  if(sal>0){
+    document.getElementById('pen-amort-title').textContent='Tabla de cotización año a año — '+sexo==='F'?'Mujeres (Ley 2381/2024)':'Hombres (Ley 100/1993)';
+    let body='';let semAcum=semCot;let salAct=sal;const añosMax=Math.ceil(añosFalt)+2;
+    for(let i=1;i<=Math.min(añosMax,40);i++){
+      const semAno=52;semAcum+=semAno;const falt=Math.max(0,semReq-semAcum+semAno);const faltNow=Math.max(0,semReq-semAcum);
+      const edadI=(edad+i);const apMens=salAct*0.16;const apAno=apMens*12;
+      const completo=semAcum>=semReq;
+      const rowCss=completo?'background:rgba(201,168,76,0.07);font-weight:600':'';
+      body+=`<tr style="${rowCss}"><td>${i}</td><td>${edadI}</td><td>52</td><td style="color:var(--v);font-weight:600">${semAcum}</td><td style="color:${faltNow===0?'#2a7a4b':'inherit'}">${faltNow===0?'✅ Completas':faltNow+' sem.'}</td><td>${cop(salAct)}</td><td>${cop(apMens)}</td><td>${cop(apAno)}</td><td style="color:${completo?'#2a7a4b':'var(--txc)'}">${completo?'🎉 ¡Completadas!':'Cotizando'}</td></tr>`;
+      salAct*=(1+inc);if(semAcum>=semReq+52)break;
+    }
+    document.getElementById('pen-amort-body').innerHTML=body;
+    document.getElementById('pen-amort-box').style.display='block';
+  }else{document.getElementById('pen-amort-box').style.display='none';}
+}
+</script>
+</body>
+</html>

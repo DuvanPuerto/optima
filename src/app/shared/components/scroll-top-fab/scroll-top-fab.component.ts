@@ -7,7 +7,7 @@ import { Component, HostListener, signal } from '@angular/core';
     @if (visible()) {
       <button
         (click)="scrollTop()"
-        class="fixed bottom-24 right-6 z-40 w-11 h-11 rounded-full flex items-center justify-center shadow-lg transition-all duration-300 border-none cursor-pointer"
+        class="w-11 h-11 rounded-full flex items-center justify-center shadow-lg transition-all duration-300 border-none cursor-pointer"
         style="background: var(--primary); color: white;"
         aria-label="Volver arriba"
       >

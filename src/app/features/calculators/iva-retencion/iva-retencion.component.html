@@ -1,0 +1,139 @@
+<div class="grid lg:grid-cols-2 gap-8">
+
+  <!-- Form -->
+  <div class="card p-7 space-y-5">
+    <h3 class="font-semibold text-lg" style="color: var(--text);">
+      Liquidador IVA · Retención · Reteiva 2026
+    </h3>
+
+    <div>
+      <label class="form-label">Valor de la operación $</label>
+      <input type="text" class="form-input" inputmode="numeric" autocomplete="off"
+        [value]="valorDisplay()" (input)="onValorInput($event)"
+        placeholder="Ej: 5.000.000">
+    </div>
+
+    <div>
+      <label class="form-label">¿El IVA está incluido en el precio?</label>
+      <select class="form-input"
+        [value]="ivaIncluido() ? 'true' : 'false'"
+        (change)="ivaIncluido.set($any($event.target).value === 'true')">
+        <option value="false">No — se suma al valor</option>
+        <option value="true">Sí — ya está incluido en el precio</option>
+      </select>
+    </div>
+
+    <div>
+      <label class="form-label">Tarifa IVA aplicable</label>
+      <select class="form-input"
+        [value]="ivaRate()"
+        (change)="ivaRate.set(+$any($event.target).value)">
+        @for (opt of ivaOpts; track opt.rate) {
+          <option [value]="opt.rate">{{ opt.label }}</option>
+        }
+      </select>
+    </div>
+
+    <div>
+      <label class="form-label">Tipo de retención en la fuente</label>
+      <select class="form-input"
+        [value]="retIdx()"
+        (change)="retIdx.set(+$any($event.target).value)">
+        @for (opt of retTable; track $index; let i = $index) {
+          <option [value]="i">
+            {{ opt.rate > 0 ? opt.rate + '% — ' : '' }}{{ opt.name }}{{ opt.baseMin > 0 ? ' · base mín. ' + fmtMin(opt.baseMin) : (opt.rate > 0 ? ' · cualquier valor' : '') }}
+          </option>
+        }
+      </select>
+    </div>
+
+    <div>
+      <label class="form-label">Reteiva (% del IVA)</label>
+      <select class="form-input"
+        [value]="reteivaPct()"
+        (change)="reteivaPct.set(+$any($event.target).value)">
+        @for (opt of reteIvaOpts; track opt.rate) {
+          <option [value]="opt.rate">{{ opt.label }}</option>
+        }
+      </select>
+    </div>
+
+    <div>
+      <label class="form-label">Reteica (por mil — según municipio)</label>
+      <input type="number" class="form-input" min="0" step="0.01"
+        [value]="reteicaPorMil() || ''"
+        (input)="reteicaPorMil.set(+$any($event.target).value || 0)"
+        placeholder="Ej: 4.14 (Bogotá comercio)">
+    </div>
+  </div>
+
+  <!-- Results panel -->
+  <div class="rounded-2xl p-7 flex flex-col gap-5" style="background: var(--primary);">
+    <div>
+      <p class="text-xs uppercase tracking-widest mb-2" style="color: rgba(255,255,255,0.4);">
+        LIQUIDACIÓN COMPLETA
+      </p>
+      <p class="font-heading font-bold" style="font-size: 2.5rem; color: var(--secondary);">
+        {{ fmt(result().neto) }}
+      </p>
+    </div>
+
+    <div class="divide-y" style="border-color: rgba(255,255,255,0.1);">
+      <div class="flex justify-between py-3 text-sm">
+        <span style="color: rgba(255,255,255,0.65);">Base gravable</span>
+        <span class="font-semibold text-white">{{ fmt(result().base) }}</span>
+      </div>
+      <div class="flex justify-between py-3 text-sm">
+        <span style="color: rgba(255,255,255,0.65);">IVA</span>
+        <span class="font-semibold text-white">{{ fmt(result().iva) }}</span>
+      </div>
+      <div class="flex justify-between py-3 text-sm">
+        <span style="color: rgba(255,255,255,0.65);">Subtotal con IVA</span>
+        <span class="font-semibold text-white">{{ fmt(result().subtotal) }}</span>
+      </div>
+      <div class="flex justify-between py-3 text-sm">
+        <span style="color: rgba(255,255,255,0.65);">(-) Retención en la Fuente</span>
+        <span class="font-semibold" style="color: #f87171;">{{ fmt(result().retencion) }}</span>
+      </div>
+      <div class="flex justify-between py-3 text-sm">
+        <span style="color: rgba(255,255,255,0.65);">(-) Reteiva</span>
+        <span class="font-semibold" style="color: #f87171;">{{ fmt(result().reteiva) }}</span>
+      </div>
+      <div class="flex justify-between py-3 text-sm">
+        <span style="color: rgba(255,255,255,0.65);">(-) Reteica</span>
+        <span class="font-semibold" style="color: #f87171;">{{ fmt(result().reteica) }}</span>
+      </div>
+      <div class="flex justify-between pt-4 font-bold text-base">
+        <span style="color: var(--secondary);">Valor neto a pagar</span>
+        <span style="color: var(--secondary);">{{ fmt(result().neto) }}</span>
+      </div>
+    </div>
+
+    <div class="mt-auto pt-2">
+      <p class="text-xs font-semibold uppercase tracking-wider mb-3" style="color: var(--secondary);">
+        Tabla de referencia — Retención 2026
+      </p>
+      <table class="w-full text-xs">
+        <thead>
+          <tr>
+            <th class="text-left pb-2 font-semibold" style="color: var(--secondary);">Concepto</th>
+            <th class="text-right pb-2 font-semibold" style="color: var(--secondary);">Tarifa</th>
+            <th class="text-right pb-2 font-semibold" style="color: var(--secondary);">Base mín.</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (opt of retTable; track opt.name) {
+            @if (opt.rate > 0) {
+              <tr style="border-top: 1px solid rgba(255,255,255,0.08);">
+                <td class="py-2 pr-2 leading-tight" style="color: rgba(255,255,255,0.65);">{{ opt.name }}</td>
+                <td class="py-2 text-right font-medium text-white">{{ opt.rate }}%</td>
+                <td class="py-2 text-right font-medium text-white">{{ fmtMin(opt.baseMin) }}</td>
+              </tr>
+            }
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>

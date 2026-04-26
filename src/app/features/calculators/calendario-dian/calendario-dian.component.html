@@ -1,0 +1,120 @@
+<div class="space-y-6">
+
+  <!-- Header + filters -->
+  <div class="flex flex-wrap items-center justify-between gap-4">
+    <div>
+      <h3 class="font-semibold text-lg" style="color: var(--text);">
+        Calendario tributario DIAN 2026
+      </h3>
+      <p class="text-xs mt-0.5" style="color: var(--text-muted);">
+        Fechas aproximadas — Las fechas exactas son establecidas por Decreto DIAN cada año.
+      </p>
+    </div>
+    <div class="flex flex-wrap gap-2">
+      @for (f of filters; track f.id) {
+        <button (click)="filterTag.set(f.id)"
+          class="px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors cursor-pointer"
+          [style.background]="filterTag() === f.id ? 'var(--secondary)' : 'var(--surface-2)'"
+          [style.color]="filterTag() === f.id ? 'var(--primary-dark)' : 'var(--text-muted)'">
+          {{ f.label }}
+        </button>
+      }
+    </div>
+  </div>
+
+  <!-- Obligations table -->
+  <div class="card overflow-hidden">
+    <div class="overflow-x-auto">
+      <table class="w-full text-sm">
+        <thead style="background: var(--primary);">
+          <tr>
+            <th class="text-left px-4 py-3 font-semibold text-white">Obligación</th>
+            <th class="text-left px-4 py-3 font-semibold text-white hidden sm:table-cell">Periodicidad</th>
+            <th class="text-left px-4 py-3 font-semibold text-white hidden md:table-cell">Quién debe declarar</th>
+            <th class="text-left px-4 py-3 font-semibold" style="color: var(--secondary-light);">Vencimiento aprox.</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (o of filtered(); track o.name; let even = $even) {
+            <tr [style.background]="even ? 'var(--surface)' : 'var(--surface-2)'"
+              class="border-b" style="border-color: var(--border-light);">
+              <td class="px-4 py-3">
+                <div class="flex items-start gap-2">
+                  <span class="inline-block px-2 py-0.5 rounded-full text-xs font-semibold mt-0.5 flex-shrink-0"
+                    [style.background]="tagBg(o.tag)"
+                    [style.color]="tagColor(o.tag)">
+                    {{ o.tag.charAt(0).toUpperCase() + o.tag.slice(1) }}
+                  </span>
+                  <span style="color: var(--text);">{{ o.name }}</span>
+                </div>
+              </td>
+              <td class="px-4 py-3 hidden sm:table-cell" style="color: var(--text-muted);">{{ o.period }}</td>
+              <td class="px-4 py-3 hidden md:table-cell text-xs" style="color: var(--text-muted);">{{ o.who }}</td>
+              <td class="px-4 py-3 text-xs font-semibold" style="color: var(--secondary);">{{ o.months }}</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Renta PN schedule + reference -->
+  <div class="grid sm:grid-cols-2 gap-6">
+
+    <!-- Calendario renta PN -->
+    <div class="card p-6">
+      <h4 class="font-semibold text-sm mb-1" style="color: var(--text);">
+        <i class="fa-solid fa-id-card mr-2" style="color: var(--secondary);"></i>
+        Renta PN 2026 — según últimos 2 dígitos cédula
+      </h4>
+      <p class="text-xs mb-4" style="color: var(--text-muted);">Fechas indicativas — verificar Decreto vigente</p>
+      <div class="space-y-0 divide-y" style="border-color: var(--border-light);">
+        @for (c of cedula; track c.dig) {
+          <div class="flex justify-between py-2 text-xs">
+            <span class="font-mono font-medium" style="color: var(--text);">Cédula ···{{ c.dig }}</span>
+            <span style="color: var(--secondary);">{{ c.fecha }}</span>
+          </div>
+        }
+      </div>
+    </div>
+
+    <!-- Cifras de referencia 2026 -->
+    <div class="card p-6 space-y-4">
+      <h4 class="font-semibold text-sm" style="color: var(--text);">
+        <i class="fa-solid fa-circle-info mr-2" style="color: var(--secondary);"></i>
+        Cifras de referencia 2026
+      </h4>
+      <div class="space-y-3 text-sm">
+        <div class="flex justify-between py-2 border-b" style="border-color: var(--border-light);">
+          <span style="color: var(--text-muted);">UVT 2026</span>
+          <span class="font-semibold" style="color: var(--secondary);">$52.374</span>
+        </div>
+        <div class="flex justify-between py-2 border-b" style="border-color: var(--border-light);">
+          <span style="color: var(--text-muted);">SMMLV 2026</span>
+          <span class="font-semibold" style="color: var(--secondary);">$1.750.905</span>
+        </div>
+        <div class="flex justify-between py-2 border-b" style="border-color: var(--border-light);">
+          <span style="color: var(--text-muted);">Sanción mínima (10 UVT)</span>
+          <span class="font-semibold" style="color: var(--secondary);">$524.000</span>
+        </div>
+        <div class="flex justify-between py-2 border-b" style="border-color: var(--border-light);">
+          <span style="color: var(--text-muted);">Tasa de mora DIAN (EA)</span>
+          <span class="font-semibold" style="color: var(--secondary);">22.36%</span>
+        </div>
+        <div class="flex justify-between py-2 border-b" style="border-color: var(--border-light);">
+          <span style="color: var(--text-muted);">IVA general</span>
+          <span class="font-semibold" style="color: var(--secondary);">19%</span>
+        </div>
+        <div class="flex justify-between py-2">
+          <span style="color: var(--text-muted);">IPC 2025 (acumulado)</span>
+          <span class="font-semibold" style="color: var(--secondary);">~5.2%</span>
+        </div>
+      </div>
+      <a href="https://www.dian.gov.co" target="_blank" rel="noopener noreferrer"
+        class="btn-ghost w-full justify-center text-xs py-2 mt-2">
+        Portal DIAN
+        <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.65rem;"></i>
+      </a>
+    </div>
+  </div>
+</div>

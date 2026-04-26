@@ -9,7 +9,7 @@ import { CONTACT_INFO } from '../../../config/content.config';
       [href]="url"
       target="_blank"
       rel="noopener noreferrer"
-      class="fixed bottom-6 right-6 z-50 flex items-center gap-2 group"
+      class="flex flex-row-reverse items-center gap-2 group"
       aria-label="Contactar por WhatsApp"
     >
       <!-- Pulse ring -->

@@ -1,8 +1,12 @@
 <app-navbar />
+<app-ticker />
 <main>
   <router-outlet />
 </main>
 <app-footer />
-<app-whatsapp-fab />
-<app-scroll-top-fab />
+<!-- FAB stack: scroll-top appears above WhatsApp, both share the same right axis -->
+<div class="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3">
+  <app-scroll-top-fab />
+  <app-whatsapp-fab />
+</div>
 
