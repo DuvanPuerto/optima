@@ -1,6 +1,6 @@
 import { Component, signal, computed } from '@angular/core';
 
-const RTE_CDT_DEFAULT = 7; // % Art. 395 ET — rendimientos financieros
+const RTE_CDT_DEFAULT = 4; // % Art. 395 ET — rendimientos financieros
 
 export interface MesRow {
   mes: number;
