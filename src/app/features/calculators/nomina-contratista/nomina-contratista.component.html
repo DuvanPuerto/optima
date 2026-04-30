@@ -1,38 +1,72 @@
 <div class="space-y-6">
 
-  <!-- Inputs -->
-  <div class="card p-6 grid sm:grid-cols-2 gap-5">
-    <div>
-      <label class="form-label">Ingreso mensual bruto (COP)</label>
-      <input type="text" class="form-input" inputmode="numeric" autocomplete="off"
-        [value]="salarioDisplay()" (input)="onSalarioInput($event)"
-        placeholder="Ej: 1.750.905">
-      <p class="text-xs mt-1" style="color: var(--text-muted);">2026: Salario mínimo $1.750.905</p>
+  <!-- ── Inputs independientes ─────────────────────────────────────────────── -->
+  <div class="grid sm:grid-cols-2 gap-4">
+
+    <!-- Empleado inputs -->
+    <div class="card p-5 space-y-4">
+      <div class="flex items-center gap-2 mb-1">
+        <div class="w-7 h-7 rounded-lg flex items-center justify-center" style="background: var(--primary);">
+          <i class="fa-solid fa-id-badge text-xs text-white"></i>
+        </div>
+        <p class="text-xs font-semibold uppercase tracking-wide" style="color: var(--text-muted);">Datos del empleado</p>
+      </div>
+      <div>
+        <label class="form-label">Salario mensual bruto (COP)</label>
+        <input type="text" class="form-input" inputmode="numeric" autocomplete="off"
+          [value]="salarioEmpDisplay()" (input)="onEmpInput($event)" placeholder="Ej: 1.750.905">
+        <p class="text-xs mt-1" style="color: var(--text-muted);">2026: Salario mínimo $1.750.905</p>
+      </div>
+      <div>
+        <label class="form-label">Auxilio de transporte (COP) <span style="color: var(--text-muted); font-weight:400;">— opcional</span></label>
+        <input type="text" class="form-input" inputmode="numeric" autocomplete="off"
+          [value]="auxDisplay()" (input)="onAuxInput($event)" placeholder="Ej: 249.095">
+        <p class="text-xs mt-1" style="color: var(--text-muted);">2026: $249.095 · Solo salarios ≤ $3.501.810 (2 SMMLV)</p>
+      </div>
     </div>
-    <div>
-      <label class="form-label">Tipo de contratista</label>
-      <select class="form-input" [value]="tipo()" (change)="tipo.set($any($event.target).value)">
-        <option value="pn">Persona Natural (retención 10%)</option>
-        <option value="pj">Persona Jurídica (retención 11%)</option>
-      </select>
-    </div>
-    <div>
-      <label class="form-label">Auxilio de transporte (COP) <span style="color: var(--text-muted); font-weight:400;">— opcional</span></label>
-      <input type="text" class="form-input" inputmode="numeric" autocomplete="off"
-        [value]="auxDisplay()" (input)="onAuxInput($event)"
-        placeholder="Ej: 249.095">
-      <p class="text-xs mt-1" style="color: var(--text-muted);">2026: $249.095 · Solo salarios ≤ $3.501.810 (2 SMMLV)</p>
+
+    <!-- Contratista inputs -->
+    <div class="card p-5 space-y-4">
+      <div class="flex items-center gap-2 mb-1">
+        <div class="w-7 h-7 rounded-lg flex items-center justify-center"
+          style="background: linear-gradient(135deg, #6B8880, #4a6e67);">
+          <i class="fa-solid fa-file-signature text-xs text-white"></i>
+        </div>
+        <p class="text-xs font-semibold uppercase tracking-wide" style="color: var(--text-muted);">Datos del contratista</p>
+      </div>
+      <div>
+        <label class="form-label">Honorarios / Ingreso mensual (COP)</label>
+        <input type="text" class="form-input" inputmode="numeric" autocomplete="off"
+          [value]="salarioConDisplay()" (input)="onConInput($event)" placeholder="Ej: 3.000.000">
+        <p class="text-xs mt-1" style="color: var(--text-muted);">IBC mínimo para aportes: $1.750.905 (1 SMMLV)</p>
+      </div>
+      <div>
+        <label class="form-label">Tipo de retención en la fuente</label>
+        <select class="form-input" [value]="retencionIdx()"
+          (change)="retencionIdx.set(+$any($event.target).value)">
+          @for (r of retenciones; track r.label; let i = $index) {
+            <option [value]="i">{{ r.label }}</option>
+          }
+        </select>
+        @if (retenciones[retencionIdx()].norma) {
+          <p class="text-xs mt-1" style="color: var(--text-muted);">{{ retenciones[retencionIdx()].norma }}</p>
+        }
+        @if (contratista().ret.minBase > 0 && !contratista().aplica) {
+          <p class="text-xs mt-1" style="color: var(--error);">
+            ⚠ Honorarios por debajo de la base mínima ({{ fmt(contratista().ret.minBase) }}) — no aplica retención
+          </p>
+        }
+      </div>
     </div>
   </div>
 
-  <!-- Comparison -->
+  <!-- ── Resultados ────────────────────────────────────────────────────────── -->
   <div class="grid sm:grid-cols-2 gap-6">
 
-    <!-- Empleado -->
+    <!-- Empleado resultado -->
     <div class="card p-6 space-y-4">
       <div class="flex items-center gap-3 mb-1">
-        <div class="w-9 h-9 rounded-xl flex items-center justify-center"
-          style="background: var(--primary);">
+        <div class="w-9 h-9 rounded-xl flex items-center justify-center" style="background: var(--primary);">
           <i class="fa-solid fa-id-badge text-sm text-white"></i>
         </div>
         <h3 class="font-bold" style="color: var(--text);">Como Empleado</h3>
@@ -40,10 +74,9 @@
 
       <div class="rounded-xl p-4 text-center" style="background: var(--bg);">
         <p class="text-xs mb-1" style="color: var(--text-muted);">Neto que recibe</p>
-        <p class="font-heading font-bold text-2xl" style="color: var(--secondary);">
-          {{ fmt(empleado().neto) }}
-        </p>
-        <p class="text-xs mt-1" style="color: var(--text-muted);">de {{ fmt(empleado().s) }} salario
+        <p class="font-heading font-bold text-2xl" style="color: var(--secondary);">{{ fmt(empleado().neto) }}</p>
+        <p class="text-xs mt-1" style="color: var(--text-muted);">
+          de {{ fmt(empleado().s) }} salario
           @if (empleado().aux > 0) { + {{ fmt(empleado().aux) }} aux. transporte }
         </p>
       </div>
@@ -59,10 +92,10 @@
           <span class="font-medium" style="color: var(--error);">-{{ fmt(empleado().pension_emp) }}</span>
         </div>
         @if (empleado().aux > 0) {
-        <div class="flex justify-between">
-          <span style="color: var(--text-muted);">+ Aux. transporte</span>
-          <span class="font-medium" style="color: var(--secondary);">+{{ fmt(empleado().aux) }}</span>
-        </div>
+          <div class="flex justify-between">
+            <span style="color: var(--text-muted);">+ Aux. transporte</span>
+            <span class="font-medium" style="color: var(--secondary);">+{{ fmt(empleado().aux) }}</span>
+          </div>
         }
       </div>
 
@@ -85,15 +118,15 @@
           <span class="font-medium" style="color: var(--text);">{{ fmt(empleado().parafiscal) }}</span>
         </div>
         <div class="flex justify-between">
-          <span style="color: var(--text-muted);">Cesantías (8.33%{{ empleado().aux > 0 ? ' · base s+aux' : '' }})</span>
+          <span style="color: var(--text-muted);">Cesantías (8.33%{{ empleado().aux > 0 ? ' · s+aux' : '' }})</span>
           <span class="font-medium" style="color: var(--text);">{{ fmt(empleado().cesantias) }}</span>
         </div>
         <div class="flex justify-between">
-          <span style="color: var(--text-muted);">Prima (8.33%{{ empleado().aux > 0 ? ' · base s+aux' : '' }})</span>
+          <span style="color: var(--text-muted);">Prima (8.33%{{ empleado().aux > 0 ? ' · s+aux' : '' }})</span>
           <span class="font-medium" style="color: var(--text);">{{ fmt(empleado().prima) }}</span>
         </div>
         <div class="flex justify-between">
-          <span style="color: var(--text-muted);">Int. cesantías (1%{{ empleado().aux > 0 ? ' · base s+aux' : '' }})</span>
+          <span style="color: var(--text-muted);">Int. cesantías (1%{{ empleado().aux > 0 ? ' · s+aux' : '' }})</span>
           <span class="font-medium" style="color: var(--text);">{{ fmt(empleado().int_cesantias) }}</span>
         </div>
         <div class="flex justify-between">
@@ -105,12 +138,12 @@
           <span style="color: var(--secondary);">{{ fmt(empleado().total_empresa) }}</span>
         </div>
         <p class="text-xs" style="color: var(--text-muted);">
-          Prestaciones sociales: ~{{ fmtPct(empleado().prestaciones_pct) }} del salario
+          Prestaciones: ~{{ fmtPct(empleado().prestaciones_pct) }} del salario
         </p>
       </div>
     </div>
 
-    <!-- Contratista -->
+    <!-- Contratista resultado -->
     <div class="card p-6 space-y-4">
       <div class="flex items-center gap-3 mb-1">
         <div class="w-9 h-9 rounded-xl flex items-center justify-center"
@@ -122,9 +155,7 @@
 
       <div class="rounded-xl p-4 text-center" style="background: var(--bg);">
         <p class="text-xs mb-1" style="color: var(--text-muted);">Neto que recibe</p>
-        <p class="font-heading font-bold text-2xl" style="color: var(--secondary);">
-          {{ fmt(contratista().neto) }}
-        </p>
+        <p class="font-heading font-bold text-2xl" style="color: var(--secondary);">{{ fmt(contratista().neto) }}</p>
         <p class="text-xs mt-1" style="color: var(--text-muted);">de {{ fmt(contratista().f) }} en honorarios</p>
       </div>
 
@@ -143,8 +174,10 @@
           <span class="font-medium" style="color: var(--error);">-{{ fmt(contratista().pension) }}</span>
         </div>
         <div class="flex justify-between">
-          <span style="color: var(--text-muted);">Retención fuente ({{ tipo() === 'pn' ? '10% PN' : '11% PJ' }})</span>
-          <span class="font-medium" style="color: var(--error);">-{{ fmt(contratista().retencion) }}</span>
+          <span style="color: var(--text-muted);">Retención fuente</span>
+          <span class="font-medium" style="color: var(--error);">
+            {{ contratista().aplica ? '-' + fmt(contratista().retencion) : 'No aplica' }}
+          </span>
         </div>
         <div class="flex justify-between border-t pt-2 font-bold" style="border-color: var(--border);">
           <span style="color: var(--text);">Total deducciones</span>
@@ -157,8 +190,8 @@
           <i class="fa-solid fa-circle-info mr-1"></i> Nota
         </p>
         <p class="text-xs leading-relaxed" style="color: var(--text-muted);">
-          La empresa no paga prestaciones al contratista. El IBC mínimo para cotizar es 1 SMMLV
-          ($1.750.905). La retención en la fuente es descontada por el contratante.
+          El contratista paga el 100% de sus aportes a seguridad social. La retención en la fuente
+          la descuenta el contratante. IBC mínimo: 1 SMMLV ($1.750.905).
         </p>
       </div>
     </div>
