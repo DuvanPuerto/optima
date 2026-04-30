@@ -76,7 +76,7 @@ export const HERO_CONTENT = {
 // ── Estadísticas ─────────────────────────────────────────────────────────────
 export const STATS = [
   { value: 6, suffix: '+ años', label: 'De experiencia', icon: 'fa-solid fa-award' },
-  { value: 0, suffix: '', label: 'Clientes satisfechos', icon: 'fa-solid fa-users', displayText: '' },
+  { value: 0, suffix: '', label: 'Clientes satisfechos', icon: 'fa-solid fa-users' },
   { value: 9, suffix: ' servicios', label: 'Especializados disponibles', icon: 'fa-solid fa-briefcase' },
   { value: 100, suffix: '%', label: 'Presencial Boyacá · Virtual Colombia', icon: 'fa-solid fa-location-dot' },
 ];

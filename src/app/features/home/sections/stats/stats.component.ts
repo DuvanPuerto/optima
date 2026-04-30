@@ -7,7 +7,7 @@ import { STATS } from '../../../../config/content.config';
   templateUrl: './stats.component.html',
 })
 export class StatsComponent implements OnInit, OnDestroy {
-  readonly stats: (typeof STATS[number] & { displayText?: string })[] = STATS as any;
+  readonly stats = STATS;
   displayValues: number[] = STATS.map(() => 0);
   private observer!: IntersectionObserver;
   private animated = false;
