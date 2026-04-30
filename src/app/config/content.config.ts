@@ -195,7 +195,13 @@ export const ABOUT_CONTENT = {
 };
 
 // ── Testimonios — eliminados por confidencialidad ─────────────────────────────
-export const TESTIMONIALS: never[] = [];
+export interface Testimonial {
+  name: string;
+  role: string;
+  initials: string;
+  text: string;
+}
+export const TESTIMONIALS: Testimonial[] = [];
 
 // ── Recursos Descargables ────────────────────────────────────────────────────
 export const RESOURCES = [
