@@ -168,7 +168,7 @@ export const ABOUT_CONTENT = {
   title: 'Contadora Pública · Magíster en Contabilidad y Tributación',
   bio: [
     'Soy Contadora Pública con más de 6 años de experiencia en los sectores comercial, industrial y de servicios. Especialista en estados financieros bajo NIIF, planeación financiera, gestión presupuestal y cumplimiento tributario.',
-    'Actualmente lidero los procesos contables, financieros y administrativos en Social Solar S.A.S., mientras brindo consultoría independiente a personas naturales y jurídicas en todo el país.',
+    'Actualmente lidero los procesos contables, financieros y administrativos en empresa del sector de energías renovables en Boyacá, mientras brindo consultoría independiente a personas naturales y jurídicas en todo el país.',
   ],
   credentials: [
     'Magíster en Contabilidad y Tributación — Universidad Externado de Colombia (2026)',
@@ -298,24 +298,24 @@ export const RESUME_CONTENT = {
   experience: [
     {
       period: 'Jul. 2020 – Presente',
-      company: 'Social Solar S.A.S.',
-      role: 'Jefa de Contabilidad, Financiera y Administrativa',
+      company: 'Sector energía renovable, Boyacá',
+      role: 'Líder Contable, Financiera y Administrativa',
       detail:
-        'Lidera procesos tributarios, gestión de tesorería y estados financieros bajo NIIF. Toma de decisiones estratégicas, coordinación de equipo y presentación de reportes a gerencia.',
+        'Liderazgo integral del área contable y administrativa en empresa del sector de energías renovables (solar fotovoltaica). NIIF, tesorería, cartera, control interno, cumplimiento normativo DIAN/UGPP.',
     },
     {
-      period: 'Continuo',
+      period: '2022 – Actualidad',
       company: 'Asesoría Independiente',
-      role: 'Consultora Contable y Tributaria',
+      role: 'Asesora Contable, Tributaria y Pensional',
       detail:
-        'Consultoría contable y tributaria para personas naturales y jurídicas: declaraciones fiscales, planeación tributaria y acompañamiento en procesos con la DIAN y Cámara de Comercio.',
+        'Asesoría presencial en Boyacá y virtual para todo Colombia. Personas naturales y jurídicas de todos los sectores. Planeación tributaria, evaluación proyectos solares, asesoría pensional y creación de empresas.',
     },
     {
       period: 'Dic. 2018 – Jun. 2020',
-      company: 'Industrias Chassis Truck S.A.S.',
+      company: 'Sector industrial, Boyacá',
       role: 'Analista Contable y Financiera',
       detail:
-        'Manejo integral de impuestos, contabilidad de costos y reportes a la Superintendencia de Sociedades. Análisis financiero y conciliaciones.',
+        'Registro contable, análisis de costos, liquidación de impuestos e implementación de software contable en empresa mediana del sector industrial manufacturero.',
     },
   ],
 };
