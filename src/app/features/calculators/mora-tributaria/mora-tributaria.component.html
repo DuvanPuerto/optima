@@ -68,8 +68,9 @@
         <i class="fa-solid fa-circle-info mr-1"></i> Alcance de la calculadora
       </p>
       <p class="text-xs leading-relaxed" style="color: var(--text-muted);">
-        Calcula los intereses de mora (Art. 634 ET) sobre el impuesto. No incluye sanción por
-        extemporaneidad ni corrección de declaraciones. Consulta a un asesor para tu caso específico.
+        Calcula intereses de mora con <strong>capitalización diaria</strong> (Art. 635 ET), aplicando
+        la tasa de usura certificada por la Superfinanciera. No incluye sanciones por extemporaneidad
+        ni corrección de declaraciones. Consulta a un asesor para tu caso específico.
       </p>
     </div>
   </div>
@@ -94,7 +95,7 @@
           <span class="font-semibold text-white">{{ diasCalculados() }} días</span>
         </div>
         <div class="flex justify-between py-3 text-sm">
-          <span style="color: rgba(255,255,255,0.65);">Tasa diaria equivalente</span>
+          <span style="color: rgba(255,255,255,0.65);">Tasa diaria (capitalización diaria · Art. 635 ET)</span>
           <span class="font-semibold text-white">{{ result().tasaDiaria.toFixed(4) }}%</span>
         </div>
         <div class="flex justify-between py-3 text-sm">
@@ -112,11 +113,17 @@
     <div class="card p-5 space-y-3">
       <p class="text-sm font-semibold" style="color: var(--text);">
         <i class="fa-solid fa-gavel mr-2" style="color: var(--secondary);"></i>
-        Sanciones adicionales (Art. 641 ET)
+        Posibles sanciones adicionales (Art. 641 ET)
       </p>
+      <div class="rounded-lg px-3 py-2 text-xs mb-1"
+        style="background: rgba(197,160,89,0.08); border: 1px solid rgba(197,160,89,0.2); color: var(--secondary);">
+        <i class="fa-solid fa-triangle-exclamation mr-1"></i>
+        Las sanciones del Art. 641 ET dependen del <strong>tipo de incumplimiento</strong> y no se generan
+        de forma automática. Su procedencia y cuantía requieren evaluación individualizada.
+      </div>
       <div class="space-y-2 text-xs">
         <div class="flex justify-between py-1.5 border-b" style="border-color: var(--border);">
-          <span style="color: var(--text-muted);">Extemporaneidad (5%/mes, máx. 200%)</span>
+          <span style="color: var(--text-muted);">Extemporaneidad — presentación tardía (5%/mes, máx. 200%)</span>
           <span class="font-medium" style="color: var(--warning);">Requiere asesoría</span>
         </div>
         <div class="flex justify-between py-1.5 border-b" style="border-color: var(--border);">
@@ -124,7 +131,7 @@
           <span class="font-medium" style="color: var(--secondary);">$524.000</span>
         </div>
         <div class="flex justify-between py-1.5">
-          <span style="color: var(--text-muted);">No declarar tras requerimiento (20%/mes)</span>
+          <span style="color: var(--text-muted);">No declarar tras requerimiento especial (20%/mes)</span>
           <span class="font-medium" style="color: var(--error);">Requiere asesoría</span>
         </div>
       </div>
