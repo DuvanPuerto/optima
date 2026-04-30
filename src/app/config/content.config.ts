@@ -199,37 +199,8 @@ export const ABOUT_CONTENT = {
   ],
 };
 
-// ── Testimonios ──────────────────────────────────────────────────────────────
-export const TESTIMONIALS = [
-  {
-    name: 'Carlos Martínez',
-    role: 'Propietario — Restaurante El Sabor',
-    rating: 5,
-    text: 'Angie nos ayudó a organizar toda la contabilidad del restaurante y optimizamos el pago de impuestos. Excelente profesional.',
-    initials: 'CM',
-  },
-  {
-    name: 'Laura González',
-    role: 'Emprendedora — Tienda Online',
-    rating: 5,
-    text: 'Gracias a su asesoría logré formalizar mi negocio y declarar renta sin complicaciones. La recomiendo 100%.',
-    initials: 'LG',
-  },
-  {
-    name: 'Diego Ramírez',
-    role: 'Gerente — Constructora DR',
-    rating: 5,
-    text: 'La planeación tributaria que diseñó para nuestra empresa nos generó ahorros significativos. Trabajo impecable.',
-    initials: 'DR',
-  },
-  {
-    name: 'María Fernández',
-    role: 'Profesional independiente',
-    rating: 5,
-    text: 'Nunca pensé que mi declaración de renta pudiera ser tan sencilla. Angie lo explicó todo con paciencia y claridad.',
-    initials: 'MF',
-  },
-];
+// ── Testimonios — eliminados por confidencialidad ─────────────────────────────
+export const TESTIMONIALS: never[] = [];
 
 // ── Recursos Descargables ────────────────────────────────────────────────────
 export const RESOURCES = [
