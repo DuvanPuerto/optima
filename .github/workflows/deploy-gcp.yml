@@ -1,9 +1,7 @@
 name: Deploy Angular App to Google Cloud Run
 
 on:
-  push:
-    branches:
-      - master # Asegúrate de que esta sea la rama principal de despliegue
+  workflow_dispatch:
 
 env:
   PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
