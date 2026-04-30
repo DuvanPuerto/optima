@@ -9,7 +9,7 @@ const SMMLV_2026 = 1_750_905;
   templateUrl: './nomina-contratista.component.html',
 })
 export class NominaContratistaComponent {
-  salario = signal(3_500_000);
+  salario = signal(0);
   auxTransporte = signal(0);
   tipo = signal<'pn' | 'pj'>('pn');
 
