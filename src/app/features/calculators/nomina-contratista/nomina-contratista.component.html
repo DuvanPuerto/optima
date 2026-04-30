@@ -84,12 +84,20 @@
           <span class="font-medium" style="color: var(--text);">{{ fmt(empleado().parafiscal) }}</span>
         </div>
         <div class="flex justify-between">
-          <span style="color: var(--text-muted);">Cesantías + Prima (16.66%{{ empleado().aux > 0 ? ' base s+aux' : '' }})</span>
-          <span class="font-medium" style="color: var(--text);">{{ fmt(empleado().cesantias + empleado().prima) }}</span>
+          <span style="color: var(--text-muted);">Cesantías (8.33%{{ empleado().aux > 0 ? ' · base s+aux' : '' }})</span>
+          <span class="font-medium" style="color: var(--text);">{{ fmt(empleado().cesantias) }}</span>
         </div>
         <div class="flex justify-between">
-          <span style="color: var(--text-muted);">Vacaciones + Int. ces. (5.17%)</span>
-          <span class="font-medium" style="color: var(--text);">{{ fmt(empleado().vacaciones + empleado().int_cesantias) }}</span>
+          <span style="color: var(--text-muted);">Prima (8.33%{{ empleado().aux > 0 ? ' · base s+aux' : '' }})</span>
+          <span class="font-medium" style="color: var(--text);">{{ fmt(empleado().prima) }}</span>
+        </div>
+        <div class="flex justify-between">
+          <span style="color: var(--text-muted);">Int. cesantías (1%{{ empleado().aux > 0 ? ' · base s+aux' : '' }})</span>
+          <span class="font-medium" style="color: var(--text);">{{ fmt(empleado().int_cesantias) }}</span>
+        </div>
+        <div class="flex justify-between">
+          <span style="color: var(--text-muted);">Vacaciones (4.17% · solo salario)</span>
+          <span class="font-medium" style="color: var(--text);">{{ fmt(empleado().vacaciones) }}</span>
         </div>
         <div class="flex justify-between border-t pt-2 font-bold" style="border-color: var(--border);">
           <span style="color: var(--text);">Total costo empresa</span>

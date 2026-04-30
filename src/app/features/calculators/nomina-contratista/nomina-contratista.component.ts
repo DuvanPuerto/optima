@@ -36,13 +36,13 @@ export class NominaContratistaComponent {
     const arl = s * 0.01044;
     const parafiscal = s * 0.09;
 
-    // Cesantías y prima incluyen el auxilio de transporte en la base
+    // Cesantías, prima e intereses sobre cesantías: base salario + auxilio
     const cesantias = (s + aux) * 0.0833;
     const prima = (s + aux) * 0.0833;
+    const int_cesantias = (s + aux) * 0.01;
 
-    // Vacaciones solo sobre salario
+    // Vacaciones: solo sobre salario (no incluye auxilio)
     const vacaciones = s * 0.0417;
-    const int_cesantias = s * 0.01;
 
     const total_empresa =
       s + aux + salud_empresa + pension_empresa + arl + parafiscal +
