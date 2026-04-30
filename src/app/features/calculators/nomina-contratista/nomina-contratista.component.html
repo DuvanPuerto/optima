@@ -15,6 +15,13 @@
         <option value="pj">Persona Jurídica (retención 11%)</option>
       </select>
     </div>
+    <div>
+      <label class="form-label">Auxilio de transporte (COP) <span style="color: var(--text-muted); font-weight:400;">— opcional</span></label>
+      <input type="text" class="form-input" inputmode="numeric" autocomplete="off"
+        [value]="auxDisplay()" (input)="onAuxInput($event)"
+        placeholder="Ej: 249.095">
+      <p class="text-xs mt-1" style="color: var(--text-muted);">2026: $249.095 · Solo salarios ≤ $3.501.810 (2 SMMLV)</p>
+    </div>
   </div>
 
   <!-- Comparison -->
@@ -35,7 +42,9 @@
         <p class="font-heading font-bold text-2xl" style="color: var(--secondary);">
           {{ fmt(empleado().neto) }}
         </p>
-        <p class="text-xs mt-1" style="color: var(--text-muted);">de {{ fmt(empleado().s) }} devengado</p>
+        <p class="text-xs mt-1" style="color: var(--text-muted);">de {{ fmt(empleado().s) }} salario
+          @if (empleado().aux > 0) { + {{ fmt(empleado().aux) }} aux. transporte }
+        </p>
       </div>
 
       <div class="space-y-1.5 text-sm">
@@ -48,6 +57,12 @@
           <span style="color: var(--text-muted);">Pensión (4%)</span>
           <span class="font-medium" style="color: var(--error);">-{{ fmt(empleado().pension_emp) }}</span>
         </div>
+        @if (empleado().aux > 0) {
+        <div class="flex justify-between">
+          <span style="color: var(--text-muted);">+ Aux. transporte</span>
+          <span class="font-medium" style="color: var(--secondary);">+{{ fmt(empleado().aux) }}</span>
+        </div>
+        }
       </div>
 
       <div class="pt-3 border-t space-y-1.5 text-sm" style="border-color: var(--border);">
@@ -69,7 +84,7 @@
           <span class="font-medium" style="color: var(--text);">{{ fmt(empleado().parafiscal) }}</span>
         </div>
         <div class="flex justify-between">
-          <span style="color: var(--text-muted);">Cesantías + Prima (16.66%)</span>
+          <span style="color: var(--text-muted);">Cesantías + Prima (16.66%{{ empleado().aux > 0 ? ' base s+aux' : '' }})</span>
           <span class="font-medium" style="color: var(--text);">{{ fmt(empleado().cesantias + empleado().prima) }}</span>
         </div>
         <div class="flex justify-between">

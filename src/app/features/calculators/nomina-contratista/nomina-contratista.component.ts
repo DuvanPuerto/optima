@@ -10,32 +10,47 @@ const SMMLV_2026 = 1_750_905;
 })
 export class NominaContratistaComponent {
   salario = signal(3_500_000);
+  auxTransporte = signal(0);
   tipo = signal<'pn' | 'pj'>('pn');
 
   readonly salarioDisplay = computed(() =>
     this.salario() > 0 ? new Intl.NumberFormat('es-CO').format(this.salario()) : ''
   );
 
+  readonly auxDisplay = computed(() =>
+    this.auxTransporte() > 0 ? new Intl.NumberFormat('es-CO').format(this.auxTransporte()) : ''
+  );
+
   readonly empleado = computed(() => {
     const s = this.salario();
+    const aux = this.auxTransporte();
+
+    // Salud y pensión se calculan solo sobre el salario (no sobre auxilio)
     const salud_emp = s * 0.04;
     const pension_emp = s * 0.04;
-    const neto = s - salud_emp - pension_emp;
+    const neto = s + aux - salud_emp - pension_emp;
 
+    // Costos empleador
     const salud_empresa = s * 0.085;
     const pension_empresa = s * 0.12;
     const arl = s * 0.01044;
     const parafiscal = s * 0.09;
-    const cesantias = s * 0.0833;
-    const prima = s * 0.0833;
+
+    // Cesantías y prima incluyen el auxilio de transporte en la base
+    const cesantias = (s + aux) * 0.0833;
+    const prima = (s + aux) * 0.0833;
+
+    // Vacaciones solo sobre salario
     const vacaciones = s * 0.0417;
     const int_cesantias = s * 0.01;
+
     const total_empresa =
-      s + salud_empresa + pension_empresa + arl + parafiscal + cesantias + prima + vacaciones + int_cesantias;
-    const prestaciones_pct = s > 0 ? ((total_empresa - s) / s) * 100 : 0;
+      s + aux + salud_empresa + pension_empresa + arl + parafiscal +
+      cesantias + prima + vacaciones + int_cesantias;
+    const prestaciones_pct = s > 0 ? ((total_empresa - s - aux) / s) * 100 : 0;
 
     return {
-      s, salud_emp, pension_emp, neto,
+      s, aux, salud_emp, pension_emp, neto,
       salud_empresa, pension_empresa, arl, parafiscal,
       cesantias, prima, vacaciones, int_cesantias,
       total_empresa, prestaciones_pct,
@@ -59,6 +74,13 @@ export class NominaContratistaComponent {
     const digits = (e.target as HTMLInputElement).value.replace(/\D/g, '');
     const n = digits ? parseInt(digits, 10) : 0;
     this.salario.set(n);
+    (e.target as HTMLInputElement).value = n > 0 ? new Intl.NumberFormat('es-CO').format(n) : '';
+  }
+
+  onAuxInput(e: Event): void {
+    const digits = (e.target as HTMLInputElement).value.replace(/\D/g, '');
+    const n = digits ? parseInt(digits, 10) : 0;
+    this.auxTransporte.set(n);
     (e.target as HTMLInputElement).value = n > 0 ? new Intl.NumberFormat('es-CO').format(n) : '';
   }
 
