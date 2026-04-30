@@ -1,41 +1,65 @@
 <div class="space-y-6">
 
-  <!-- Inputs -->
-  <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 card p-6">
-    <div>
-      <label class="form-label">Capital inicial (COP)</label>
-      <input type="text" class="form-input" inputmode="numeric" autocomplete="off"
-        [value]="capitalDisplay()" (input)="onCapitalInput($event)"
-        placeholder="Ej: 10.000.000">
-    </div>
-    <div>
-      <label class="form-label">Tasa CDT (% EA)</label>
-      <input type="number" class="form-input" min="0.1" max="50" step="0.1"
-        [value]="tasaCDT()"
-        (input)="tasaCDT.set(+$any($event.target).value || 0)">
-    </div>
-    <div>
-      <label class="form-label">Rent. negocio (% mensual)</label>
-      <input type="number" class="form-input" min="0.1" max="50" step="0.1"
-        [value]="tasaNegocio()"
-        (input)="tasaNegocio.set(+$any($event.target).value || 0)">
-    </div>
-    <div>
-      <label class="form-label">Plazo (meses)</label>
-      <input type="number" class="form-input" min="1" max="120" step="1"
-        [value]="plazo()"
-        (input)="plazo.set(+$any($event.target).value || 1)">
+  <!-- ── Inputs ─────────────────────────────────────────────────────────────── -->
+  <div class="card p-6 space-y-4">
+    <p class="text-xs font-semibold uppercase tracking-wide" style="color: var(--text-muted);">Parámetros de comparación</p>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div>
+        <label class="form-label">Capital inicial (COP)</label>
+        <input type="text" class="form-input" inputmode="numeric" autocomplete="off"
+          [value]="capitalDisplay()" (input)="onCapitalInput($event)"
+          placeholder="Ej: 10.000.000">
+      </div>
+      <div>
+        <label class="form-label">Plazo (meses)</label>
+        <input type="number" class="form-input" min="1" max="120" step="1"
+          [value]="plazo()"
+          (input)="plazo.set(+$any($event.target).value || 1)">
+      </div>
+      <div></div>
+
+      <!-- CDT -->
+      <div>
+        <label class="form-label">Tasa CDT (% EA)</label>
+        <input type="number" class="form-input" min="0.1" max="50" step="0.1"
+          [value]="tasaCDT()"
+          (input)="tasaCDT.set(+$any($event.target).value || 0)">
+      </div>
+      <div>
+        <label class="form-label">Retención CDT (%)</label>
+        <input type="number" class="form-input" min="0" max="100" step="0.1"
+          [value]="retencionCDT()"
+          (input)="retencionCDT.set(+$any($event.target).value || 0)">
+        <p class="text-xs mt-1" style="color: var(--text-muted);">Art. 395 ET — rendimientos financieros</p>
+      </div>
+      <div></div>
+
+      <!-- Negocio -->
+      <div>
+        <label class="form-label">Rent. negocio (% mensual)</label>
+        <input type="number" class="form-input" min="0.1" max="100" step="0.1"
+          [value]="tasaNegocio()"
+          (input)="tasaNegocio.set(+$any($event.target).value || 0)">
+      </div>
+      <div>
+        <label class="form-label">Impuesto negocio (%) <span style="color: var(--text-muted); font-weight:400;">— opcional</span></label>
+        <input type="number" class="form-input" min="0" max="100" step="0.1"
+          [value]="impuestoNegocio()"
+          (input)="impuestoNegocio.set(+$any($event.target).value || 0)">
+        <p class="text-xs mt-1" style="color: var(--text-muted);">% estimado sobre utilidad mensual</p>
+      </div>
+      <div></div>
     </div>
   </div>
 
-  <!-- Comparison -->
+  <!-- ── Comparación ────────────────────────────────────────────────────────── -->
   <div class="grid sm:grid-cols-2 gap-6">
 
     <!-- CDT -->
     <div class="card p-6 space-y-4 transition-all duration-300"
       [style.border-color]="result().cdtWins ? 'rgba(197,160,89,0.5)' : 'rgba(197,160,89,0.15)'">
       @if (result().cdtWins) {
-        <span class="badge badge-gold text-xs">Mejor rendimiento</span>
+        <span class="badge badge-gold text-xs">Mejor rendimiento neto</span>
       }
       <div class="flex items-center gap-3">
         <div class="w-10 h-10 rounded-xl flex items-center justify-center"
@@ -49,13 +73,23 @@
       </div>
 
       <div class="rounded-xl p-4 text-center" style="background: var(--bg);">
-        <p class="text-xs mb-1" style="color: var(--text-muted);">Capital final</p>
-        <p class="font-heading font-bold text-2xl" style="color: var(--text);">{{ fmt(result().cdtFinal) }}</p>
+        <p class="text-xs mb-1" style="color: var(--text-muted);">Capital final neto</p>
+        <p class="font-heading font-bold text-2xl" style="color: var(--secondary);">{{ fmt(result().cdtFinalNeto) }}</p>
       </div>
 
-      <div class="flex justify-between text-sm">
-        <span style="color: var(--text-muted);">Rendimiento neto</span>
-        <span class="font-bold" style="color: var(--success);">+{{ fmt(result().cdtRendimiento) }}</span>
+      <div class="space-y-1.5 text-sm">
+        <div class="flex justify-between">
+          <span style="color: var(--text-muted);">Rendimiento bruto</span>
+          <span class="font-medium" style="color: var(--text);">+{{ fmt(result().cdtRendBruto) }}</span>
+        </div>
+        <div class="flex justify-between">
+          <span style="color: var(--text-muted);">Retención ({{ fmtPct(retencionCDT()) }} Art. 395 ET)</span>
+          <span class="font-medium" style="color: var(--error);">-{{ fmt(result().cdtRetencion) }}</span>
+        </div>
+        <div class="flex justify-between border-t pt-2 font-bold" style="border-color: var(--border);">
+          <span style="color: var(--text);">Rendimiento neto</span>
+          <span style="color: var(--secondary);">+{{ fmt(result().cdtRendNeto) }}</span>
+        </div>
       </div>
     </div>
 
@@ -63,7 +97,7 @@
     <div class="card p-6 space-y-4 transition-all duration-300"
       [style.border-color]="!result().cdtWins ? 'rgba(197,160,89,0.5)' : 'rgba(197,160,89,0.15)'">
       @if (!result().cdtWins) {
-        <span class="badge badge-gold text-xs">Mejor rendimiento</span>
+        <span class="badge badge-gold text-xs">Mejor rendimiento neto</span>
       }
       <div class="flex items-center gap-3">
         <div class="w-10 h-10 rounded-xl flex items-center justify-center"
@@ -72,23 +106,33 @@
         </div>
         <div>
           <h3 class="font-bold" style="color: var(--text);">Negocio / Inversión</h3>
-          <p class="text-xs" style="color: var(--text-muted);">{{ fmtPct(result().rentabilidadNegocio_EA) }} EA · {{ plazo() }} meses</p>
+          <p class="text-xs" style="color: var(--text-muted);">{{ fmtPct(tasaNegocio()) }} mensual · {{ fmtPct(result().negocioEA) }} EA</p>
         </div>
       </div>
 
       <div class="rounded-xl p-4 text-center" style="background: var(--bg);">
-        <p class="text-xs mb-1" style="color: var(--text-muted);">Capital final</p>
-        <p class="font-heading font-bold text-2xl" style="color: var(--text);">{{ fmt(result().negocioFinal) }}</p>
+        <p class="text-xs mb-1" style="color: var(--text-muted);">Capital final neto</p>
+        <p class="font-heading font-bold text-2xl" style="color: var(--secondary);">{{ fmt(result().negocioFinalNeto) }}</p>
       </div>
 
-      <div class="flex justify-between text-sm">
-        <span style="color: var(--text-muted);">Rendimiento neto</span>
-        <span class="font-bold" style="color: var(--success);">+{{ fmt(result().negocioRendimiento) }}</span>
+      <div class="space-y-1.5 text-sm">
+        <div class="flex justify-between">
+          <span style="color: var(--text-muted);">Rendimiento bruto</span>
+          <span class="font-medium" style="color: var(--text);">+{{ fmt(result().negocioRendBruto) }}</span>
+        </div>
+        <div class="flex justify-between">
+          <span style="color: var(--text-muted);">Impuesto estimado ({{ fmtPct(impuestoNegocio()) }})</span>
+          <span class="font-medium" style="color: var(--error);">-{{ fmt(result().negocioImpuesto) }}</span>
+        </div>
+        <div class="flex justify-between border-t pt-2 font-bold" style="border-color: var(--border);">
+          <span style="color: var(--text);">Rendimiento neto</span>
+          <span style="color: var(--secondary);">+{{ fmt(result().negocioRendNeto) }}</span>
+        </div>
       </div>
     </div>
   </div>
 
-  <!-- Summary -->
+  <!-- ── Veredicto ──────────────────────────────────────────────────────────── -->
   <div class="card p-5 flex items-center gap-4">
     <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
       style="background: rgba(197,160,89,0.12);">
@@ -96,12 +140,87 @@
     </div>
     <div>
       <p class="font-semibold text-sm mb-0.5" style="color: var(--text);">
-        {{ result().cdtWins ? 'El CDT genera más rendimiento en este período' : 'El negocio genera más rendimiento en este período' }}
+        {{ result().cdtWins ? 'El CDT genera más rendimiento neto en este período' : 'El negocio genera más rendimiento neto en este período' }}
       </p>
       <p class="text-xs" style="color: var(--text-muted);">
-        Diferencia: <strong style="color: var(--secondary);">{{ fmt(result().diferencia) }}</strong> en {{ plazo() }} meses.
-        Ingresa la rentabilidad mensual esperada de tu negocio (bruta, antes de impuestos) para comparar.
+        Diferencia neta: <strong style="color: var(--secondary);">{{ fmt(result().diferencia) }}</strong> en {{ plazo() }} meses.
+        Comparación sobre rendimientos <strong>netos</strong> (después de retención CDT e impuesto negocio).
       </p>
+    </div>
+  </div>
+
+  <!-- ── Proyección mensual ─────────────────────────────────────────────────── -->
+  <div class="grid lg:grid-cols-2 gap-6">
+
+    <!-- Tabla CDT -->
+    <div class="card p-5 space-y-3">
+      <div class="flex items-center gap-2">
+        <div class="w-7 h-7 rounded-lg flex items-center justify-center" style="background: var(--primary);">
+          <i class="fa-solid fa-landmark text-xs text-white"></i>
+        </div>
+        <p class="text-sm font-semibold" style="color: var(--text);">Proyección CDT</p>
+        <span class="text-xs ml-auto" style="color: var(--text-muted);">Ret. {{ fmtPct(retencionCDT()) }} c/mes</span>
+      </div>
+      <div class="overflow-x-auto">
+        <table class="w-full text-xs">
+          <thead>
+            <tr style="color: var(--text-muted);">
+              <th class="text-left py-1.5 pr-2 font-medium">Mes</th>
+              <th class="text-right py-1.5 pr-2 font-medium">Saldo inicial</th>
+              <th class="text-right py-1.5 pr-2 font-medium">Rend. bruto</th>
+              <th class="text-right py-1.5 pr-2 font-medium" style="color: var(--error);">Retención</th>
+              <th class="text-right py-1.5 font-medium" style="color: var(--secondary);">Saldo final</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (row of rowsCDT(); track row.mes) {
+              <tr class="border-t" style="border-color: var(--border);">
+                <td class="py-1.5 pr-2" style="color: var(--text-muted);">{{ row.mes }}</td>
+                <td class="text-right py-1.5 pr-2" style="color: var(--text);">{{ fmt(row.saldoInicial) }}</td>
+                <td class="text-right py-1.5 pr-2" style="color: var(--text);">+{{ fmt(row.rendBruto) }}</td>
+                <td class="text-right py-1.5 pr-2" style="color: var(--error);">-{{ fmt(row.descuento) }}</td>
+                <td class="text-right py-1.5 font-semibold" style="color: var(--secondary);">{{ fmt(row.saldoFinal) }}</td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Tabla Negocio -->
+    <div class="card p-5 space-y-3">
+      <div class="flex items-center gap-2">
+        <div class="w-7 h-7 rounded-lg flex items-center justify-center"
+          style="background: linear-gradient(135deg, #6B8880, #4a6e67);">
+          <i class="fa-solid fa-store text-xs text-white"></i>
+        </div>
+        <p class="text-sm font-semibold" style="color: var(--text);">Proyección Negocio</p>
+        <span class="text-xs ml-auto" style="color: var(--text-muted);">Imp. {{ fmtPct(impuestoNegocio()) }} c/mes</span>
+      </div>
+      <div class="overflow-x-auto">
+        <table class="w-full text-xs">
+          <thead>
+            <tr style="color: var(--text-muted);">
+              <th class="text-left py-1.5 pr-2 font-medium">Mes</th>
+              <th class="text-right py-1.5 pr-2 font-medium">Saldo inicial</th>
+              <th class="text-right py-1.5 pr-2 font-medium">Rend. bruto</th>
+              <th class="text-right py-1.5 pr-2 font-medium" style="color: var(--error);">Impuesto</th>
+              <th class="text-right py-1.5 font-medium" style="color: var(--secondary);">Saldo final</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (row of rowsNegocio(); track row.mes) {
+              <tr class="border-t" style="border-color: var(--border);">
+                <td class="py-1.5 pr-2" style="color: var(--text-muted);">{{ row.mes }}</td>
+                <td class="text-right py-1.5 pr-2" style="color: var(--text);">{{ fmt(row.saldoInicial) }}</td>
+                <td class="text-right py-1.5 pr-2" style="color: var(--text);">+{{ fmt(row.rendBruto) }}</td>
+                <td class="text-right py-1.5 pr-2" style="color: var(--error);">-{{ fmt(row.descuento) }}</td>
+                <td class="text-right py-1.5 font-semibold" style="color: var(--secondary);">{{ fmt(row.saldoFinal) }}</td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </div>
