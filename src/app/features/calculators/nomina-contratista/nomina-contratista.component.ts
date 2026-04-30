@@ -1,7 +1,9 @@
 import { Component, signal, computed } from '@angular/core';
 
 const SMMLV_2026 = 1_750_905;
-const UVT_2026 = 52_374;
+const IBC_MIN    = SMMLV_2026;           // 1 SMMLV · Art. 18 Ley 100/1993
+const IBC_MAX    = SMMLV_2026 * 25;      // 25 SMMLV = $43.772.625 · Art. 18 Ley 100 mod. Ley 797/2003
+const UVT_2026   = 52_374;
 
 export const RETENCIONES = [
   { label: 'Honorarios · Persona Natural (10%)',    rate: 0.10, minBase: 0,           norma: 'Art. 392 ET' },
@@ -71,9 +73,11 @@ export class NominaContratistaComponent {
   );
 
   readonly contratista = computed(() => {
-    const f   = this.salarioCon();
-    const ret = this.retenciones[this.retencionIdx()];
-    const ibc = Math.max(f * 0.4, SMMLV_2026);
+    const f      = this.salarioCon();
+    const ret    = this.retenciones[this.retencionIdx()];
+    const ibcRaw = Math.max(f * 0.4, IBC_MIN);
+    const ibc    = Math.min(ibcRaw, IBC_MAX);
+    const ibcTopado = ibcRaw > IBC_MAX;
     const salud    = ibc * 0.125;
     const pension  = ibc * 0.16;
     const aplica   = f >= ret.minBase;
@@ -81,7 +85,7 @@ export class NominaContratistaComponent {
     const total_ded = salud + pension + retencion;
     const neto      = f - total_ded;
 
-    return { f, ibc, salud, pension, retencion, total_ded, neto, ret, aplica };
+    return { f, ibc, ibcTopado, salud, pension, retencion, total_ded, neto, ret, aplica };
   });
 
   // ── Helpers ─────────────────────────────────────────────────────────────────
